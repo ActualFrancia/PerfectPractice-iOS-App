@@ -38,26 +38,4 @@ class Practice {
     }
 }
 
-// Auras
-let auraList: [String] = [
-     "neutral",
-     "upbeat",
-     "serene",
-     "focused",
-     "satisfying",
-     "challenging",
-     "mixed",
-     "melancholy",
-     "bleh"
-]
 
-let instrumentData: [String: [String]] = [
-    // Voice
-    "voice": ["voice"],
-    // Winds
-    "winds": ["flute",
-              "clarinet"],
-    // Brass
-    "brass": ["trumpet",
-              "mello"]
-]

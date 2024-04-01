@@ -13,32 +13,30 @@ struct PracticeHistoryView: View {
     @Query var practices: [Practice]
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach (practices) { practice in
-                    NavigationLink (value: practice) {
-                         VStack {
-                             Text("Instrument:  \(practice.instrument)")
-                             Text("Time Start: \(practice.timeStart)")
-                             Text("Time End: \(practice.timeStop)")
-                             
-                             Text("---")
-                             
-                             Text("Practice Schedule Array: \(stringToStringIntInt(longString: practice.practiceSchedule))")
-                             
-                             Text("---")
-
-                             Text("Practice Goal Array: \(stringToStringBool(longString: practice.practiceGoals))")
-                             
-                             Text("---")
-
-                             
-                             Text("Aura: \(practice.aura)")
-                         }
-                     }
+        List {
+            ForEach (practices) { practice in
+                NavigationLink (value: practice) {
+                    VStack {
+                        Text("Instrument:  \(practice.instrument)")
+                        Text("Time Start: \(practice.timeStart)")
+                        Text("Time End: \(practice.timeStop)")
+                        
+                        Text("---")
+                        
+                        Text("Practice Schedule Array: \(stringToStringIntInt(longString: practice.practiceSchedule))")
+                        
+                        Text("---")
+                        
+                        Text("Practice Goal Array: \(stringToStringBool(longString: practice.practiceGoals))")
+                        
+                        Text("---")
+                        
+                        
+                        Text("Aura: \(practice.aura)")
+                    }
                 }
-                .onDelete(perform: deletePractice)
             }
+            .onDelete(perform: deletePractice)
         }
         .navigationTitle("Practice History")
         //.navigationDestination(for: Practice.self, destination: EditPracticeView.init)
@@ -85,6 +83,7 @@ struct PracticeHistoryView: View {
     var testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
+            User.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 

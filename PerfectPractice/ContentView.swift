@@ -13,8 +13,19 @@ struct ContentView: View {
     @Query private var practices: [Practice]
 
     var body: some View {
-        NavigationStack {
-            PracticeHistoryView()
+        TabView {
+            // Home
+            NavigationStack {
+                PracticeHistoryView()
+            } .tabItem {
+                Image(systemName: "house")
+            }
+            // Profile
+            NavigationStack {
+                ProfileView()
+            } .tabItem {
+                Image(systemName: "person")
+            }
         }
     }
 }
@@ -24,6 +35,7 @@ struct ContentView: View {
     var testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
+            User.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
