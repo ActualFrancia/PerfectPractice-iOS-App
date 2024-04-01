@@ -9,18 +9,24 @@
 /* Begin PBXBuildFile section */
 		9174AEDA2BBA87D700B6BEFB /* PerfectPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */; };
 		9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDB2BBA87D700B6BEFB /* ContentView.swift */; };
-		9174AEDE2BBA87D700B6BEFB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDD2BBA87D700B6BEFB /* Item.swift */; };
 		9174AEE02BBA87D700B6BEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */; };
 		9174AEE32BBA87D700B6BEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */; };
+		9174AEEC2BBA88A700B6BEFB /* Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEEB2BBA88A700B6BEFB /* Practice.swift */; };
+		9174AEF02BBA8B1D00B6BEFB /* PracticeHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEEF2BBA8B1D00B6BEFB /* PracticeHistoryView.swift */; };
+		9174AEF32BBA8BAF00B6BEFB /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9174AED62BBA87D700B6BEFB /* PerfectPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfectPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectPracticeApp.swift; sourceTree = "<group>"; };
 		9174AEDB2BBA87D700B6BEFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		9174AEDD2BBA87D700B6BEFB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9174AEE92BBA87EB00B6BEFB /* PerfectPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PerfectPractice.entitlements; sourceTree = "<group>"; };
+		9174AEEA2BBA87FF00B6BEFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9174AEEB2BBA88A700B6BEFB /* Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Practice.swift; sourceTree = "<group>"; };
+		9174AEEF2BBA8B1D00B6BEFB /* PracticeHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeHistoryView.swift; sourceTree = "<group>"; };
+		9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +59,13 @@
 		9174AED82BBA87D700B6BEFB /* PerfectPractice */ = {
 			isa = PBXGroup;
 			children = (
+				9174AEEA2BBA87FF00B6BEFB /* Info.plist */,
+				9174AEE92BBA87EB00B6BEFB /* PerfectPractice.entitlements */,
+				9174AEEE2BBA8AFF00B6BEFB /* PracticeHistory */,
 				9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */,
 				9174AEDB2BBA87D700B6BEFB /* ContentView.swift */,
-				9174AEDD2BBA87D700B6BEFB /* Item.swift */,
+				9174AEED2BBA8AF500B6BEFB /* SwiftData */,
+				9174AEF12BBA8BA200B6BEFB /* Utils */,
 				9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */,
 				9174AEE12BBA87D700B6BEFB /* Preview Content */,
 			);
@@ -68,6 +78,30 @@
 				9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9174AEED2BBA8AF500B6BEFB /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				9174AEEB2BBA88A700B6BEFB /* Practice.swift */,
+			);
+			path = SwiftData;
+			sourceTree = "<group>";
+		};
+		9174AEEE2BBA8AFF00B6BEFB /* PracticeHistory */ = {
+			isa = PBXGroup;
+			children = (
+				9174AEEF2BBA8B1D00B6BEFB /* PracticeHistoryView.swift */,
+			);
+			path = PracticeHistory;
+			sourceTree = "<group>";
+		};
+		9174AEF12BBA8BA200B6BEFB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +174,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9174AEF32BBA8BAF00B6BEFB /* HelperFunctions.swift in Sources */,
+				9174AEF02BBA8B1D00B6BEFB /* PracticeHistoryView.swift in Sources */,
+				9174AEEC2BBA88A700B6BEFB /* Practice.swift in Sources */,
 				9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */,
-				9174AEDE2BBA87D700B6BEFB /* Item.swift in Sources */,
 				9174AEDA2BBA87D700B6BEFB /* PerfectPracticeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,12 +309,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PerfectPractice/PerfectPractice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PerfectPractice/Preview Content\"";
 				DEVELOPMENT_TEAM = T6S3X5KD6C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PerfectPractice/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -302,12 +340,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PerfectPractice/PerfectPractice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PerfectPractice/Preview Content\"";
 				DEVELOPMENT_TEAM = T6S3X5KD6C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PerfectPractice/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
