@@ -17,6 +17,11 @@ class User {
     var primaryInstruments:[String]? = [String]()
     var secondaryInstruments:[String]? = [String]()
     var defaultInstrument:String = ""
+    
+    // Combined Instruments Computed Property
+    var instrumentsPlayed: [String] {
+        return (primaryInstruments ?? []) + (secondaryInstruments ?? [])
+    }
 
     init(name: String, pfp: Data? = nil, primaryInstruments: [String]? = nil, secondaryInstruments: [String]? = nil, defaultInstrument: String) {
         self.name = name

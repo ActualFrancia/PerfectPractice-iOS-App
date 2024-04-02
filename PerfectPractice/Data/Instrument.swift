@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import Collections
 
-let instrumentData: [String: [String]] = [
+let orderedInstrumentDict:OrderedDictionary<String, [String]> = [
     // Voice
     "voice": ["voice"],
     // Winds
     "winds": ["flute",
               "clarinet"],
     // Brass
-    "brass": ["trumpet",
-              "mello"]
+    "brass": ["trumpet", 
+              "mellophone"],
 ]

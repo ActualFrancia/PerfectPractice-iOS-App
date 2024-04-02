@@ -14,17 +14,17 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            // Home
-            NavigationStack {
-                PracticeHistoryView()
-            } .tabItem {
-                Image(systemName: "house")
-            }
             // Profile
             NavigationStack {
                 ProfileView()
             } .tabItem {
                 Image(systemName: "person")
+            }
+            // Home
+            NavigationStack {
+                PracticeHistoryView()
+            } .tabItem {
+                Image(systemName: "house")
             }
         }
     }

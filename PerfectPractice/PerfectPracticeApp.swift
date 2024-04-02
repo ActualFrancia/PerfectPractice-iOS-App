@@ -13,6 +13,7 @@ struct PerfectPracticeApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
+            User.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

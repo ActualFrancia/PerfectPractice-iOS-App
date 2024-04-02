@@ -11,6 +11,8 @@
 		91670B762BBB22F800509C6B /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670B752BBB22F800509C6B /* Instrument.swift */; };
 		91670B782BBB230A00509C6B /* Aura.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670B772BBB230A00509C6B /* Aura.swift */; };
 		91670B7D2BBB267100509C6B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670B7C2BBB267100509C6B /* ProfileView.swift */; };
+		91670B7F2BBB639B00509C6B /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670B7E2BBB639B00509C6B /* EditProfileView.swift */; };
+		91670B822BBB8B0D00509C6B /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 91670B812BBB8B0D00509C6B /* Collections */; };
 		9174AEDA2BBA87D700B6BEFB /* PerfectPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */; };
 		9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDB2BBA87D700B6BEFB /* ContentView.swift */; };
 		9174AEE02BBA87D700B6BEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */; };
@@ -25,6 +27,7 @@
 		91670B752BBB22F800509C6B /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		91670B772BBB230A00509C6B /* Aura.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aura.swift; sourceTree = "<group>"; };
 		91670B7C2BBB267100509C6B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		91670B7E2BBB639B00509C6B /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		9174AED62BBA87D700B6BEFB /* PerfectPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfectPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectPracticeApp.swift; sourceTree = "<group>"; };
 		9174AEDB2BBA87D700B6BEFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91670B822BBB8B0D00509C6B /* Collections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				91670B7C2BBB267100509C6B /* ProfileView.swift */,
+				91670B7E2BBB639B00509C6B /* EditProfileView.swift */,
 			);
 			path = ProfileView;
 			sourceTree = "<group>";
@@ -140,6 +145,9 @@
 			dependencies = (
 			);
 			name = PerfectPractice;
+			packageProductDependencies = (
+				91670B812BBB8B0D00509C6B /* Collections */,
+			);
 			productName = PerfectPractice;
 			productReference = 9174AED62BBA87D700B6BEFB /* PerfectPractice.app */;
 			productType = "com.apple.product-type.application";
@@ -168,6 +176,9 @@
 				Base,
 			);
 			mainGroup = 9174AECD2BBA87D700B6BEFB;
+			packageReferences = (
+				91670B802BBB8B0D00509C6B /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 9174AED72BBA87D700B6BEFB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -194,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91670B7F2BBB639B00509C6B /* EditProfileView.swift in Sources */,
 				9174AEF32BBA8BAF00B6BEFB /* HelperFunctions.swift in Sources */,
 				91670B7D2BBB267100509C6B /* ProfileView.swift in Sources */,
 				9174AEF02BBA8B1D00B6BEFB /* PracticeHistoryView.swift in Sources */,
@@ -412,6 +424,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		91670B802BBB8B0D00509C6B /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		91670B812BBB8B0D00509C6B /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 91670B802BBB8B0D00509C6B /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9174AECE2BBA87D700B6BEFB /* Project object */;
 }

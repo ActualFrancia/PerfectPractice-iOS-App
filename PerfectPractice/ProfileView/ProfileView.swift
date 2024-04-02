@@ -11,17 +11,34 @@ import SwiftData
 struct ProfileView: View {
     @Environment(\.modelContext) var modelContext
     @Query var users:[User]
-    var user:User?
     
     var body: some View {
         VStack {
             ForEach(users.prefix(1)) { user in
-                Text("\(user.name)")
+                HStack {
+                    // PFP
+                    userPFP(pfpData: user.pfp)
+                    // Name
+                    Text("\(user.name)")
+                    // Instruments
+                    Text("\(user.primaryInstruments ?? [])")
+                    Text("\(user.secondaryInstruments ?? [])")
+                    Text("\(user.defaultInstrument)")
+
+                    // Edit Button
+                    NavigationLink(value: user) {
+                        Text("Edit profile")
+                    }
+                    .padding()
+                    .buttonStyle(.bordered)
+                }
             }
         }
         .navigationTitle("Profile")
+        .navigationDestination(for: User.self, destination: EditProfileView.init)
         .toolbar {
             ToolbarItemGroup (placement: .automatic) {
+                // TESTING: Add User Data
                 Button(action: {
                     addSampleUserData()
                 }) {
@@ -39,12 +56,11 @@ struct ProfileView: View {
             }
         }
     }
-    
     func addSampleUserData() {
         let name = "Jeff"
-        let defIns = "voice"
+        let defIns = ""
         
-        let user1 = User(name: name, defaultInstrument: defIns)
+        let user1 = User(name: name, primaryInstruments: [], secondaryInstruments: [], defaultInstrument: defIns)
         
         modelContext.insert(user1)
     }

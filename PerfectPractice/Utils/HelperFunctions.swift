@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import UIKit
 
 let delimiter = "␟" // Ascii Code 31 (Unit Seperator)
 
@@ -86,4 +88,24 @@ func stringToStringIntInt(longString: String) -> [(String, Int, Int)] {
         }
     }
     return result
+}
+
+// Image extension for Data
+extension Image {
+    init?(data: Data) {
+        if let uiImage = UIImage(data: data) {
+            self.init(uiImage: uiImage)
+        } else {
+            return nil
+        }
+    }
+}
+
+// UserPFP or Stock Image
+func userPFP(pfpData: Data?) -> Image {
+    if let pfpData = pfpData {
+        return Image(data: pfpData)!
+    } else {
+        return Image(systemName: "person.circle")
+    }
 }
