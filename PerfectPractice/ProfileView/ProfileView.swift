@@ -18,6 +18,10 @@ struct ProfileView: View {
                 HStack {
                     // PFP
                     userPFP(pfpData: user.pfp)
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                        .frame(width: 100, height: 100)
                     // Name
                     Text("\(user.name)")
                     // Instruments
@@ -59,8 +63,9 @@ struct ProfileView: View {
     func addSampleUserData() {
         let name = "Jeff"
         let defIns = ""
+        let pfpData = UIImage(named: "DefaultPFP")?.pngData()
         
-        let user1 = User(name: name, primaryInstruments: [], secondaryInstruments: [], defaultInstrument: defIns)
+        let user1 = User(name: name, pfp: pfpData, primaryInstruments: [], secondaryInstruments: [], defaultInstrument: defIns)
         
         modelContext.insert(user1)
     }
