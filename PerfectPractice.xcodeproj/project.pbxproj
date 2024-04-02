@@ -20,6 +20,8 @@
 		9174AEEC2BBA88A700B6BEFB /* Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEEB2BBA88A700B6BEFB /* Practice.swift */; };
 		9174AEF02BBA8B1D00B6BEFB /* PracticeHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEEF2BBA8B1D00B6BEFB /* PracticeHistoryView.swift */; };
 		9174AEF32BBA8BAF00B6BEFB /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */; };
+		91EBB8612BBC9DAF000DB0B7 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EBB8602BBC9DAF000DB0B7 /* PracticeView.swift */; };
+		91EBB8632BBCBB67000DB0B7 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EBB8622BBCBB67000DB0B7 /* SidebarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		9174AEEB2BBA88A700B6BEFB /* Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Practice.swift; sourceTree = "<group>"; };
 		9174AEEF2BBA8B1D00B6BEFB /* PracticeHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeHistoryView.swift; sourceTree = "<group>"; };
 		9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		91EBB8602BBC9DAF000DB0B7 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		91EBB8622BBCBB67000DB0B7 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				9174AEE92BBA87EB00B6BEFB /* PerfectPractice.entitlements */,
 				9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */,
 				9174AEDB2BBA87D700B6BEFB /* ContentView.swift */,
+				91EBB8622BBCBB67000DB0B7 /* SidebarView.swift */,
+				91EBB85F2BBC9D9F000DB0B7 /* PracticeView */,
 				91670B7B2BBB261500509C6B /* ProfileView */,
 				9174AEEE2BBA8AFF00B6BEFB /* PracticeHistoryView */,
 				9174AEED2BBA8AF500B6BEFB /* Data */,
@@ -127,6 +133,14 @@
 				9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		91EBB85F2BBC9D9F000DB0B7 /* PracticeView */ = {
+			isa = PBXGroup;
+			children = (
+				91EBB8602BBC9DAF000DB0B7 /* PracticeView.swift */,
+			);
+			path = PracticeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +224,8 @@
 				91670B7D2BBB267100509C6B /* ProfileView.swift in Sources */,
 				9174AEF02BBA8B1D00B6BEFB /* PracticeHistoryView.swift in Sources */,
 				91670B742BBB219900509C6B /* User.swift in Sources */,
+				91EBB8632BBCBB67000DB0B7 /* SidebarView.swift in Sources */,
+				91EBB8612BBC9DAF000DB0B7 /* PracticeView.swift in Sources */,
 				9174AEEC2BBA88A700B6BEFB /* Practice.swift in Sources */,
 				91670B762BBB22F800509C6B /* Instrument.swift in Sources */,
 				9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */,

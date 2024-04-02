@@ -8,23 +8,43 @@
 import SwiftUI
 import SwiftData
 
+enum ViewList {
+    case home, schedule, profile, settings, about, notifications, practice, notepad, practiceHistory
+}
+
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var practices: [Practice]
+    @State private var selectedView: ViewList = .practice
+    @State private var isShowingSidebar = false
 
     var body: some View {
-        TabView {
-            // Profile
+        ZStack (alignment: .topLeading) {
+            // NavStack
             NavigationStack {
-                ProfileView()
-            } .tabItem {
-                Image(systemName: "person")
+                switch selectedView {
+                case .practice:
+                    PracticeView()
+                case .practiceHistory:
+                    PracticeHistoryView()
+                case .profile:
+                    ProfileView()
+                default:
+                    PracticeView()
+                }
             }
-            // Home
-            NavigationStack {
-                PracticeHistoryView()
-            } .tabItem {
-                Image(systemName: "house")
+            // Sidebar
+            Button(action: {
+                isShowingSidebar = true
+            }) {
+                Image(uiImage: UIImage(named: "DefaultPFP")!)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
+            }
+            
+            if isShowingSidebar {
+                SidebarView(isShowingSidebar: $isShowingSidebar, selectedView: $selectedView)
             }
         }
     }
