@@ -8,60 +8,29 @@
 import SwiftUI
 import SwiftData
 
-enum ViewList {
-    case home, schedule, profile, settings, about, notifications, practice, notepad, practiceHistory
+enum PrimaryViews {
+    case home
 }
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @EnvironmentObject var timerManager:TimerManager
-    @EnvironmentObject var practiceStateManager:PracticeStateManager
-    @Query(sort: \Practice.timeStart, order: .reverse) var practices:[Practice]
-    @Query var users:[User]
-    @State private var selectedView: ViewList = .practice
-    @State private var isShowingSidebar = false
-
+    @State private var selectedView: PrimaryViews = .home
+    
     var body: some View {
         ZStack (alignment: .topLeading) {
-            // NavStack
-            NavigationStack {
-                switch selectedView {
-                case .practiceHistory:
-                    PracticeHistoryView()
-                case .profile:
-                    ProfileView()
-                default:
-                    PracticeView()
-                }
+            /// View
+            switch selectedView {
+            case .home:
+                HomeView()
             }
-            // Sidebar
+            /// Sidebar
             Button(action: {
-                isShowingSidebar = true
+                // Open Sidebar
             }) {
                 Image(uiImage: UIImage(named: "DefaultPFP")!)
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 30, height: 30)
-                    .clipShape(Circle())
-            }
-            
-            if isShowingSidebar {
-                SidebarView(isShowingSidebar: $isShowingSidebar, selectedView: $selectedView)
-            }
-        }
-        /// Ensures users database never stores more than one user.
-        .onChange(of: users) {
-            for user in users {
-                if user != users.first {
-                    print("DEBUG: Excess Users Removed")
-                    modelContext.delete(user)
-                }
-            }
-        }
-        /// Autosaves time practiced incase of app crash or early closure.
-        .onChange(of: timerManager.elapsedTime) {
-            if (practiceStateManager.isPracticeStarted) {
-                practices.first?.timePracticed = timerManager.elapsedTime
+                      .scaledToFill()
+                      .frame(width: 40, height: 40)
+                      .clipShape(Circle())
             }
         }
     }
@@ -72,7 +41,9 @@ struct ContentView: View {
     var testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
-            User.self
+            User.self,
+            Event.self,
+            ToDo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
@@ -85,6 +56,5 @@ struct ContentView: View {
     
     return ContentView()
         .modelContainer(testingModelContainer)
-        .environmentObject(PracticeStateManager())
-        .environmentObject(TimerManager())
+        .environmentObject(PracticeManager())
 }

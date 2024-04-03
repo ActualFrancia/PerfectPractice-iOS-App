@@ -1,23 +1,29 @@
 //
-//  PerfectPracticeApp.swift
+//  HomeView.swift
 //  PerfectPractice
 //
-//  Created by Kali Francia on 4/1/24.
+//  Created by Kali Francia on 4/3/24.
 //
 
 import SwiftUI
 import SwiftData
 
-@main
-struct PerfectPracticeApp: App {
-    var sharedModelContainer: ModelContainer = {
+struct HomeView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+#Preview {
+    // Testing Container
+    var testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
             User.self,
             Event.self,
             ToDo.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -25,12 +31,8 @@ struct PerfectPracticeApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-        .modelContainer(sharedModelContainer)
+    
+    return ContentView()
+        .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
-    }
 }
