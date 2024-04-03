@@ -8,49 +8,23 @@
 import SwiftUI
 import SwiftData
 
+// TODO: IF PRACTICE STARTED, ADD ALERT IF THEY TRY TO LEAVE?
+
 struct PracticeView: View {
-    @State private var isSheetPresented: Bool = false
+    @Environment(\.modelContext) var modelContext
+    @Query var users:[User]
+    @Query var practices:[Practice]
+    
+    // Practice
+    @State private var practice = Practice(instrument: "", timePracticed: 0, practiceSchedule: "", practiceGoals: "", aura: "", tag: "", notes: "")
+    @Binding var isPracticeStarted:Bool
     
     var body: some View {
         VStack {
             // Timer
-            HStack {
-                VStack {
-                    HStack {
-                        Text("Timer")
-                            .font(.headline)
-                        Spacer()
-                        Text("02/25/2001")
-                    }
-                    Text("0:00")
-                        .font(.system(size: 80))
-                        .overlay (alignment: .bottomTrailing) {
-                            Button(action: {
-                                //
-                            }) {
-                                Image(systemName: "eye.slash.fill")
-                            }
-                        }
-                    // Pause Timer
-                    Button(action: {
-                        //
-                    }) {
-                        Image(systemName: "pause.circle.fill")
-                        Text("Pause")
-                    }
-                    // End Session
-                    Button(action: {
-                        //
-                    }) {
-                        Text("Finish Session")
-                    }
-                    .buttonStyle(.bordered)
-                }
-                .frame(maxWidth: .infinity)
-            }
-            .padding()
-            .background(.gray)
-            .clipShape(RoundedRectangle(cornerRadius: 25))
+            TimerView(practice: $practice)
+                .padding()
+                .clipShape(RoundedRectangle(cornerRadius: 25))
             // Practice Schedule
             VStack {
                 HStack {
@@ -71,18 +45,11 @@ struct PracticeView: View {
             .clipShape(RoundedRectangle(cornerRadius: 25))
             // Goals
             VStack {
-                HStack {
-                    Text("Goals:")
-                    Spacer()
-                    Button(action: {
-                        //
-                    }) {
-                        Image(systemName: "chevron.down.circle")
-                    }
+                Text("Goals")
+                List {
+                    
                 }
-                Text("Lipslurs at 120BPM")
-                Text("Opener A -> D")
-                Text("Ballad C -> End")
+                .listStyle(.plain)
             }
             .padding()
             .background(.gray)
@@ -148,6 +115,20 @@ struct PracticeView: View {
                 }
             }
         }
+        .onAppear {
+            let user = users.first
+            
+            if isPracticeStarted {
+                practice = practices.first!
+            } else {
+                practice.instrument = user?.defaultInstrument ?? ""
+            }
+        }
+    }
+    
+    // Add Finished Practice to Database
+    func addPracticeToDatabase() {
+        modelContext.insert(practice)
     }
 }
 

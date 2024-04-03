@@ -16,20 +16,19 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var selectedView: ViewList = .practice
     @State private var isShowingSidebar = false
+    @State private var isPracticeStarted:Bool = false
 
     var body: some View {
         ZStack (alignment: .topLeading) {
             // NavStack
             NavigationStack {
                 switch selectedView {
-                case .practice:
-                    PracticeView()
                 case .practiceHistory:
                     PracticeHistoryView()
                 case .profile:
                     ProfileView()
                 default:
-                    PracticeView()
+                    PracticeView(isPracticeStarted: $isPracticeStarted)
                 }
             }
             // Sidebar

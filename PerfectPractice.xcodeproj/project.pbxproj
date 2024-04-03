@@ -22,6 +22,8 @@
 		9174AEF32BBA8BAF00B6BEFB /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */; };
 		91EBB8612BBC9DAF000DB0B7 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EBB8602BBC9DAF000DB0B7 /* PracticeView.swift */; };
 		91EBB8632BBCBB67000DB0B7 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EBB8622BBCBB67000DB0B7 /* SidebarView.swift */; };
+		91EBB8652BBCD405000DB0B7 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EBB8642BBCD405000DB0B7 /* TimerView.swift */; };
+		91EBB8672BBCE280000DB0B7 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EBB8662BBCE280000DB0B7 /* TimerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		91EBB8602BBC9DAF000DB0B7 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		91EBB8622BBCBB67000DB0B7 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		91EBB8642BBCD405000DB0B7 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		91EBB8662BBCE280000DB0B7 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 		9174AEF12BBA8BA200B6BEFB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				91EBB8662BBCE280000DB0B7 /* TimerManager.swift */,
 				9174AEF22BBA8BAF00B6BEFB /* HelperFunctions.swift */,
 			);
 			path = Utils;
@@ -139,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				91EBB8602BBC9DAF000DB0B7 /* PracticeView.swift */,
+				91EBB8642BBCD405000DB0B7 /* TimerView.swift */,
 			);
 			path = PracticeView;
 			sourceTree = "<group>";
@@ -224,6 +230,8 @@
 				91670B7D2BBB267100509C6B /* ProfileView.swift in Sources */,
 				9174AEF02BBA8B1D00B6BEFB /* PracticeHistoryView.swift in Sources */,
 				91670B742BBB219900509C6B /* User.swift in Sources */,
+				91EBB8672BBCE280000DB0B7 /* TimerManager.swift in Sources */,
+				91EBB8652BBCD405000DB0B7 /* TimerView.swift in Sources */,
 				91EBB8632BBCBB67000DB0B7 /* SidebarView.swift in Sources */,
 				91EBB8612BBC9DAF000DB0B7 /* PracticeView.swift in Sources */,
 				9174AEEC2BBA88A700B6BEFB /* Practice.swift in Sources */,

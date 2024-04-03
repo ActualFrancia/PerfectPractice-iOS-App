@@ -14,7 +14,7 @@ class Practice {
     var instrument:String = ""
     // Time
     var timeStart = Date()
-    var timeStop = Date()
+    var timePracticed:TimeInterval = TimeInterval()
     // Schedule
     var practiceSchedule: String = "" // [(String:Int:Int)], stored as String for SwiftData Predicate Filters
     // Goals
@@ -26,10 +26,10 @@ class Practice {
     // Notes
     var notes:String = ""
     
-    init(instrument: String, timeStart: Date = Date(), timeStop: Date = Date(), practiceSchedule: String, practiceGoals: String, aura: String, tag: String, notes: String) {
+    init(instrument: String, timeStart: Date = Date(), timePracticed: Double, practiceSchedule: String, practiceGoals: String, aura: String, tag: String, notes: String) {
         self.instrument = instrument
         self.timeStart = timeStart
-        self.timeStop = timeStop
+        self.timePracticed = timePracticed
         self.practiceSchedule = practiceSchedule
         self.practiceGoals = practiceGoals
         self.aura = aura

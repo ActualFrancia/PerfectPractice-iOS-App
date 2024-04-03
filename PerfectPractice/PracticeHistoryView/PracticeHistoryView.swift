@@ -19,7 +19,7 @@ struct PracticeHistoryView: View {
                     VStack {
                         Text("Instrument:  \(practice.instrument)")
                         Text("Time Start: \(practice.timeStart)")
-                        Text("Time End: \(practice.timeStop)")
+                        Text("Time Practiced: \(practice.timePracticed)")
                         
                         Text("---")
                         
@@ -63,7 +63,7 @@ struct PracticeHistoryView: View {
         let goalLongString = "␟Goal 1:true␟Goal 2:false␟Goal 3:true␟"
         let scheduleLongString = "␟Step 1:1:30␟Step 2:0:45␟Step 3:2:15␟"
         
-        let practice1 = Practice(instrument: "voice", timeStart: .now, timeStop: .now, practiceSchedule: scheduleLongString, practiceGoals: goalLongString, aura: auraList[0], tag: "", notes: "")
+        let practice1 = Practice(instrument: "voice", timeStart: .now, timePracticed: 0, practiceSchedule: scheduleLongString, practiceGoals: goalLongString, aura: auraList[0], tag: "", notes: "")
         
         modelContext.insert(practice1)
     }
