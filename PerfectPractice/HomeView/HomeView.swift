@@ -10,7 +10,40 @@ import SwiftData
 
 struct HomeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Perfect Practice")
+            HStack {
+                // Event
+                Bento {
+                    Text("Event")
+                }
+                
+                VStack {
+                    Bento {
+                        Image(systemName: "music.note")
+                        Text("Start Practicing")
+                    }
+                    .frame(height: 150)
+                    HStack {
+                        Bento {
+                            Image(systemName: "music.note.list")
+                            Text("History")
+                        }
+                        Bento {
+                            Image(systemName: "chevron.right")
+                            Text("Tools")
+                        }
+                    }
+                }
+            }
+            Bento {
+                Text("Upcomming Events")
+            }
+            .frame(height: 100)
+            Bento {
+                Text("Todo")
+            }
+        }
     }
 }
 
