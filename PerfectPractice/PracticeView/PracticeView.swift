@@ -16,11 +16,12 @@ struct PracticeView: View {
     @Query var users:[User]
     @Query(sort: \Practice.timeStart, order: .reverse) var practices:[Practice]
     @State var practice:Practice = Practice(instrument: "", timePracticed: 0, practiceSchedule: "", practiceGoals: "", aura: "", tag: "", notes: "")
+    @State var isPracticeFinished:Bool = false
     
     var body: some View {
         VStack {
             // Timer
-            TimerView(practice: $practice) /// handles starting, pausing, and stoping a practice, and inserting time information into practice.
+            TimerView(practice: $practice, isPracticeFinished: $isPracticeFinished) /// handles starting, pausing, and stoping a practice, and inserting time information into practice.
                 .clipShape(RoundedRectangle(cornerRadius: 25))
             // Practice Schedule
             VStack {
@@ -56,6 +57,7 @@ struct PracticeView: View {
                 HStack {
                     Text("Notes:")
                     Spacer()
+                    Text("Load Previous")
                     Button(action: {
                         //
                     }) {
@@ -137,12 +139,22 @@ struct PracticeView: View {
                 practice.instrument = users.first?.defaultInstrument ?? ""
             }
         }
-        /// On change of practiceState, if new practice it is inserted into database
+        /// practiceStateManager onChange
         .onChange(of: practiceStateManager.isPracticeStarted) {
+            /// On change of practiceState, if new practice it is inserted into database
             if practiceStateManager.isPracticeStarted == true {
                 modelContext.insert(practice)
                 print("New Practice Inserted!")
             }
+        }
+        .onChange(of: isPracticeFinished) {
+            if isPracticeFinished {
+                /// create new practice once previous is finished
+                practice = Practice(instrument: users.first?.defaultInstrument ?? "", timePracticed: 0, practiceSchedule: "", practiceGoals: "", aura: "", tag: "", notes: "")
+            }
+        }
+        .sheet(isPresented: $isPracticeFinished) {
+            Text("HI")
         }
     }
 }

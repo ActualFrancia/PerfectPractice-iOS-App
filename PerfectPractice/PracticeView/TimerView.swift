@@ -12,6 +12,7 @@ struct TimerView: View {
     @EnvironmentObject var timerManager:TimerManager
     @EnvironmentObject var practiceStateManager:PracticeStateManager
     @Binding var practice:Practice
+    @Binding var isPracticeFinished:Bool
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -59,6 +60,8 @@ struct TimerView: View {
         Button(action: {
             timerManager.stopTimer()
             practiceStateManager.stopPractice()
+            isPracticeFinished = true
+            timerManager.elapsedTime = 0
         }) {
             Text("Complete Session")
         }
