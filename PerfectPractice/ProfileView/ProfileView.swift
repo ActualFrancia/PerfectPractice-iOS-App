@@ -50,15 +50,6 @@ struct ProfileView: View {
                 }
             }
         }
-        // ProfileView will act as periodic cleanup of potential excess users
-        .onAppear {
-            for user in users {
-                if user != users.first {
-                    print("DEBUG: Excess Users Removed")
-                    modelContext.delete(user)
-                }
-            }
-        }
     }
     func addSampleUserData() {
         let name = "Jeff"
@@ -89,4 +80,6 @@ struct ProfileView: View {
     
     return ContentView()
         .modelContainer(testingModelContainer)
+        .environmentObject(PracticeStateManager())
+        .environmentObject(TimerManager())
 }

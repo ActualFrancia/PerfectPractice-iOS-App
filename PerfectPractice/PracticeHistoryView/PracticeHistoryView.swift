@@ -96,4 +96,5 @@ struct PracticeHistoryView: View {
     
     return ContentView()
         .modelContainer(testingModelContainer)
-}
+        .environmentObject(PracticeStateManager())
+        .environmentObject(TimerManager())}

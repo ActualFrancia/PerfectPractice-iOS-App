@@ -10,45 +10,74 @@ import SwiftData
 
 struct TimerView: View {
     @EnvironmentObject var timerManager:TimerManager
+    @EnvironmentObject var practiceStateManager:PracticeStateManager
     @Binding var practice:Practice
     
     var body: some View {
         VStack (alignment: .leading) {
             Text("Timer")
                 .font(.headline)
-            Text("\(timerManager.elapsedTime)")
+            Text("\(formattedTime(timerManager.elapsedTime))")
+            
             switch timerManager.timerState {
+            // Timer is Running
             case .running:
-                Button(action: {
-                    timerManager.pauseTimer()
-                }) {
-                    Text("Pause")
-                }
-                Button(action: {
-                    timerManager.stopTimer()
-                }) {
-                    Text("Complete Session")
-                }
+                /// Pause Practice
+                pauseButton()
+                stopButton()
+            // Timer is Paused
             case .paused:
-                Button(action: {
-                    timerManager.resumeTimer()
-                }) {
-                    Text("Resume")
-                }
-                Button(action: {
-                    timerManager.stopTimer()
-                }) {
-                    Text("Complete Session")
-                }
+                resumeButton()
+                stopButton()
+            // Timer is Stopped
             case .stopped:
-                Button(action: {
-                    timerManager.startTimer()
-                }) {
-                    Text("Start Practice Sesson")
-                }
+                startButton()
+            }
+        }        
+        .frame(maxWidth: .infinity)
+        .background(.ultraThickMaterial)
+        .onAppear {
+            if (timerManager.timerState == .stopped) {
+                timerManager.elapsedTime = 0
             }
         }
-        .background(.ultraThickMaterial)
+    }
+    
+    // Start Button
+    func startButton() -> some View {
+        Button(action: {
+            timerManager.startTimer()
+            practiceStateManager.startPractice()
+            practice.timeStart = Date.now
+        }) {
+            Text("Start Practice Sesson")
+        }
+    }
+    
+    // Stop Button
+    func stopButton() -> some View {
+        Button(action: {
+            timerManager.stopTimer()
+            practiceStateManager.stopPractice()
+        }) {
+            Text("Complete Session")
+        }
+    }
+    
+    func pauseButton() -> some View {
+        Button(action: {
+            timerManager.pauseTimer()
+        }) {
+            Text("Pause")
+        }
+    }
+    
+    func resumeButton() -> some View {
+        Button(action: {
+            timerManager.resumeTimer()
+        }) {
+            Text("Resume")
+        }
     }
     
     // Formatted Time
@@ -78,5 +107,6 @@ struct TimerView: View {
     
     return ContentView()
         .modelContainer(testingModelContainer)
+        .environmentObject(PracticeStateManager())
         .environmentObject(TimerManager())
 }

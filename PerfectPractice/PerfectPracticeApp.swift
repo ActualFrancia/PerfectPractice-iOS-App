@@ -29,6 +29,7 @@ struct PerfectPracticeApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        .environmentObject(PracticeStateManager())
         .environmentObject(TimerManager())
     }
 }

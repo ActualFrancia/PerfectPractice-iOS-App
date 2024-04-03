@@ -12,18 +12,15 @@ import SwiftData
 
 struct PracticeView: View {
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var practiceStateManager:PracticeStateManager
     @Query var users:[User]
     @Query var practices:[Practice]
-    
-    // Practice
-    @State private var practice = Practice(instrument: "", timePracticed: 0, practiceSchedule: "", practiceGoals: "", aura: "", tag: "", notes: "")
-    @Binding var isPracticeStarted:Bool
+    @State var practice:Practice = Practice(instrument: "", timePracticed: 0, practiceSchedule: "", practiceGoals: "", aura: "", tag: "", notes: "")
     
     var body: some View {
         VStack {
             // Timer
-            TimerView(practice: $practice)
-                .padding()
+            TimerView(practice: $practice) /// handles starting, pausing, and stoping a practice, and inserting time information into practice.
                 .clipShape(RoundedRectangle(cornerRadius: 25))
             // Practice Schedule
             VStack {
@@ -108,27 +105,45 @@ struct PracticeView: View {
         }
         .navigationTitle("Practice")
         .toolbar {
-            ToolbarItem(placement: .automatic) {
-                HStack {
-                    Text("Select Instrument")
-                    Image(systemName: "chevron.down")
+            // Instrument Being Practiced
+            ToolbarItem {
+                Menu {
+                    ForEach(users.prefix(1)) { user in
+                        ForEach(user.instrumentsPlayed, id:\.self) { instrument in
+                            Button(action: {
+                                practice.instrument = instrument
+                            }) {
+                                Text(instrument.capitalized)
+                            }
+                        }
+                    }
+                } label: {
+                    if practice.instrument == "" {
+                        Text("Select Instrument")
+                    } else {
+                        Text(practice.instrument.capitalized)
+                    }
                 }
             }
         }
         .onAppear {
-            let user = users.first
-            
-            if isPracticeStarted {
+            /// If practice state is running, loads from database
+            if practiceStateManager.isPracticeStarted {
                 practice = practices.first!
-            } else {
-                practice.instrument = user?.defaultInstrument ?? ""
+                print("Practice Running, loading from database")
+            }
+            /// Assigns user's default instrument to practice instrument if empty
+            if practice.instrument == "" {
+                practice.instrument = users.first?.defaultInstrument ?? ""
             }
         }
-    }
-    
-    // Add Finished Practice to Database
-    func addPracticeToDatabase() {
-        modelContext.insert(practice)
+        /// On change of practiceState, if new practice it is inserted into database
+        .onChange(of: practiceStateManager.isPracticeStarted) {
+            if practiceStateManager.isPracticeStarted == true {
+                modelContext.insert(practice)
+                print("New Practice Inserted!")
+            }
+        }
     }
 }
 
@@ -150,4 +165,6 @@ struct PracticeView: View {
     
     return ContentView()
         .modelContainer(testingModelContainer)
+        .environmentObject(PracticeStateManager())
+        .environmentObject(TimerManager())
 }

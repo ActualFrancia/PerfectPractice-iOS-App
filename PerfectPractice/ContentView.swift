@@ -14,9 +14,12 @@ enum ViewList {
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject var timerManager:TimerManager
+    @EnvironmentObject var practiceStateManager:PracticeStateManager
+    @Query var practices:[Practice]
+    @Query var users:[User]
     @State private var selectedView: ViewList = .practice
     @State private var isShowingSidebar = false
-    @State private var isPracticeStarted:Bool = false
 
     var body: some View {
         ZStack (alignment: .topLeading) {
@@ -28,7 +31,7 @@ struct ContentView: View {
                 case .profile:
                     ProfileView()
                 default:
-                    PracticeView(isPracticeStarted: $isPracticeStarted)
+                    PracticeView()
                 }
             }
             // Sidebar
@@ -44,6 +47,21 @@ struct ContentView: View {
             
             if isShowingSidebar {
                 SidebarView(isShowingSidebar: $isShowingSidebar, selectedView: $selectedView)
+            }
+        }
+        /// Ensures users database never stores more than one user.
+        .onChange(of: users) {
+            for user in users {
+                if user != users.first {
+                    print("DEBUG: Excess Users Removed")
+                    modelContext.delete(user)
+                }
+            }
+        }
+        /// Autosaves time practiced incase of app crash or early closure.
+        .onChange(of: timerManager.elapsedTime) {
+            if (practiceStateManager.isPracticeStarted) {
+                practices.first?.timePracticed = timerManager.elapsedTime
             }
         }
     }
@@ -67,4 +85,6 @@ struct ContentView: View {
     
     return ContentView()
         .modelContainer(testingModelContainer)
+        .environmentObject(PracticeStateManager())
+        .environmentObject(TimerManager())
 }
