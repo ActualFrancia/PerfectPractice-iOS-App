@@ -10,38 +10,32 @@ import SwiftData
 
 struct HomeView: View {
     var body: some View {
-        VStack {
-            Text("Perfect Practice")
-            HStack {
-                // Event
-                Bento {
-                    Text("Event")
-                }
-                
+        ZStack {
+            // Home View
+            VStack {
+                Text("Perfect Practice")
                 VStack {
                     Bento {
-                        Image(systemName: "music.note")
-                        Text("Start Practicing")
+                        Text("Starred Event")
                     }
-                    .frame(height: 150)
+                    .frame(height: 120)
                     HStack {
                         Bento {
-                            Image(systemName: "music.note.list")
-                            Text("History")
+                            Text("Upcomming Events")
                         }
                         Bento {
                             Image(systemName: "chevron.right")
-                            Text("Tools")
                         }
+                        .frame(width: 50)
+                    }
+                    .frame(height: 100)
+                    Bento {
+                        Text("Stats")
+                    }
+                    Bento {
+                        Text("Todo List")
                     }
                 }
-            }
-            Bento {
-                Text("Upcomming Events")
-            }
-            .frame(height: 100)
-            Bento {
-                Text("Todo")
             }
         }
     }

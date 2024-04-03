@@ -10,6 +10,7 @@ import SwiftData
 
 enum PrimaryViews {
     case home
+    case practice
 }
 
 struct ContentView: View {
@@ -21,16 +22,20 @@ struct ContentView: View {
             switch selectedView {
             case .home:
                 HomeView()
+            case .practice:
+                PracticeView()
             }
             /// Sidebar
             Button(action: {
                 // Open Sidebar
             }) {
-                Image(uiImage: UIImage(named: "DefaultPFP")!)
-                    .resizable()
-                      .scaledToFill()
-                      .frame(width: 40, height: 40)
-                      .clipShape(Circle())
+                pfpCircle(pfpData: nil)
+            }
+            
+            /// Swipe to Practice
+            if selectedView == .home {
+                SwipeToPracticeView(selectedView: $selectedView)
+                    .frame(maxHeight: .infinity)
             }
         }
     }

@@ -15,6 +15,9 @@
 		910B06A72BBDC31100313EAD /* PracticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B06A62BBDC31100313EAD /* PracticeManager.swift */; };
 		910B06A92BBDC8FA00313EAD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B06A82BBDC8FA00313EAD /* HomeView.swift */; };
 		910B06AC2BBDCE4500313EAD /* Bento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B06AB2BBDCE4500313EAD /* Bento.swift */; };
+		910B06AE2BBDE97600313EAD /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B06AD2BBDE97600313EAD /* HelperFunctions.swift */; };
+		910B06B32BBDFFBE00313EAD /* SwipeToPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B06B22BBDFFBE00313EAD /* SwipeToPracticeView.swift */; };
+		91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91622B462BBE0E6400A8DB7B /* PracticeView.swift */; };
 		91670B822BBB8B0D00509C6B /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 91670B812BBB8B0D00509C6B /* Collections */; };
 		9174AEDA2BBA87D700B6BEFB /* PerfectPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */; };
 		9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDB2BBA87D700B6BEFB /* ContentView.swift */; };
@@ -31,6 +34,9 @@
 		910B06A62BBDC31100313EAD /* PracticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeManager.swift; sourceTree = "<group>"; };
 		910B06A82BBDC8FA00313EAD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		910B06AB2BBDCE4500313EAD /* Bento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bento.swift; sourceTree = "<group>"; };
+		910B06AD2BBDE97600313EAD /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		910B06B22BBDFFBE00313EAD /* SwipeToPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToPracticeView.swift; sourceTree = "<group>"; };
+		91622B462BBE0E6400A8DB7B /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		9174AED62BBA87D700B6BEFB /* PerfectPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfectPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectPracticeApp.swift; sourceTree = "<group>"; };
 		9174AEDB2BBA87D700B6BEFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 				9174AEE92BBA87EB00B6BEFB /* PerfectPractice.entitlements */,
 				9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */,
 				9174AEDB2BBA87D700B6BEFB /* ContentView.swift */,
+				910B06B22BBDFFBE00313EAD /* SwipeToPracticeView.swift */,
 				910B06AA2BBDC8FD00313EAD /* HomeView */,
 				91EBB85F2BBC9D9F000DB0B7 /* PracticeView */,
 				91670B7B2BBB261500509C6B /* ProfileView */,
@@ -142,6 +149,7 @@
 			children = (
 				910B069D2BBDBBD000313EAD /* DataTransformation.swift */,
 				910B06AB2BBDCE4500313EAD /* Bento.swift */,
+				910B06AD2BBDE97600313EAD /* HelperFunctions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -149,6 +157,7 @@
 		91EBB85F2BBC9D9F000DB0B7 /* PracticeView */ = {
 			isa = PBXGroup;
 			children = (
+				91622B462BBE0E6400A8DB7B /* PracticeView.swift */,
 			);
 			path = PracticeView;
 			sourceTree = "<group>";
@@ -233,11 +242,14 @@
 				910B069E2BBDBBD000313EAD /* DataTransformation.swift in Sources */,
 				910B069C2BBDBA4100313EAD /* PracticeModel.swift in Sources */,
 				9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */,
+				91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */,
 				910B06A02BBDBD1400313EAD /* UserModel.swift in Sources */,
 				910B06AC2BBDCE4500313EAD /* Bento.swift in Sources */,
 				910B06A22BBDBE2500313EAD /* EventModel.swift in Sources */,
 				910B06A42BBDC15400313EAD /* TodoModel.swift in Sources */,
 				910B06A72BBDC31100313EAD /* PracticeManager.swift in Sources */,
+				910B06B32BBDFFBE00313EAD /* SwipeToPracticeView.swift in Sources */,
+				910B06AE2BBDE97600313EAD /* HelperFunctions.swift in Sources */,
 				9174AEDA2BBA87D700B6BEFB /* PerfectPracticeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
