@@ -14,7 +14,7 @@ struct PracticeView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var practiceStateManager:PracticeStateManager
     @Query var users:[User]
-    @Query var practices:[Practice]
+    @Query(sort: \Practice.timeStart, order: .reverse) var practices:[Practice]
     @State var practice:Practice = Practice(instrument: "", timePracticed: 0, practiceSchedule: "", practiceGoals: "", aura: "", tag: "", notes: "")
     
     var body: some View {

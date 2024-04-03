@@ -10,8 +10,8 @@ import SwiftData
 
 struct PracticeHistoryView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var practices: [Practice]
-    
+    @Query(sort: \Practice.timeStart, order: .reverse) var practices:[Practice]
+
     var body: some View {
         List {
             ForEach (practices) { practice in

@@ -16,7 +16,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var timerManager:TimerManager
     @EnvironmentObject var practiceStateManager:PracticeStateManager
-    @Query var practices:[Practice]
+    @Query(sort: \Practice.timeStart, order: .reverse) var practices:[Practice]
     @Query var users:[User]
     @State private var selectedView: ViewList = .practice
     @State private var isShowingSidebar = false
