@@ -82,24 +82,27 @@ struct UpcomingEventWidget: View {
     }
     
     func printEventData(event: Event) -> some View {
-        HStack (spacing: 5) {
-            Capsule()
-                .foregroundStyle(Color(event.tagColor).opacity(0.8))
-                .frame(width: 4)
-            VStack (alignment: .leading) {
-                Text("\(event.name)")
-                    .font(.system(size: 12))
-                    .fontWeight(.bold)
-                Text("\(event.date.formatted(date: .omitted, time: .shortened))")
-                    .font(.system(size: 12))
+        NavigationLink (value: event) {
+            HStack (spacing: 5) {
+                Capsule()
+                    .foregroundStyle(Color(event.tagColor).opacity(0.8))
+                    .frame(width: 4)
+                VStack (alignment: .leading) {
+                    Text("\(event.name)")
+                        .font(.system(size: 12))
+                        .fontWeight(.bold)
+                    Text("\(event.date.formatted(date: .omitted, time: .shortened))")
+                        .font(.system(size: 12))
+                    Spacer()
+                }
                 Spacer()
             }
-            Spacer()
+            .padding(5)
+            .frame(width: cellWidth)
+            .background(Color(event.tagColor).opacity(0.25))
+            .foregroundStyle(Color(event.tagColor))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .padding(5)
-        .frame(width: cellWidth)
-        .background(Color(event.tagColor).opacity(0.25))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 
