@@ -57,6 +57,8 @@ struct ContentView: View {
     }
 }
 
+// Preview
+/// -------------------------------------------------------------------------------
 #Preview {
     // Testing Container
     var testingModelContainer: ModelContainer = {
@@ -78,4 +80,5 @@ struct ContentView: View {
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
+        .environmentObject(GlobalTimerManager())
 }
