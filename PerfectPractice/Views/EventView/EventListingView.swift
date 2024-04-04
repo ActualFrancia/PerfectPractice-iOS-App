@@ -20,8 +20,8 @@ struct EventListingView: View {
                         VStack {
                             Text("\(event.date)")
                             Text("\(event.name)")
-                            Text("\(event.isUpcoming)")
-                            Text("\(event.isRepeating)")
+                            Text("IsUpcomming: \(event.isUpcoming)")
+                            Text("IsReapting: \(event.isRepeating)")
                         }
                     }
                 }

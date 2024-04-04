@@ -97,4 +97,5 @@ struct HomeView: View {
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
+        .environmentObject(GlobalTimerManager())
 }

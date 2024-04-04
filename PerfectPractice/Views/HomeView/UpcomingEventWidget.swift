@@ -10,19 +10,94 @@ import SwiftData
 
 struct UpcomingEventWidget: View {
     @Environment(\.modelContext) var modelContext
-    @EnvironmentObject var eventTimerManager: GlobalTimerManager
-    @Query(sort: \Event.date, order: .forward) var events:[Event]
-    private let cellWidth:CGFloat = 160
+    @EnvironmentObject var globalTimerManager: GlobalTimerManager
+    @Query(filter: #Predicate {$0.isUpcoming == true},sort: \Event.date, order: .forward) var events:[Event]
+    private let cellWidth:CGFloat = 150
+    private let cellHeight:CGFloat = 80
+    private let dateTitleHeight:CGFloat = 20
     
     @State private var currentTime = Date()
     
     var body: some View {
         ScrollView (.horizontal, showsIndicators: false) {
-            Text("\(currentTime)")
+            HStack {
+                ForEach(events.indices, id:\.self) { index in
+                    let event = events[index]
+                    // Capsule & Date
+                    if (index != 0) {
+                        if (Calendar.current.isDate(event.date, inSameDayAs: events[index - 1].date)) {
+                            VStack {
+                                Spacer(minLength: dateTitleHeight)
+                                printEventData(event: events[index])
+                            }
+                        } else {
+                            HStack {
+                                Divider()
+                                VStack (alignment: .leading, spacing: 0) {
+                                    Text("\(event.date.formatted(Date.FormatStyle().weekday(.abbreviated))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))".uppercased())
+                                        .font(.system(size: 12))
+                                        .fontWeight(.bold)
+                                        .frame(height: dateTitleHeight)
+                                    printEventData(event: events[index])
+                                }
+                            }
+                        }
+                    } else {
+                        HStack {
+                            VStack (alignment: .leading, spacing: 0) {
+                                Text("\(event.date.formatted(Date.FormatStyle().weekday(.abbreviated))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))".uppercased())
+                                    .font(.system(size: 12))
+                                    .fontWeight(.bold)
+                                    .frame(height: dateTitleHeight)
+                                printEventData(event: events[index])
+                            }
+                        }
+                    }
+                }
+            }
+            .padding(10)
         }
-        .onReceive(eventTimerManager.timer) { time in
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.regularMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+        .onReceive(globalTimerManager.timer) { time in
             currentTime = time
         }
+        // TESTING DATA
+        .onAppear {
+            let event1 = Event(name: "Event 1", date: .now - 100 , isUpcoming: true)
+            let event2 = Event(name: "Event 2", date: .now + 10, isUpcoming: true)
+            let event3 = Event(name: "Event 3", date: .now + 70, isUpcoming: true)
+            let event4 = Event(name: "Event 4", date: .now + 88888, isUpcoming: true)
+            
+            modelContext.insert(event1)
+            modelContext.insert(event2)
+            modelContext.insert(event3)
+            modelContext.insert(event4)
+            
+        }
+        // ------------
+    }
+    
+    func printEventData(event: Event) -> some View {
+        HStack (spacing: 5) {
+            Capsule()
+                .foregroundStyle(Color.blue.opacity(0.8))
+                .frame(width: 4)
+            VStack (alignment: .leading) {
+                Text("\(event.name)")
+                    .font(.system(size: 12))
+                    .fontWeight(.bold)
+                Text("\(event.date.formatted(date: .omitted, time: .shortened))")
+                    .font(.system(size: 12))
+                Spacer()
+            }
+            Spacer()
+        }
+        .padding(5)
+        .frame(width: cellWidth)
+        .background(Color.blue.opacity(0.25))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 

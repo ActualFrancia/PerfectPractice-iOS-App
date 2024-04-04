@@ -43,14 +43,13 @@ struct ContentView: View {
                     .frame(maxHeight: .infinity)
             }
         }
-        // onChange Event
+        // onChange of Events
         .onChange(of: events) {
             /// if eventdate, has passed, archive
             for event in events {
                 if event.date < Date.now {
                     print("Event has passed.")
-                    // TODO: TURN BACK ON
-                    //event.isUpcoming = false
+                    event.isUpcoming = false
                 }
             }
         }
