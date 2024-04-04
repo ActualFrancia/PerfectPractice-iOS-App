@@ -23,8 +23,9 @@ struct SwipeToPracticeView: View {
             GeometryReader { geometry in
                 ZStack (alignment: .leading) {
                     Text("Start Practicing")
+                        .font(.headline)
                         .frame(maxWidth: .infinity, maxHeight: capsuleSize)
-                        .background(.regularMaterial)
+                        .background(.thinMaterial)
                     Capsule()
                         .foregroundStyle(.gray)
                         .frame(width: min(max(offset + capsuleSize, capsuleSize), maxOffset + capsuleSize), height: capsuleSize)
@@ -63,6 +64,14 @@ struct SwipeToPracticeView: View {
                 .clipShape(Capsule())
                 .padding(.vertical, 1)
                 .padding(.horizontal, horizontalPadding)
+                .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
+                // outline
+                .overlay {
+                    Capsule()
+                        .stroke(Color.gray.opacity(0.3), lineWidth: 0.2)
+                        .padding(.vertical, 1)
+                        .padding(.horizontal, horizontalPadding)
+                }
                 .onAppear {
                     maxOffset = geometry.size.width - capsuleSize - (horizontalPadding * 2)
                 }

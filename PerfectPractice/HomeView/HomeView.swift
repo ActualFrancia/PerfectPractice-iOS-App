@@ -36,10 +36,15 @@ struct HomeView: View {
                     .frame(height: 220)
                     HStack (spacing: gridSpacing) {
                         UpcomingEventWidget()
-                        Bento {
+                        Button(action: {
+                            selectedView = .eventListing
+                        }) {
                             Image(systemName: "chevron.right")
+                                .frame(maxHeight: .infinity)
+                                .padding()
+                                .background(.ultraThickMaterial)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
                         }
-                        .frame(width: 50)
                     }
                     .frame(height: 110)
                     Bento {
@@ -48,16 +53,23 @@ struct HomeView: View {
                     .frame(height: 800)
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
+                .padding(.bottom, (70 + 1) + gridSpacing)
                 .padding(.horizontal, gridSpacing)
             }
             // Toolbar
-            VStack {
+            VStack (spacing: 0) {
                 HStack {
                     Text("Perfect Practice")
                         .font(.title3)
                 }
                 .frame(maxWidth: .infinity, maxHeight: toolbarHeight)
+                .padding(0)
                 .background(.bar)
+                
+                Rectangle()
+                    .padding(0)
+                    .frame(height: 0.2)
+                    .foregroundStyle(.gray.opacity(0.3))
                 Spacer()
             }
         }

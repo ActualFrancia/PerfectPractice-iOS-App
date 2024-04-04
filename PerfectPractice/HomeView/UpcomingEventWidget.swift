@@ -56,7 +56,7 @@ struct UpcomingEventWidget: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.ultraThickMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 25))
-        // TESTING
+        // TESTING ------------
         .onAppear() {
             let sampleEvent1 = Event(name: "Beef's Birthday Bi-Annual", date: .now, isUpcoming: true)
             let sampleEvent2 = Event(name: "January Camp", date: .distantPast, isUpcoming: true)
