@@ -13,8 +13,8 @@ struct UpcomingEventWidget: View {
     @EnvironmentObject var globalTimerManager: GlobalTimerManager
     @Query(filter: #Predicate {$0.isUpcoming == true},sort: \Event.date, order: .forward) var events:[Event]
     private let cellWidth:CGFloat = 150
-    private let cellHeight:CGFloat = 80
-    private let dateTitleHeight:CGFloat = 20
+    private let dateTitleHeight:CGFloat = 10
+    private let spacerPadding:CGFloat = 5
     
     @State private var currentTime = Date()
     
@@ -27,7 +27,7 @@ struct UpcomingEventWidget: View {
                     if (index != 0) {
                         if (Calendar.current.isDate(event.date, inSameDayAs: events[index - 1].date)) {
                             VStack {
-                                Spacer(minLength: dateTitleHeight)
+                                Spacer(minLength: dateTitleHeight + spacerPadding)
                                 printEventData(event: events[index])
                             }
                         } else {
@@ -38,6 +38,7 @@ struct UpcomingEventWidget: View {
                                         .font(.system(size: 12))
                                         .fontWeight(.bold)
                                         .frame(height: dateTitleHeight)
+                                    Spacer(minLength: spacerPadding)
                                     printEventData(event: events[index])
                                 }
                             }
@@ -49,6 +50,7 @@ struct UpcomingEventWidget: View {
                                     .font(.system(size: 12))
                                     .fontWeight(.bold)
                                     .frame(height: dateTitleHeight)
+                                Spacer(minLength: spacerPadding)
                                 printEventData(event: events[index])
                             }
                         }
@@ -65,10 +67,10 @@ struct UpcomingEventWidget: View {
         }
         // TESTING DATA
         .onAppear {
-            let event1 = Event(name: "Event 1", date: .now - 100 , isUpcoming: true)
-            let event2 = Event(name: "Event 2", date: .now + 10, isUpcoming: true)
-            let event3 = Event(name: "Event 3", date: .now + 70, isUpcoming: true)
-            let event4 = Event(name: "Event 4", date: .now + 88888, isUpcoming: true)
+            let event1 = Event(name: "Event 1", date: .now - 100 , isUpcoming: true, isRepeating: false, repeatSchedule: "", tagColor: "blue" )
+            let event2 = Event(name: "Event 2", date: .now + 10, isUpcoming: true, isRepeating: false, repeatSchedule: "", tagColor: "blue")
+            let event3 = Event(name: "Event 3", date: .now + 70, isUpcoming: true, isRepeating: false, repeatSchedule: "", tagColor: "indigo")
+            let event4 = Event(name: "Event 4", date: .now + 88888, isUpcoming: true, isRepeating: false, repeatSchedule: "", tagColor: "blue")
             
             modelContext.insert(event1)
             modelContext.insert(event2)
@@ -82,7 +84,7 @@ struct UpcomingEventWidget: View {
     func printEventData(event: Event) -> some View {
         HStack (spacing: 5) {
             Capsule()
-                .foregroundStyle(Color.blue.opacity(0.8))
+                .foregroundStyle(Color(event.tagColor).opacity(0.8))
                 .frame(width: 4)
             VStack (alignment: .leading) {
                 Text("\(event.name)")
@@ -96,7 +98,7 @@ struct UpcomingEventWidget: View {
         }
         .padding(5)
         .frame(width: cellWidth)
-        .background(Color.blue.opacity(0.25))
+        .background(Color(event.tagColor).opacity(0.25))
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

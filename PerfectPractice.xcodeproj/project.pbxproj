@@ -115,6 +115,7 @@
 		9174AECD2BBA87D700B6BEFB = {
 			isa = PBXGroup;
 			children = (
+				9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */,
 				9174AED82BBA87D700B6BEFB /* PerfectPractice */,
 				9174AED72BBA87D700B6BEFB /* Products */,
 			);
@@ -138,7 +139,6 @@
 				9174AEED2BBA8AF500B6BEFB /* Data */,
 				910B06A52BBDC2F800313EAD /* Managers */,
 				9174AEF12BBA8BA200B6BEFB /* Utils */,
-				9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */,
 				9174AEE12BBA87D700B6BEFB /* Preview Content */,
 			);
 			path = PerfectPractice;

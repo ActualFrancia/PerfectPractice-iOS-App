@@ -18,13 +18,16 @@ class Event {
     var isUpcoming:Bool = true
     // Repeating
     var isRepeating:Bool = false
-    var repeartSchedule:String = "" /// weekly, biweekly, monthly, bimonthly, yearly
-    // Days Until
-    //
+    var repeatSchedule:String = "" /// weekly, biweekly, monthly, bimonthly, yearly
+    // Tag
+    var tagColor:String = "blue"
     
-    init(name: String, date: Date = Date(), isUpcoming: Bool) {
+    init(name: String, date: Date = Date(), isUpcoming: Bool, isRepeating: Bool, repeatSchedule: String, tagColor: String) {
         self.name = name
         self.date = date
         self.isUpcoming = isUpcoming
+        self.isRepeating = isRepeating
+        self.repeatSchedule = repeatSchedule
+        self.tagColor = tagColor
     }
 }

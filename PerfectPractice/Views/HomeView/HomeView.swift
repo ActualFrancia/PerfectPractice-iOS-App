@@ -33,7 +33,7 @@ struct HomeView: View {
                             }
                         }
                     }
-                    .frame(height: 220)
+                    .frame(height: 250)
                     HStack (spacing: gridSpacing) {
                         UpcomingEventWidget()
                         Button(action: {
@@ -46,7 +46,7 @@ struct HomeView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 25))
                         }
                     }
-                    .frame(height: 110)
+                    .frame(height: 90)
                     Bento {
                         Text("Todo List")
                     }

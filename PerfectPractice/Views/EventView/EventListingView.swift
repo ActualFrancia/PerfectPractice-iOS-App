@@ -29,15 +29,6 @@ struct EventListingView: View {
             }
             .listStyle(.plain)
         }
-        // TESTING ------------
-        .onAppear() {
-            let sampleEvent1 = Event(name: "Beef's Birthday Bi-Annual", date: .now, isUpcoming: true)
-            let sampleEvent2 = Event(name: "January Camp", date: .distantPast, isUpcoming: true)
-            let sampleEvent3 = Event(name: "Da Future", date: .distantFuture, isUpcoming: true)
-            modelContext.insert(sampleEvent1)
-            modelContext.insert(sampleEvent2)
-            modelContext.insert(sampleEvent3)
-        }
     }
     
     // DeleteEvent
@@ -49,6 +40,8 @@ struct EventListingView: View {
     }
 }
 
+// Preview
+/// -------------------------------------------------------------------------------
 #Preview {
     // Testing Container
     var testingModelContainer: ModelContainer = {
@@ -67,7 +60,10 @@ struct EventListingView: View {
         }
     }()
     
-    return EventListingView()
+    return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
+        .environmentObject(GlobalTimerManager())
 }
+
+
