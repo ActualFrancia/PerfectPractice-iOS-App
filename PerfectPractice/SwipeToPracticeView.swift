@@ -30,7 +30,7 @@ struct SwipeToPracticeView: View {
                         .frame(width: min(max(offset + capsuleSize, capsuleSize), maxOffset + capsuleSize), height: capsuleSize)
                     Image(systemName: "music.note")
                         .font(.system(size: 30))
-                        .foregroundStyle(.ultraThickMaterial)
+                        .foregroundStyle(Color.black)
                         .frame(width: capsuleSize - circleSizeOffset, height: capsuleSize - circleSizeOffset)
                         .background(.regularMaterial)
                         .clipShape(Circle())
@@ -40,7 +40,6 @@ struct SwipeToPracticeView: View {
                                 .onChanged { value in
                                     offset = value.translation.width
                                     if (offset >= maxOffset) {
-                                        print("AA")
                                         isUnlocked = true
                                     }
                                     else if (offset < maxOffset) {

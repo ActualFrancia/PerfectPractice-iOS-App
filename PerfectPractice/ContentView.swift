@@ -11,19 +11,23 @@ import SwiftData
 enum PrimaryViews {
     case home
     case practice
+    case events
 }
 
 struct ContentView: View {
     @State private var selectedView: PrimaryViews = .home
-    
+    @Query(sort: \Event.date, order: .forward) var events:[Event]
+
     var body: some View {
         ZStack (alignment: .topLeading) {
             /// View
             switch selectedView {
             case .home:
-                HomeView()
+                HomeView(selectedView: $selectedView)
             case .practice:
                 PracticeView()
+            case .events:
+                EventView()
             }
             /// Sidebar
             Button(action: {
@@ -31,11 +35,23 @@ struct ContentView: View {
             }) {
                 pfpCircle(pfpData: nil)
             }
+            .padding(.leading, 10)
             
             /// Swipe to Practice
             if selectedView == .home {
                 SwipeToPracticeView(selectedView: $selectedView)
                     .frame(maxHeight: .infinity)
+            }
+        }
+        // onChange Event
+        .onChange(of: events) {
+            /// if eventdate, has passed, archive
+            for event in events {
+                if event.date < Date.now {
+                    print("Event has passed.")
+                    // TODO: TURN BACK ON
+                    //event.isUpcoming = false
+                }
             }
         }
     }

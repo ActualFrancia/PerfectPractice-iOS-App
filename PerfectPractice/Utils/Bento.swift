@@ -20,7 +20,7 @@ struct Bento<Content: View>: View {
         }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding()
-            .background(Color.gray.opacity(0.2))
+            .background(.ultraThickMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 25))
     }
 }
