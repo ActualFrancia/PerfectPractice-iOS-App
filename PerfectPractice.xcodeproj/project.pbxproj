@@ -21,6 +21,7 @@
 		910DB6C32BBE2A1B00ABD082 /* UpcomingEventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DB6C22BBE2A1B00ABD082 /* UpcomingEventWidget.swift */; };
 		91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91622B462BBE0E6400A8DB7B /* PracticeView.swift */; };
 		91660EA52BBF514200DA9DC8 /* GlobalTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA42BBF514200DA9DC8 /* GlobalTimerManager.swift */; };
+		91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA62BBF756500DA9DC8 /* EventEditView.swift */; };
 		91670B822BBB8B0D00509C6B /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 91670B812BBB8B0D00509C6B /* Collections */; };
 		9174AEDA2BBA87D700B6BEFB /* PerfectPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */; };
 		9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDB2BBA87D700B6BEFB /* ContentView.swift */; };
@@ -43,6 +44,7 @@
 		910DB6C22BBE2A1B00ABD082 /* UpcomingEventWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventWidget.swift; sourceTree = "<group>"; };
 		91622B462BBE0E6400A8DB7B /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		91660EA42BBF514200DA9DC8 /* GlobalTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTimerManager.swift; sourceTree = "<group>"; };
+		91660EA62BBF756500DA9DC8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
 		9174AED62BBA87D700B6BEFB /* PerfectPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfectPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectPracticeApp.swift; sourceTree = "<group>"; };
 		9174AEDB2BBA87D700B6BEFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				910DB6C02BBE293D00ABD082 /* EventListingView.swift */,
+				91660EA62BBF756500DA9DC8 /* EventEditView.swift */,
 			);
 			path = EventView;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91660EA52BBF514200DA9DC8 /* GlobalTimerManager.swift in Sources */,
+				91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */,
 				910B06A92BBDC8FA00313EAD /* HomeView.swift in Sources */,
 				910DB6C12BBE293D00ABD082 /* EventListingView.swift in Sources */,
 				910B069E2BBDBBD000313EAD /* DataTransformation.swift in Sources */,

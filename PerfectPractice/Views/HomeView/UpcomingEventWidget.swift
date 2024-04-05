@@ -21,6 +21,25 @@ struct UpcomingEventWidget: View {
     var body: some View {
         ScrollView (.horizontal, showsIndicators: false) {
             HStack {
+                // Today's Date
+                VStack {
+                    Spacer()
+                    Text("\(Date.now.formatted(Date.FormatStyle().month(.abbreviated)))")
+                        .font(.system(size: 12))
+                        .fontWeight(.bold)
+                    Text("\(Date.now.formatted(Date.FormatStyle().day()))")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                    Text("\(Date.now.formatted(Date.FormatStyle().weekday(.abbreviated)))")
+                        .font(.system(size: 12))
+                        .fontWeight(.medium)
+                    Spacer()
+                }
+                .frame(width: 60)
+                .foregroundStyle(Color("FlippedTextColor"))
+                .background(Color("TodaysDateWidget"))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                // Events
                 ForEach(events.indices, id:\.self) { index in
                     let event = events[index]
                     // Capsule & Date
@@ -82,7 +101,7 @@ struct UpcomingEventWidget: View {
     }
     
     func printEventData(event: Event) -> some View {
-        NavigationLink (value: event) {
+        NavigationLink(value: event) {
             HStack (spacing: 5) {
                 Capsule()
                     .foregroundStyle(Color(event.tagColor).opacity(0.8))

@@ -12,10 +12,10 @@ struct HomeView: View {
     @Binding var selectedView:PrimaryViews
     private let toolbarHeight:CGFloat = 55
     private let gridSpacing:CGFloat = 10
-    @State private var path = [Event]()
+    @State private var path = NavigationPath()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack (path: $path) {
             // Home View
             ZStack {
                 // Home
@@ -38,15 +38,6 @@ struct HomeView: View {
                         .frame(height: 250)
                         HStack (spacing: gridSpacing) {
                             UpcomingEventWidget()
-                            Button(action: {
-                                selectedView = .eventListing
-                            }) {
-                                Image(systemName: "chevron.right")
-                                    .frame(maxHeight: .infinity)
-                                    .padding()
-                                    .background(.ultraThickMaterial)
-                                    .clipShape(RoundedRectangle(cornerRadius: 25))
-                            }
                         }
                         .frame(height: 90)
                         Bento {
@@ -75,6 +66,7 @@ struct HomeView: View {
                     Spacer()
                 }
             }
+            .navigationDestination(for: Event.self, destination: EventEditView.init)
         }
     }
 }
