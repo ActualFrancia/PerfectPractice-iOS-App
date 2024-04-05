@@ -15,7 +15,7 @@ struct EventsWidget: View {
     @Binding var isEditingEvent: Event?
     private let cellWidth:CGFloat = 150
     private let cellHeight:CGFloat = 70
-    private let dateTitleHeight:CGFloat = 16
+    private let dateTitleHeight:CGFloat = 14
     private let spacerPadding:CGFloat = 6
     
     @State private var currentTime = Date()

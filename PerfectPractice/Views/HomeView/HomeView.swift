@@ -13,6 +13,7 @@ struct HomeView: View {
     
     private let toolbarHeight:CGFloat = 60
     private let gridSpacing:CGFloat = 16
+    private let titleSize:CGFloat = 25
     
     // Sheets
     @State private var isEditingEvent: Event? = nil
@@ -29,7 +30,7 @@ struct HomeView: View {
                         // Title
                         HStack (alignment: .center) {
                             Text("Home")
-                                .font(.system(size: 30))
+                                .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
                             Spacer()
                             // Date & Daily Quote
@@ -43,6 +44,7 @@ struct HomeView: View {
                                     .fontWeight(.semibold)
                             }
                         }
+                        .frame(height: titleSize)
                         
                         HStack (spacing: gridSpacing) {
                             Bento {
@@ -59,7 +61,7 @@ struct HomeView: View {
                     VStack (alignment: .leading, spacing: gridSpacing) {
                         HStack (alignment: .center) {
                             Text("Events")
-                                .font(.system(size: 30))
+                                .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
                             Spacer()
                             // Add New Event
@@ -69,10 +71,10 @@ struct HomeView: View {
                                 Image(systemName: "plus")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 12, height: 12)
+                                    .frame(width: titleSize/2, height: titleSize/2)
                                     .foregroundStyle(Color.blue)
                             }
-                            .padding(12)
+                            .padding(titleSize/2)
                             .background(.white)
                             .clipShape(Circle())
                             // Events Listing
@@ -82,10 +84,10 @@ struct HomeView: View {
                                 Image(systemName: "chevron.right")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 12, height: 12)
+                                    .frame(width: titleSize/2, height: titleSize/2)
                                     .foregroundStyle(Color.blue)
                             }
-                            .padding(12)
+                            .padding(titleSize/2)
                             .background(.white)
                             .clipShape(Circle())
                         }
@@ -97,7 +99,7 @@ struct HomeView: View {
                     VStack (alignment: .leading, spacing: gridSpacing) {
                         HStack {
                             Text("Todo List")
-                                .font(.system(size: 30))
+                                .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
                             Spacer()
                             // Add New Todo item
@@ -107,10 +109,10 @@ struct HomeView: View {
                                 Image(systemName: "pencil")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 12, height: 12)
+                                    .frame(width: titleSize/2, height: titleSize/2)
                                     .foregroundStyle(Color.blue)
                             }
-                            .padding(12)
+                            .padding(titleSize/2)
                             .background(.white)
                             .clipShape(Circle())
                             // Todo Listing
@@ -120,10 +122,10 @@ struct HomeView: View {
                                 Image(systemName: "chevron.right")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 12, height: 12)
+                                    .frame(width: titleSize/2, height: titleSize/2)
                                     .foregroundStyle(Color.blue)
                             }
-                            .padding(12)
+                            .padding(titleSize/2)
                             .background(.white)
                             .clipShape(Circle())
                         }
@@ -165,7 +167,7 @@ struct HomeView: View {
         }
         // Event Listing Sheet
         .sheet(isPresented: $isEventListingPresented) {
-            EventListingView()
+                EventListingView()
         }
         // Add New Event Sheet
         // ...
