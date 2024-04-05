@@ -18,7 +18,8 @@
 		910B06AE2BBDE97600313EAD /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B06AD2BBDE97600313EAD /* HelperFunctions.swift */; };
 		910B06B32BBDFFBE00313EAD /* PracticeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910B06B22BBDFFBE00313EAD /* PracticeButton.swift */; };
 		910DB6C12BBE293D00ABD082 /* EventListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DB6C02BBE293D00ABD082 /* EventListingView.swift */; };
-		910DB6C32BBE2A1B00ABD082 /* UpcomingEventWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DB6C22BBE2A1B00ABD082 /* UpcomingEventWidget.swift */; };
+		910DB6C32BBE2A1B00ABD082 /* EventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DB6C22BBE2A1B00ABD082 /* EventsWidget.swift */; };
+		9132957E2BC090A700760FB7 /* TodoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132957D2BC090A700760FB7 /* TodoWidget.swift */; };
 		91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91622B462BBE0E6400A8DB7B /* PracticeView.swift */; };
 		91660EA52BBF514200DA9DC8 /* GlobalTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA42BBF514200DA9DC8 /* GlobalTimerManager.swift */; };
 		91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA62BBF756500DA9DC8 /* EventEditView.swift */; };
@@ -44,7 +45,8 @@
 		910B06AD2BBDE97600313EAD /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		910B06B22BBDFFBE00313EAD /* PracticeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeButton.swift; sourceTree = "<group>"; };
 		910DB6C02BBE293D00ABD082 /* EventListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListingView.swift; sourceTree = "<group>"; };
-		910DB6C22BBE2A1B00ABD082 /* UpcomingEventWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventWidget.swift; sourceTree = "<group>"; };
+		910DB6C22BBE2A1B00ABD082 /* EventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidget.swift; sourceTree = "<group>"; };
+		9132957D2BC090A700760FB7 /* TodoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoWidget.swift; sourceTree = "<group>"; };
 		91622B462BBE0E6400A8DB7B /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		91660EA42BBF514200DA9DC8 /* GlobalTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTimerManager.swift; sourceTree = "<group>"; };
 		91660EA62BBF756500DA9DC8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
@@ -87,7 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				910B06A82BBDC8FA00313EAD /* HomeView.swift */,
-				910DB6C22BBE2A1B00ABD082 /* UpcomingEventWidget.swift */,
+				910DB6C22BBE2A1B00ABD082 /* EventsWidget.swift */,
+				9132957D2BC090A700760FB7 /* TodoWidget.swift */,
 				910B06B22BBDFFBE00313EAD /* PracticeButton.swift */,
 			);
 			path = HomeView;
@@ -293,6 +296,7 @@
 				910B069E2BBDBBD000313EAD /* DataTransformation.swift in Sources */,
 				916A04392BC0690D0033A4F9 /* ThemeManager.swift in Sources */,
 				910B069C2BBDBA4100313EAD /* PracticeModel.swift in Sources */,
+				9132957E2BC090A700760FB7 /* TodoWidget.swift in Sources */,
 				916A043E2BC077440033A4F9 /* SidebarManager.swift in Sources */,
 				9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */,
 				91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */,
@@ -300,7 +304,7 @@
 				910B06AC2BBDCE4500313EAD /* Bento.swift in Sources */,
 				910B06A22BBDBE2500313EAD /* EventModel.swift in Sources */,
 				910B06A42BBDC15400313EAD /* TodoModel.swift in Sources */,
-				910DB6C32BBE2A1B00ABD082 /* UpcomingEventWidget.swift in Sources */,
+				910DB6C32BBE2A1B00ABD082 /* EventsWidget.swift in Sources */,
 				910B06A72BBDC31100313EAD /* PracticeManager.swift in Sources */,
 				910B06B32BBDFFBE00313EAD /* PracticeButton.swift in Sources */,
 				910B06AE2BBDE97600313EAD /* HelperFunctions.swift in Sources */,

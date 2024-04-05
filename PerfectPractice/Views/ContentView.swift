@@ -11,7 +11,6 @@ import SwiftData
 enum PrimaryViews {
     case home
     case practice
-    case eventListing
 }
 
 struct ContentView: View {
@@ -26,8 +25,6 @@ struct ContentView: View {
                 HomeView(selectedView: $selectedView)
             case .practice:
                 PracticeView()
-            case .eventListing:
-                EventListingView()
             }
             // Sidebar
             

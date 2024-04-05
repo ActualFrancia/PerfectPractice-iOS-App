@@ -10,120 +10,167 @@ import SwiftData
 
 struct HomeView: View {
     @Binding var selectedView:PrimaryViews
-
-    @State private var isEditingEvent: Event? = nil
     
-    @State private var path = NavigationPath()
     private let toolbarHeight:CGFloat = 60
     private let gridSpacing:CGFloat = 16
     
+    // Sheets
+    @State private var isEditingEvent: Event? = nil
+    @State private var isEventListingPresented: Bool = false
+    
     var body: some View {
-        NavigationStack (path: $path) {
+        // Home View
+        ZStack {
             // Home View
-            ZStack {
-                // Home View
-                ScrollView (showsIndicators: false) {
+            ScrollView (showsIndicators: false) {
+                VStack (alignment: .leading, spacing: gridSpacing) {
+                    // Starred Event & Stats
                     VStack (alignment: .leading, spacing: gridSpacing) {
-                        // Starred Event & Stats
-                        VStack (alignment: .leading, spacing: gridSpacing) {
-                            // Title
-                            HStack (alignment: .center) {
-                                Text("Home")
-                                    .font(.system(size: 30))
+                        // Title
+                        HStack (alignment: .center) {
+                            Text("Home")
+                                .font(.system(size: 30))
+                                .fontWeight(.semibold)
+                            Spacer()
+                            // Date & Daily Quote
+                            VStack (alignment: .trailing) {
+                                Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
+                                    .font(.system(size: 15))
                                     .fontWeight(.semibold)
-                                Spacer()
-                                // Date & Daily Quote
-                                VStack (alignment: .trailing) {
-                                    Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
-                                        .font(.system(size: 15))
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(Color.gray)
-                                    Text("Don't forget to hydrate!")
-                                        .font(.system(size: 15))
-                                        .fontWeight(.semibold)
-                                }
+                                    .foregroundStyle(Color.gray)
+                                Text("Don't forget to hydrate!")
+                                    .font(.system(size: 15))
+                                    .fontWeight(.semibold)
                             }
-                            
-                            HStack (spacing: gridSpacing) {
-                                Bento {
-                                    Text("Starred Event")
-                                }
-                                Bento {
-                                    Text("Stats")
-                                }
-                            }
-                            .frame(height: 250)
                         }
                         
-                        // Upcomming Events
-                        VStack (alignment: .leading, spacing: gridSpacing) {
-                            HStack (alignment: .center) {
-                                Text("Upcoming Events")
-                                    .font(.system(size: 30))
-                                    .fontWeight(.semibold)
-                                Spacer()
-                                // Events Listing
-                                Button(action: {
-                                    selectedView = .eventListing
-                                }) {
-                                    Image(systemName: "chevron.right")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 12, height: 12)
-                                        .foregroundStyle(Color.blue)
-                                }
-                                .padding(12)
-                                .background(.white)
-                                .clipShape(Circle())
+                        HStack (spacing: gridSpacing) {
+                            Bento {
+                                Text("Starred Event")
                             }
-                            /// Upcoming Events
-                            UpcomingEventWidget(isEditingEvent: $isEditingEvent)
+                            Bento {
+                                Text("Stats")
+                            }
                         }
-                        
-                        // Todo List
-                        VStack (alignment: .leading, spacing: gridSpacing) {
+                        .frame(height: 250)
+                    }
+                    
+                    // Upcomming Events
+                    VStack (alignment: .leading, spacing: gridSpacing) {
+                        HStack (alignment: .center) {
+                            Text("Events")
+                                .font(.system(size: 30))
+                                .fontWeight(.semibold)
+                            Spacer()
+                            // Add New Event
+                            Button(action: {
+                                //
+                            }) {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 12, height: 12)
+                                    .foregroundStyle(Color.blue)
+                            }
+                            .padding(12)
+                            .background(.white)
+                            .clipShape(Circle())
+                            // Events Listing
+                            Button(action: {
+                                isEventListingPresented = true
+                            }) {
+                                Image(systemName: "chevron.right")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 12, height: 12)
+                                    .foregroundStyle(Color.blue)
+                            }
+                            .padding(12)
+                            .background(.white)
+                            .clipShape(Circle())
+                        }
+                        /// Upcoming Events
+                        EventsWidget(isEditingEvent: $isEditingEvent)
+                    }
+                    
+                    // Todo List
+                    VStack (alignment: .leading, spacing: gridSpacing) {
+                        HStack {
                             Text("Todo List")
                                 .font(.system(size: 30))
                                 .fontWeight(.semibold)
-                            Bento {
-                                Text("Todo List")
-                            }
-                            .frame(height: 800)
-                        }
-                    }
-                    .padding(.top, toolbarHeight + gridSpacing)
-                    .padding(.bottom, (70 + 1) + gridSpacing)
-                    .padding(.horizontal, gridSpacing)
-                }
-                // Toolbar
-                VStack (alignment: .center) {
-                    ZStack (alignment: .center) {
-                        HStack (alignment: .center, spacing: gridSpacing) {
-                            PFPButton()
                             Spacer()
+                            // Add New Todo item
+                            Button(action: {
+                                //
+                            }) {
+                                Image(systemName: "pencil")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 12, height: 12)
+                                    .foregroundStyle(Color.blue)
+                            }
+                            .padding(12)
+                            .background(.white)
+                            .clipShape(Circle())
+                            // Todo Listing
+                            Button(action: {
+                                //
+                            }) {
+                                Image(systemName: "chevron.right")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 12, height: 12)
+                                    .foregroundStyle(Color.blue)
+                            }
+                            .padding(12)
+                            .background(.white)
+                            .clipShape(Circle())
                         }
-                        VStack (alignment: .center, spacing: 0) {
-                            Text("Perfect")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                            Text("Practice")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                        }
+                        TodoWidget()
+                            .frame(height: 800)
                     }
-                    .padding(.horizontal, gridSpacing)
-                    .padding(.bottom, gridSpacing)
-                    .frame(height: toolbarHeight)
-                    .background(.regularMaterial)
-                    Spacer()
                 }
+                .padding(.top, toolbarHeight + gridSpacing)
+                .padding(.bottom, (70 + 1) + gridSpacing)
+                .padding(.horizontal, gridSpacing)
             }
-            .background(Color("BackgroundColor"))
-            // Event Edit Sheet
-            .sheet(item: $isEditingEvent) { event in
-                EventEditView(event: event)
+            // Toolbar
+            VStack (alignment: .center) {
+                ZStack (alignment: .center) {
+                    HStack (alignment: .center, spacing: gridSpacing) {
+                        PFPButton()
+                        Spacer()
+                    }
+                    VStack (alignment: .center, spacing: 0) {
+                        Text("Perfect")
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                        Text("Practice")
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                    }
+                }
+                .padding(.horizontal, gridSpacing)
+                .padding(.bottom, gridSpacing)
+                .frame(height: toolbarHeight)
+                .background(.regularMaterial)
+                Spacer()
             }
         }
+        .background(Color("BackgroundColor"))
+        // Event Edit Sheet
+        .sheet(item: $isEditingEvent) { event in
+            EventEditView(event: event)
+        }
+        // Event Listing Sheet
+        .sheet(isPresented: $isEventListingPresented) {
+            EventListingView()
+        }
+        // Add New Event Sheet
+        // ...
+        // Todo Listing
+        // ..
     }
 }
 

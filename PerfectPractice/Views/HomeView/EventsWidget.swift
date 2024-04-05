@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct UpcomingEventWidget: View {
+struct EventsWidget: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var globalTimerManager: GlobalTimerManager
     @Query(filter: #Predicate {$0.isUpcoming == true},sort: \Event.date, order: .forward) var events:[Event]
@@ -66,8 +66,7 @@ struct UpcomingEventWidget: View {
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
         .onReceive(globalTimerManager.timer) { time in
-            currentTime = time
-        }
+            currentTime = time}
         // TESTING DATA -----
         .onAppear {
             let event1 = Event(name: "Event 1", date: .now - 100 , isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "Adams Room 202", eventDescription: "", tagColor: "blue" )
