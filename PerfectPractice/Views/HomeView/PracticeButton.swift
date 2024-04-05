@@ -1,23 +1,39 @@
 //
-//  EventEditView.swift
+//  SwipeToPracticeView.swift
 //  PerfectPractice
 //
-//  Created by Kali Francia on 4/4/24.
+//  Created by Kali Francia on 4/3/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct EventEditView: View {
-    @Bindable var event:Event
+struct PracticeButton: View {
+    @Binding var selectedView:PrimaryViews
+    private let circleSize:CGFloat = 65
+    private let iconSize:CGFloat = 25
+
     var body: some View {
-        Form {
-            TextField("Event Name", text: $event.name)
+        VStack (alignment: .center) {
+            Spacer()
+            Button(action: {
+                selectedView = .practice
+            }) {
+                Image(systemName: "music.note")
+                .resizable()
+                .scaledToFit()
+                .frame(width: iconSize, height: iconSize)
+                .foregroundStyle(Color.blue)
+            }
+            .frame(width: circleSize, height: circleSize)
+            .background(.bar)
+            .clipShape(Circle())
+            .shadow(radius: 10)
         }
+        .frame(maxWidth: .infinity)
     }
 }
-
-
+    
 // Preview
 /// ------------------------------------------------------------------------
 #Preview {

@@ -19,15 +19,21 @@ class Event {
     // Repeating
     var isRepeating:Bool = false
     var repeatSchedule:String = "" /// weekly, biweekly, monthly, bimonthly, yearly
-    // Tag
+    // Location
+    var location: String = ""
+    // Description
+    var eventDescription: String = ""
+    // Tag Color
     var tagColor:String = "blue"
     
-    init(name: String, date: Date = Date(), isUpcoming: Bool, isRepeating: Bool, repeatSchedule: String, tagColor: String) {
+    init(name: String, date: Date = Date(), isUpcoming: Bool, isRepeating: Bool, repeatSchedule: String, location: String, eventDescription: String, tagColor: String) {
         self.name = name
         self.date = date
         self.isUpcoming = isUpcoming
         self.isRepeating = isRepeating
         self.repeatSchedule = repeatSchedule
+        self.location = location
+        self.eventDescription = eventDescription
         self.tagColor = tagColor
     }
 }

@@ -10,90 +10,125 @@ import SwiftData
 
 struct HomeView: View {
     @Binding var selectedView:PrimaryViews
-    private let toolbarHeight:CGFloat = 55
-    private let gridSpacing:CGFloat = 10
+
+    @State private var isEditingEvent: Event? = nil
+    
     @State private var path = NavigationPath()
+    private let toolbarHeight:CGFloat = 60
+    private let gridSpacing:CGFloat = 16
     
     var body: some View {
         NavigationStack (path: $path) {
             // Home View
             ZStack {
-                // Home
+                // Home View
                 ScrollView (showsIndicators: false) {
-                    VStack (spacing: gridSpacing) {
-                        HStack (spacing: gridSpacing) {
-                            Bento {
-                                Text("Starred Event")
-                            }
-                            VStack {
-                                Bento {
-                                    Text("Hi Gino!")
+                    VStack (alignment: .leading, spacing: gridSpacing) {
+                        // Starred Event & Stats
+                        VStack (alignment: .leading, spacing: gridSpacing) {
+                            // Title
+                            HStack (alignment: .center) {
+                                Text("Home")
+                                    .font(.system(size: 30))
+                                    .fontWeight(.semibold)
+                                Spacer()
+                                // Date & Daily Quote
+                                VStack (alignment: .trailing) {
+                                    Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
+                                        .font(.system(size: 15))
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(Color.gray)
+                                    Text("Don't forget to hydrate!")
+                                        .font(.system(size: 15))
+                                        .fontWeight(.semibold)
                                 }
-                                .frame(height: 50)
+                            }
+                            
+                            HStack (spacing: gridSpacing) {
+                                Bento {
+                                    Text("Starred Event")
+                                }
                                 Bento {
                                     Text("Stats")
                                 }
                             }
+                            .frame(height: 250)
                         }
-                        .frame(height: 250)
-                        HStack (spacing: gridSpacing) {
-                            /// Today's Date
-                            NavigationLink(destination: EventListingView.init) {
-                                VStack {
-                                    Text("\(Date.now.formatted(Date.FormatStyle().month(.abbreviated)))")
-                                        .font(.system(size: 12))
-                                        .fontWeight(.bold)
-                                    Spacer()
-                                    Text("\(Date.now.formatted(Date.FormatStyle().day()))")
-                                        .font(.system(size: 20))
-                                        .fontWeight(.bold)
-                                    Spacer()
-                                    Text("\(Date.now.formatted(Date.FormatStyle().weekday(.abbreviated)))")
-                                        .font(.system(size: 12))
-                                        .fontWeight(.medium)
+                        
+                        // Upcomming Events
+                        VStack (alignment: .leading, spacing: gridSpacing) {
+                            HStack (alignment: .center) {
+                                Text("Upcoming Events")
+                                    .font(.system(size: 30))
+                                    .fontWeight(.semibold)
+                                Spacer()
+                                // Events Listing
+                                Button(action: {
+                                    selectedView = .eventListing
+                                }) {
+                                    Image(systemName: "chevron.right")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 12, height: 12)
+                                        .foregroundStyle(Color.blue)
                                 }
-                                .padding(10)
-                                .frame(width: 70)
-                                .foregroundStyle(Color("FlippedTextColor"))
-                                .background(Color("TodaysDateWidget"))
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .padding(12)
+                                .background(.white)
+                                .clipShape(Circle())
                             }
-
                             /// Upcoming Events
-                            UpcomingEventWidget()
+                            UpcomingEventWidget(isEditingEvent: $isEditingEvent)
                         }
-                        .frame(height: 90)
-                        Bento {
+                        
+                        // Todo List
+                        VStack (alignment: .leading, spacing: gridSpacing) {
                             Text("Todo List")
+                                .font(.system(size: 30))
+                                .fontWeight(.semibold)
+                            Bento {
+                                Text("Todo List")
+                            }
+                            .frame(height: 800)
                         }
-                        .frame(height: 800)
                     }
                     .padding(.top, toolbarHeight + gridSpacing)
                     .padding(.bottom, (70 + 1) + gridSpacing)
                     .padding(.horizontal, gridSpacing)
                 }
                 // Toolbar
-                VStack (spacing: 0) {
-                    HStack {
-                        Text("Perfect Practice")
-                            .font(.title3)
+                VStack (alignment: .center) {
+                    ZStack (alignment: .center) {
+                        HStack (alignment: .center, spacing: gridSpacing) {
+                            PFPButton()
+                            Spacer()
+                        }
+                        VStack (alignment: .center, spacing: 0) {
+                            Text("Perfect")
+                                .font(.system(size: 20))
+                                .fontWeight(.bold)
+                            Text("Practice")
+                                .font(.system(size: 20))
+                                .fontWeight(.bold)
+                        }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: toolbarHeight)
-                    .padding(0)
-                    .background(.bar)
-                    
-                    Rectangle()
-                        .padding(0)
-                        .frame(height: 0.2)
-                        .foregroundStyle(.gray.opacity(0.3))
+                    .padding(.horizontal, gridSpacing)
+                    .padding(.bottom, gridSpacing)
+                    .frame(height: toolbarHeight)
+                    .background(.regularMaterial)
                     Spacer()
                 }
             }
-            .navigationDestination(for: Event.self, destination: EventEditView.init)
+            .background(Color("BackgroundColor"))
+            // Event Edit Sheet
+            .sheet(item: $isEditingEvent) { event in
+                EventEditView(event: event)
+            }
         }
     }
 }
 
+// Preview
+/// ------------------------------------------------------------------------
 #Preview {
     // Testing Container
     var testingModelContainer: ModelContainer = {
@@ -116,4 +151,6 @@ struct HomeView: View {
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
         .environmentObject(GlobalTimerManager())
+        .environmentObject(ThemeManager())
+        .environmentObject(SidebarManager())
 }

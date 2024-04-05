@@ -33,5 +33,7 @@ struct PerfectPracticeApp: App {
         .modelContainer(sharedModelContainer)
         .environmentObject(PracticeManager())
         .environmentObject(GlobalTimerManager())
+        .environmentObject(ThemeManager())
+        .environmentObject(SidebarManager())
     }
 }

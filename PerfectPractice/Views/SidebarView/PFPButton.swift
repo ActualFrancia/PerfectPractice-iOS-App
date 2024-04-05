@@ -1,22 +1,24 @@
 //
-//  EventEditView.swift
+//  PFPButton.swift
 //  PerfectPractice
 //
-//  Created by Kali Francia on 4/4/24.
+//  Created by Kali Francia on 4/5/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct EventEditView: View {
-    @Bindable var event:Event
+struct PFPButton: View {
+    @EnvironmentObject var sidebarManager:SidebarManager
+    
     var body: some View {
-        Form {
-            TextField("Event Name", text: $event.name)
+        Button(action: {
+            sidebarManager.showSidebar()
+        }) {
+            pfpCircle(pfpData: nil)
         }
     }
 }
-
 
 // Preview
 /// ------------------------------------------------------------------------

@@ -29,18 +29,11 @@ struct ContentView: View {
             case .eventListing:
                 EventListingView()
             }
-            /// Sidebar
-            Button(action: {
-                // Open Sidebar
-            }) {
-                pfpCircle(pfpData: nil)
-            }
-            .padding(.leading, 10)
+            // Sidebar
             
             /// Swipe to Practice
             if selectedView == .home {
-                SwipeToPracticeView(selectedView: $selectedView)
-                    .frame(maxHeight: .infinity)
+                PracticeButton(selectedView: $selectedView)
             }
         }
         // onChange of Events
@@ -80,4 +73,6 @@ struct ContentView: View {
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
         .environmentObject(GlobalTimerManager())
+        .environmentObject(ThemeManager())
+        .environmentObject(SidebarManager())
 }
