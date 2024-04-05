@@ -37,6 +37,29 @@ struct HomeView: View {
                         }
                         .frame(height: 250)
                         HStack (spacing: gridSpacing) {
+                            /// Today's Date
+                            NavigationLink(destination: EventListingView.init) {
+                                VStack {
+                                    Text("\(Date.now.formatted(Date.FormatStyle().month(.abbreviated)))")
+                                        .font(.system(size: 12))
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                    Text("\(Date.now.formatted(Date.FormatStyle().day()))")
+                                        .font(.system(size: 20))
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                    Text("\(Date.now.formatted(Date.FormatStyle().weekday(.abbreviated)))")
+                                        .font(.system(size: 12))
+                                        .fontWeight(.medium)
+                                }
+                                .padding(10)
+                                .frame(width: 70)
+                                .foregroundStyle(Color("FlippedTextColor"))
+                                .background(Color("TodaysDateWidget"))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+
+                            /// Upcoming Events
                             UpcomingEventWidget()
                         }
                         .frame(height: 90)
