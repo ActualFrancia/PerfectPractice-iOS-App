@@ -44,38 +44,55 @@ struct EventListingView: View {
             .padding(.horizontal, gridSpacing)
             
             // List
-            List {
-                ForEach (events.indices, id:\.self) { index in
-                    let event = events[index]
-                    // Date
-                    Section {
+            ScrollView (.vertical) {
+                VStack (alignment: .leading, spacing: gridSpacing) {
+                    ForEach (events.indices, id:\.self) { index in
+                        let event = events[index]
+                        // Date
+                        if index == 0 || !Calendar.current.isDate(event.date, inSameDayAs: events[index - 1].date) {
+                            printDate(event: event)
+                                .fontWeight(.semibold)
+                        }
                         // Cell
-                        Button(action: {
-                            isEditingEvent = event
-                        }) {
-                            HStack {
-                                VStack (alignment:.leading) {
-                                    Text("\(event.date)")
-                                    Text("\(event.name)")
-                                    Text("IsUpcomming: \(event.isUpcoming)")
-                                    Text("IsReapting: \(event.isRepeating)")
-                                    
+                        HStack {
+                            // Capsule
+                            Capsule()
+                                .foregroundStyle(Color(event.tagColor).opacity(0.8))
+                                .frame(width: 4)
+                            // Button
+                            Button(action: {
+                                isEditingEvent = event
+                            }) {
+                                HStack {
+                                    VStack (alignment:.leading) {
+                                        Text("\(event.name)")
+                                            .font(.system(size: 12))
+                                            .fontWeight(.bold)
+                                        Text("\(event.date.formatted(date: .omitted, time: .shortened))")
+                                            .font(.system(size: 12))
+                                        if event.location != "" {
+                                            Text("\(event.location)")
+                                                .font(.system(size: 12))
+                                        }
+                                        if event.eventDescription != "" {
+                                            Text("\(event.eventDescription)")
+                                                .font(.system(size: 12))
+                                        }
+                                    }
+                                    .multilineTextAlignment(.leading)
+                                    Spacer()
                                 }
-                                Spacer()
                             }
                         }
+                        .padding(gridSpacing/2)
                         .frame(maxWidth: .infinity)
-                        .background(.yellow)
-                        .listRowInsets(EdgeInsets())
+                        .background(Color(event.tagColor).opacity(0.25))
+                        .foregroundStyle(Color(event.tagColor))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-                    } header: {
-                        printDate(event: event)
                     }
                 }
-                .onDelete(perform: deleteEvent)
+                .padding(.horizontal, gridSpacing)
             }
-            .listStyle(.sidebar)
-            .padding(.horizontal, gridSpacing)
         }
         .background(Color("BackgroundColor"))
         .sheet(item: $isEditingEvent) { event in

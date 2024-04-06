@@ -8,12 +8,93 @@
 import SwiftUI
 import SwiftData
 
+// TODO: ADD TAG COLOR SELECTION AND IF PASSED SYMBOL
+
 struct EventEditView: View {
+    @Environment(\.modelContext) var modelContext
     @Bindable var event:Event
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showingAlert = false
+    private let titleSize:CGFloat = 25
+    private let gridSpacing:CGFloat = 16
+
     var body: some View {
-        Form {
-            TextField("Event Name", text: $event.name)
+        // Edit Event
+        VStack (alignment: .leading, spacing: 0) {
+            // Title
+            Text("Event Information")
+                .font(.system(size: titleSize))
+                .fontWeight(.semibold)
+                .padding(.vertical, gridSpacing)
+                .padding(.horizontal, gridSpacing)
+            Form {
+                // Name
+                Section {
+                    TextField("Name", text: $event.name)
+                } header: {
+                    Text("name")
+                }
+                
+                // Date
+                Section {
+                    DatePicker(
+                        "Date", selection: $event.date,
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
+                } header: {
+                    Text("Date")
+                }
+                
+                // Location
+                Section {
+                    TextField("Location", text: $event.location)
+                } header: {
+                    Text("Location")
+                }
+                
+                // Description
+                Section {
+                    TextField("Description", text: $event.eventDescription, axis: .vertical)
+                } header: {
+                    Text("Description")
+                }
+                
+                // Tag
+                Text("Placeholder for tag selection")
+                
+                // Delete Event
+                Section {
+                    Button(action: {
+                        showingAlert = true
+                    }) {
+                        Text("Delete Event")
+                            .foregroundColor(.red)
+                    }
+                    .alert(isPresented: $showingAlert) {
+                        Alert(
+                            title: Text("Delete Event"),
+                            message: Text("Are you sure you want to delete this event? This action cannot be undone."),
+                            primaryButton: .destructive(Text("Delete")) {
+                                deleteEvent(event: event)
+                                presentationMode.wrappedValue.dismiss()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
+                } header: {
+                    Text("Delete Event")
+                } footer: {
+                    Text("This action cannot be undone.")
+                }
+            }
+            .scrollContentBackground(.hidden)
         }
+        .background(Color("BackgroundColor"))
+    }
+    
+    // Delete Self Event
+    func deleteEvent(event: Event) {
+        modelContext.delete(event)
     }
 }
 

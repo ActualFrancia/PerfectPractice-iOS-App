@@ -37,10 +37,7 @@ struct EventsWidget: View {
                             HStack {
                                 Divider()
                                 VStack (alignment: .leading, spacing: 0) {
-                                    Text("\(event.date.formatted(Date.FormatStyle().weekday(.abbreviated))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))".uppercased())
-                                        .font(.system(size: 14))
-                                        .fontWeight(.bold)
-                                        .frame(height: dateTitleHeight)
+                                    printDate(event: event)
                                     Spacer(minLength: spacerPadding)
                                     printEventData(event: events[index])
                                 }
@@ -49,10 +46,7 @@ struct EventsWidget: View {
                     } else {
                         HStack {
                             VStack (alignment: .leading, spacing: 0) {
-                                Text("\(event.date.formatted(Date.FormatStyle().weekday(.abbreviated))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))".uppercased())
-                                    .font(.system(size: 14))
-                                    .fontWeight(.bold)
-                                    .frame(height: dateTitleHeight)
+                                printDate(event: event)
                                 Spacer(minLength: spacerPadding)
                                 printEventData(event: events[index])
                             }
@@ -97,11 +91,16 @@ struct EventsWidget: View {
                         .fontWeight(.bold)
                     Text("\(event.date.formatted(date: .omitted, time: .shortened))")
                         .font(.system(size: 12))
-                    Text("\(event.location)")
-                        .font(.system(size: 12))
-                    Text("\(event.eventDescription)")
-                        .font(.system(size: 12))
+                    if event.location != "" {
+                        Text("\(event.location)")
+                            .font(.system(size: 12))
+                    }
+                    if event.eventDescription != "" {
+                        Text("\(event.eventDescription)")
+                            .font(.system(size: 12))
+                    }
                 }
+                .multilineTextAlignment(.leading)
                 Spacer()
             }
             .padding(5)
@@ -111,6 +110,14 @@ struct EventsWidget: View {
             .foregroundStyle(Color(event.tagColor))
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
+    }
+    
+    func printDate(event: Event) -> some View {
+        Text("\(event.date.formatted(Date.FormatStyle().weekday(.abbreviated))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))".uppercased())
+            .font(.system(size: 14))
+            .fontWeight(.bold)
+            .frame(height: dateTitleHeight)
+            .foregroundStyle(.black)
     }
 }
 
