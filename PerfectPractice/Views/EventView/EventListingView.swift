@@ -10,14 +10,12 @@ import SwiftData
 
 struct EventListingView: View {
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \Event.date, order: .reverse) var events:[Event]
+    @Query(sort: \Event.date, order: .forward) var events:[Event]
     @Query var users:[User]
     private let gridSpacing:CGFloat = 16
     private let titleSize:CGFloat = 25
     @State private var isEditingEvent: Event? = nil
-    private var eventsGroupedByDate: [Date: [Event]] {
-        Dictionary(grouping: events, by: { $0.date })
-    }
+
     
     var body: some View {
         VStack (alignment: .leading, spacing: gridSpacing) {
