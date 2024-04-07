@@ -11,6 +11,7 @@ import SwiftData
 struct EventListingView: View {
     @Environment(\.modelContext) var modelContext
     @Query(sort: \Event.date, order: .reverse) var events:[Event]
+    @Query var users:[User]
     private let gridSpacing:CGFloat = 16
     private let titleSize:CGFloat = 25
     @State private var isEditingEvent: Event? = nil
@@ -28,7 +29,9 @@ struct EventListingView: View {
                 Spacer()
                 // Add New Event
                 Button(action: {
-                    //
+                    let newEvent = Event(name: "", isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "", eventDescription: "", tagColor: "")
+                    modelContext.insert(newEvent)
+                    isEditingEvent = newEvent
                 }) {
                     Image(systemName: "plus")
                         .resizable()
@@ -49,9 +52,15 @@ struct EventListingView: View {
                     ForEach (events.indices, id:\.self) { index in
                         let event = events[index]
                         // Date
-                        if index == 0 || !Calendar.current.isDate(event.date, inSameDayAs: events[index - 1].date) {
+                        if (index != 0) {
+                            if (Calendar.current.isDate(event.date, inSameDayAs: events[index - 1].date)) {
+                                //
+                            } else {
+                                Divider()
+                                printDate(event: event)
+                            }
+                        } else {
                             printDate(event: event)
-                                .fontWeight(.semibold)
                         }
                         // Cell
                         HStack {
@@ -109,7 +118,7 @@ struct EventListingView: View {
     }
     
     private func printDate(event: Event) -> Text {
-        Text("\(event.date.formatted(Date.FormatStyle().weekday(.abbreviated))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits).year(.extended())))".uppercased())
+        Text("\(event.date.formatted(Date.FormatStyle().weekday(.wide))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits).year(.extended())))".uppercased())
 
     }
 }
@@ -133,7 +142,7 @@ struct EventListingView: View {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
+        
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())

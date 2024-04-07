@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
+    @Environment(\.modelContext) var modelContext
     @Binding var selectedView:PrimaryViews
     
     private let toolbarHeight:CGFloat = 60
@@ -66,7 +67,9 @@ struct HomeView: View {
                             Spacer()
                             // Add New Event
                             Button(action: {
-                                //
+                                let newEvent = Event(name: "", isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "", eventDescription: "", tagColor: "")
+                                modelContext.insert(newEvent)
+                                isEditingEvent = newEvent
                             }) {
                                 Image(systemName: "plus")
                                     .resizable()
@@ -117,7 +120,9 @@ struct HomeView: View {
                             .clipShape(Circle())
                             // Todo Listing
                             Button(action: {
-                                //
+                                let newEvent = Event(name: "", isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "", eventDescription: "", tagColor: "")
+                                modelContext.insert(newEvent)
+                                isEditingEvent = newEvent
                             }) {
                                 Image(systemName: "chevron.right")
                                     .resizable()

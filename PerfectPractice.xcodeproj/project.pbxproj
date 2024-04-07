@@ -31,6 +31,7 @@
 		9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDB2BBA87D700B6BEFB /* ContentView.swift */; };
 		9174AEE02BBA87D700B6BEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */; };
 		9174AEE32BBA87D700B6BEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */; };
+		91E7C7732BC32BD200B558BB /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7C7722BC32BD200B558BB /* Tags.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9174AEE92BBA87EB00B6BEFB /* PerfectPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PerfectPractice.entitlements; sourceTree = "<group>"; };
 		9174AEEA2BBA87FF00B6BEFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		91E7C7722BC32BD200B558BB /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				910B069F2BBDBD1400313EAD /* UserModel.swift */,
 				910B06A12BBDBE2500313EAD /* EventModel.swift */,
 				910B06A32BBDC15400313EAD /* TodoModel.swift */,
+				91E7C7722BC32BD200B558BB /* Tags.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			files = (
 				91660EA52BBF514200DA9DC8 /* GlobalTimerManager.swift in Sources */,
 				91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */,
+				91E7C7732BC32BD200B558BB /* Tags.swift in Sources */,
 				910B06A92BBDC8FA00313EAD /* HomeView.swift in Sources */,
 				916A043C2BC077320033A4F9 /* PFPButton.swift in Sources */,
 				910DB6C12BBE293D00ABD082 /* EventListingView.swift in Sources */,

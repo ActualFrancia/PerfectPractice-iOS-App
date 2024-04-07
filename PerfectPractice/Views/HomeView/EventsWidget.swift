@@ -67,12 +67,13 @@ struct EventsWidget: View {
             let event2 = Event(name: "Event 2", date: .now + 10, isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "Concord, CA", eventDescription: "Long Description\nPog", tagColor: "blue")
             let event3 = Event(name: "Event 3", date: .now + 70, isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "", eventDescription: "S1", tagColor: "indigo")
             let event4 = Event(name: "Event 4", date: .now + 88888, isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "Music & Arts", eventDescription: "333333333333333333", tagColor: "blue")
-            
+            let user = User(name: "Gino", defaultInstrument: "", defaultTag: "indigo")
+
+            modelContext.insert(user)
             modelContext.insert(event1)
             modelContext.insert(event2)
             modelContext.insert(event3)
             modelContext.insert(event4)
-            
         }
         // ------------
     }

@@ -20,11 +20,14 @@ struct TodoWidget: View {
             VStack {
                 // Menu
                 HStack (spacing: textSpacing) {
+                    // Number
                     Text("0/2")
                         .fontWeight(.semibold)
+                    // Item
                     Text("Item")
                         .fontWeight(.semibold)
                     Spacer()
+                    // Show Completed
                     Button(action: {
                         showCompleted.toggle()
                     })  {

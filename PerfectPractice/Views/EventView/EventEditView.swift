@@ -14,6 +14,7 @@ struct EventEditView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable var event:Event
     @Environment(\.presentationMode) var presentationMode
+    @Query var users:[User]
     @State private var showingAlert = false
     private let titleSize:CGFloat = 25
     private let gridSpacing:CGFloat = 16
@@ -60,7 +61,34 @@ struct EventEditView: View {
                 }
                 
                 // Tag
-                Text("Placeholder for tag selection")
+                Section {
+                    HStack {
+                        Text("Tag")
+                        Spacer()
+                        /// Menu to get text & circle next to each other.
+                        Menu {
+                            ForEach(tagColors, id:\.self) { tagColor in
+                                Button(action: {
+                                    event.tagColor = tagColor
+                                }) {
+                                    Text(tagColor.capitalized)
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Circle()
+                                    .foregroundStyle(Color(event.tagColor))
+                                    .frame(width: 10, height: 10)
+                                Text(event.tagColor.capitalized)
+                                    .foregroundStyle(Color("TextColor"))
+                                Image(systemName: "chevron.down")
+                                    .foregroundStyle(Color.gray)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Tag")
+                }
                 
                 // Delete Event
                 Section {
@@ -90,6 +118,22 @@ struct EventEditView: View {
             .scrollContentBackground(.hidden)
         }
         .background(Color("BackgroundColor"))
+        .onAppear {
+            // set default tag color
+            if event.tagColor == "" {
+                if users.first?.defaultTag != "" {
+                    event.tagColor = users.first!.defaultTag
+                } else {
+                    event.tagColor = "blue"
+                }
+            }
+        }
+        .onDisappear {
+            // If event name is empty, default event name
+            if event.name == "" {
+                event.name = "Event"
+            }
+        }
     }
     
     // Delete Self Event

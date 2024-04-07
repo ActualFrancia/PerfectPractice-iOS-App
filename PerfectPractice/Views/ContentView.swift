@@ -13,6 +13,10 @@ enum PrimaryViews {
     case practice
 }
 
+// TODO: LIST
+// 1) HAPTICS
+// 4) PAST EVENTS SPECIAL TAG OR COLOR???
+
 struct ContentView: View {
     @State private var selectedView: PrimaryViews = .home
     @Query(sort: \Event.date, order: .forward) var events:[Event]

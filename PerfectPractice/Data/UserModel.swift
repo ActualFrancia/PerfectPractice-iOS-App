@@ -15,13 +15,16 @@ class User {
     @Attribute(.externalStorage) var pfpData:Data?
     // Instruments
     var instrumentsPlayed:[String]? = [String]()
+    // Defaults
     var defaultInstrument:String = ""
+    var defaultTag:String = ""
     
-    init(name: String, pfpData: Data? = nil, instrumentsPlayed: [String]? = nil, defaultInstrument: String) {
+    init(name: String, pfpData: Data? = nil, instrumentsPlayed: [String]? = nil, defaultInstrument: String, defaultTag: String) {
         self.name = name
         self.pfpData = pfpData
         self.instrumentsPlayed = instrumentsPlayed
         self.defaultInstrument = defaultInstrument
+        self.defaultTag = defaultTag
     }
 }
 
