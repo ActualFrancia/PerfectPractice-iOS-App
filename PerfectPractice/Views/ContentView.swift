@@ -15,7 +15,11 @@ enum PrimaryViews {
 
 // TODO: LIST
 // 1) HAPTICS
+// 2) ADD SUPPORT FOR STARED EVENTS TO EVENTS & EDIT EVENTS
 // 4) PAST EVENTS SPECIAL TAG OR COLOR???
+// 5) REMOVE GLOBALTIMERMANAGER
+// BUG LIST
+// - ANIMATION ON TODO SHOW COMPLETED BUTTON?
 
 struct ContentView: View {
     @State private var selectedView: PrimaryViews = .home

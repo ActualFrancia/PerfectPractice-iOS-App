@@ -11,7 +11,10 @@ import SwiftData
 // TODO: Get ride of animation on the showCompleted button.
 
 struct TodoWidget: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var toDos:[ToDo]
     @State private var showCompleted:Bool = true
+    @State private var completedEvents:Int = 0
     private var gridSpacing: CGFloat = 6
     private var textSpacing: CGFloat = 10
     
@@ -27,15 +30,9 @@ struct TodoWidget: View {
                     Text("Item")
                         .fontWeight(.semibold)
                     Spacer()
-                    // Show Completed
-                    Button(action: {
-                        showCompleted.toggle()
-                    })  {
-                        Image(systemName: showCompleted ? "checkmark.square.fill" : "square")
-                        Text("Show Completed")
-                            .fontWeight(.semibold)
-                    }
-                    .buttonStyle(.plain)
+                    // Due Date
+                    Text("Due")
+                        .fontWeight(.semibold)
                 }
                 // Item Listing
             }
@@ -44,6 +41,10 @@ struct TodoWidget: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
+        // TESTING
+        .onAppear {
+        }
+        // -------
     }
 }
 

@@ -48,7 +48,7 @@ struct EventListingView: View {
             
             // List
             ScrollView (.vertical) {
-                VStack (alignment: .leading, spacing: gridSpacing) {
+                VStack (alignment: .leading, spacing: gridSpacing / 4) {
                     ForEach (events.indices, id:\.self) { index in
                         let event = events[index]
                         // Date
@@ -57,10 +57,15 @@ struct EventListingView: View {
                                 //
                             } else {
                                 Divider()
+                                    .padding(.vertical, gridSpacing/2)
                                 printDate(event: event)
+                                    .fontWeight(.bold)
+                                    .padding(.bottom, gridSpacing / 2)
                             }
                         } else {
                             printDate(event: event)
+                                .fontWeight(.bold)
+                                .padding(.bottom, gridSpacing / 2)
                         }
                         // Cell
                         HStack {
@@ -118,7 +123,7 @@ struct EventListingView: View {
     }
     
     private func printDate(event: Event) -> Text {
-        Text("\(event.date.formatted(Date.FormatStyle().weekday(.wide))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits).year(.extended())))".uppercased())
+        Text("\(event.date.formatted(Date.FormatStyle().weekday(.wide))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))".uppercased())
 
     }
 }

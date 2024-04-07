@@ -116,6 +116,7 @@
 				91EBB85F2BBC9D9F000DB0B7 /* PracticeView */,
 				9174AEEE2BBA8AFF00B6BEFB /* PracticeHistoryView */,
 				910DB6BF2BBE292B00ABD082 /* EventView */,
+				91E7C7742BC331E000B558BB /* TodoView */,
 				916A043A2BC076D40033A4F9 /* SidebarView */,
 			);
 			path = Views;
@@ -205,6 +206,13 @@
 				910B06AD2BBDE97600313EAD /* HelperFunctions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		91E7C7742BC331E000B558BB /* TodoView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodoView;
 			sourceTree = "<group>";
 		};
 		91EBB85F2BBC9D9F000DB0B7 /* PracticeView */ = {
