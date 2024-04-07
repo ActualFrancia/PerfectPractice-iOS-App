@@ -10,8 +10,10 @@ import SwiftData
 
 @Model
 class ToDo {
-    // Todo
-    var todo:String = ""
+    // Todo Name
+    var name:String = ""
+    // Todo Description
+    var todoDescription:String = ""
     // Due Date
     var dueDate = Date()
     // Completed
@@ -19,8 +21,9 @@ class ToDo {
     // isPastDue
     //
     
-    init(todo: String, dueDate: Date = Date(), isCompleted: Bool) {
-        self.todo = todo
+    init(name: String, todoDescription: String, dueDate: Date = Date(), isCompleted: Bool = false) {
+        self.name = name
+        self.todoDescription = todoDescription
         self.dueDate = dueDate
         self.isCompleted = isCompleted
     }

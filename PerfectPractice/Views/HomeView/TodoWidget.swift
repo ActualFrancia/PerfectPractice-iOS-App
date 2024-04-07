@@ -12,19 +12,20 @@ import SwiftData
 
 struct TodoWidget: View {
     @Environment(\.modelContext) var modelContext
-    @Query var toDos:[ToDo]
+    @Query(sort: \ToDo.dueDate, order:.forward) var todos:[ToDo]
     @State private var showCompleted:Bool = true
     @State private var completedEvents:Int = 0
+    @State private var totalEvents:Int = 0
     private var gridSpacing: CGFloat = 6
     private var textSpacing: CGFloat = 10
     
     var body: some View {
         ScrollView (.vertical) {
-            VStack {
-                // Menu
+            VStack (spacing: gridSpacing) {
+                // Header
                 HStack (spacing: textSpacing) {
                     // Number
-                    Text("0/2")
+                    Text("\(completedEvents)/\(totalEvents)")
                         .fontWeight(.semibold)
                     // Item
                     Text("Item")
@@ -33,8 +34,25 @@ struct TodoWidget: View {
                     // Due Date
                     Text("Due")
                         .fontWeight(.semibold)
+                        .frame(width: 65, alignment: .leading)
                 }
-                // Item Listing
+                ForEach(todos) { todo in
+                    Divider()
+                    HStack (spacing: gridSpacing) {
+                        Button(action: {
+                            todo.isCompleted.toggle()
+                            updateTodoHeader()
+                        }) {
+                            Image(systemName: todo.isCompleted ? "checkmark.square" : "square")
+                        }
+                        Text(todo.name)
+                        Spacer()
+                        Text("\(todo.dueDate.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))")
+                            .frame(width: 65, alignment: .leading)
+                    }
+                    .multilineTextAlignment(.leading)
+                    .padding(.vertical, gridSpacing)
+                }
             }
             .padding(10)
         }
@@ -43,8 +61,25 @@ struct TodoWidget: View {
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
         // TESTING
         .onAppear {
+            let todo1 = ToDo(name: "Record Lipslur 3 @ 130BPM", todoDescription: "Facebook", dueDate: Date.now + 8888888888, isCompleted: true)
+            let todo2 = ToDo(name: "Practice Beathoven 13th thingy", todoDescription: "This is the test of a longer description")
+            let todo3 = ToDo(name: "I shidded 3333333333333333333333333\n32323232323232", todoDescription: "3333333333333333333333333333334444343434")
+            let todo4 = ToDo(name: "meow meow meow", todoDescription: "")
+
+            modelContext.insert(todo1)
+            modelContext.insert(todo2)
+            modelContext.insert(todo3)
+            modelContext.insert(todo4)        
         }
         // -------
+        .onChange(of: todos) {
+            updateTodoHeader()
+        }
+    }
+    
+    private func updateTodoHeader() {
+        totalEvents = todos.count
+        completedEvents = todos.filter{ $0.isCompleted == true }.count
     }
 }
 

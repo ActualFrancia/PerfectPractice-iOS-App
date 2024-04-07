@@ -120,9 +120,7 @@ struct HomeView: View {
                             .clipShape(Circle())
                             // Todo Listing
                             Button(action: {
-                                let newEvent = Event(name: "", isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "", eventDescription: "", tagColor: "")
-                                modelContext.insert(newEvent)
-                                isEditingEvent = newEvent
+                                //
                             }) {
                                 Image(systemName: "chevron.right")
                                     .resizable()
@@ -134,8 +132,9 @@ struct HomeView: View {
                             .background(.white)
                             .clipShape(Circle())
                         }
+                        // Todo Widget
                         TodoWidget()
-                            .frame(height: 800)
+                            //.frame(height: 800)
                     }
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
