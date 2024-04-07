@@ -38,7 +38,7 @@ struct EventListingView: View {
                         .foregroundStyle(Color.blue)
                 }
                 .padding(titleSize/2)
-                .background(.white)
+                .background(Color("BentoColor"))
                 .clipShape(Circle())
             }
             .padding(.top, gridSpacing)
@@ -57,12 +57,10 @@ struct EventListingView: View {
                                 Divider()
                                     .padding(.vertical, gridSpacing/2)
                                 printDate(event: event)
-                                    .fontWeight(.bold)
                                     .padding(.bottom, gridSpacing / 2)
                             }
                         } else {
                             printDate(event: event)
-                                .fontWeight(.bold)
                                 .padding(.bottom, gridSpacing / 2)
                         }
                         // Cell
@@ -122,7 +120,8 @@ struct EventListingView: View {
     
     private func printDate(event: Event) -> Text {
         Text("\(event.date.formatted(Date.FormatStyle().weekday(.wide))), \(event.date.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))".uppercased())
-
+            .fontWeight(.bold)
+            .foregroundStyle(Color("TextColor"))
     }
 }
 

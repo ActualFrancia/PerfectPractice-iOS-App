@@ -57,7 +57,7 @@ struct EventsWidget: View {
             .padding(10)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.white)
+        .background(Color("BentoColor"))
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
         .onReceive(globalTimerManager.timer) { time in
             currentTime = time}
@@ -118,7 +118,7 @@ struct EventsWidget: View {
             .font(.system(size: 14))
             .fontWeight(.bold)
             .frame(height: dateTitleHeight)
-            .foregroundStyle(.black)
+            .foregroundStyle(Color("TextColor"))
     }
 }
 

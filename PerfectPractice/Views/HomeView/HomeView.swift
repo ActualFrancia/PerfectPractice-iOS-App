@@ -78,7 +78,7 @@ struct HomeView: View {
                                     .foregroundStyle(Color.blue)
                             }
                             .padding(titleSize/2)
-                            .background(.white)
+                            .background(Color("BentoColor"))
                             .clipShape(Circle())
                             // Events Listing
                             Button(action: {
@@ -91,7 +91,7 @@ struct HomeView: View {
                                     .foregroundStyle(Color.blue)
                             }
                             .padding(titleSize/2)
-                            .background(.white)
+                            .background(Color("BentoColor"))
                             .clipShape(Circle())
                         }
                         /// Upcoming Events
@@ -116,7 +116,7 @@ struct HomeView: View {
                                     .foregroundStyle(Color.blue)
                             }
                             .padding(titleSize/2)
-                            .background(.white)
+                            .background(Color("BentoColor"))
                             .clipShape(Circle())
                             // Todo Listing
                             Button(action: {
@@ -129,7 +129,7 @@ struct HomeView: View {
                                     .foregroundStyle(Color.blue)
                             }
                             .padding(titleSize/2)
-                            .background(.white)
+                            .background(Color("BentoColor"))
                             .clipShape(Circle())
                         }
                         // Todo Widget

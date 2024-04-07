@@ -36,6 +36,8 @@ struct TodoWidget: View {
                         .fontWeight(.semibold)
                         .frame(width: 65, alignment: .leading)
                 }
+                .foregroundStyle(Color("TextColor"))
+                // Todo Items
                 ForEach(todos) { todo in
                     Divider()
                     HStack (spacing: gridSpacing) {
@@ -57,7 +59,7 @@ struct TodoWidget: View {
             .padding(10)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.white)
+        .background(Color("BentoColor"))
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
         // TESTING
         .onAppear {
