@@ -50,6 +50,8 @@ struct ContentView: View {
                 if event.date < Date.now {
                     print("Event has passed.")
                     event.isUpcoming = false
+                } else {
+                    event.isUpcoming = true
                 }
             }
         }
@@ -60,6 +62,8 @@ struct ContentView: View {
                 if todo.dueDate < Date.now {
                     print("Todo has passed.")
                     todo.isPastDue = true
+                } else {
+                    todo.isPastDue = false
                 }
             }
         }

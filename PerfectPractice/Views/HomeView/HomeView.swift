@@ -134,7 +134,7 @@ struct HomeView: View {
                             .clipShape(Circle())
                         }
                         // Todo Widget
-                        TodoWidget()
+                        TodoWidget(isEditingTodo: $isEditingTodo)
                     }
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
@@ -175,7 +175,7 @@ struct HomeView: View {
         }
         // Todo Edit Sheet
         .sheet(item: $isEditingTodo) { todo in
-            //TodoEditView(to)
+            TodoEditView(todo: todo)
         }
     }
 }

@@ -8,13 +8,15 @@
 import SwiftUI
 import SwiftData
 
+
 struct TodoWidget: View {
     @Environment(\.modelContext) var modelContext
     @Query(sort: \ToDo.dueDate, order:.forward) var todos:[ToDo]
     @State private var completedEvents:Int = 0
     @State private var totalEvents:Int = 0
-    private var gridSpacing: CGFloat = 6
-    private var textSpacing: CGFloat = 10
+    private let gridSpacing: CGFloat = 6
+    private let textSpacing: CGFloat = 10
+    @Binding var isEditingTodo:ToDo?
     
     var body: some View {
         ScrollView (.vertical) {
@@ -51,19 +53,27 @@ struct TodoWidget: View {
                         }
                         .frame(width: 25)
                         
-                        // Task Text
-                        Text(todo.name)
-                        Spacer()
-                        
-                        // Task DueDate
-                        Text("\(todo.dueDate.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))")
-                            .frame(width: 65, alignment: .leading)
+                        Button(action: {
+                            isEditingTodo = todo
+                        }) {
+                            // Task Text
+                            Text(todo.name)
+                                .fontWeight(todo.isCompleted ? .regular : .medium)
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                            
+                            // Task DueDate
+                            Text("\(todo.dueDate.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))")
+                                .fontWeight(todo.isCompleted ? .regular : .medium)
+                                .frame(width: 65, alignment: .leading)
+                        }
                     }
                     .strikethrough(todo.isCompleted)
-                    .foregroundStyle(todo.isPastDue ? Color.red : .text)
-                    .foregroundStyle(todo.isCompleted ? Color.gray : .text)
+                    .foregroundStyle(todo.isCompleted ? Color.gray : (todo.isPastDue ? Color.red : .text))
                     .multilineTextAlignment(.leading)
                     .padding(.vertical, gridSpacing)
+                    .background(todo.isCompleted ? Color.clear : (todo.isPastDue ? Color.red.opacity(0.25) : Color.clear))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
             }
             .padding(10)
@@ -73,10 +83,10 @@ struct TodoWidget: View {
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
         // TESTING
         .onAppear {
-            let todo1 = ToDo(name: "Record Lipslur 3 @ 130BPM", todoDescription: "Facebook", dueDate: Date.now + 8888888888, isCompleted: true)
-            let todo2 = ToDo(name: "Practice Beathoven 13th thingy", todoDescription: "This is the test of a longer description", dueDate: Date.now + 5)
-            let todo3 = ToDo(name: "I shidded 3333333333333333333333333\n32323232323232", todoDescription: "3333333333333333333333333333334444343434")
-            let todo4 = ToDo(name: "meow meow meow", todoDescription: "")
+            let todo1 = ToDo(name: "Record Lipslur 3 @ 130BPM", dueDate: Date.now + 8888888888, isCompleted: true)
+            let todo2 = ToDo(name: "Practice Beathoven 13th thingy", dueDate: Date.now + 5)
+            let todo3 = ToDo(name: "I shidded 3333333333333333333333333\n32323232323232")
+            let todo4 = ToDo(name: "meow meow meow")
 
             modelContext.insert(todo1)
             modelContext.insert(todo2)

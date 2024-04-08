@@ -25,7 +25,59 @@ struct TodoEditView: View {
                 .fontWeight(.semibold)
                 .padding(.vertical, gridSpacing)
                 .padding(.horizontal, gridSpacing)
+            // Form
+            Form {
+                // Name
+                Section {
+                    TextField("Todo", text: $todo.name, axis: .vertical)
+                    Toggle("Completed", isOn: $todo.isCompleted)
+                } header: {
+                    Text("Todo")
+                }
+                
+                // Due Date
+                Section {
+                    DatePicker(
+                        "Date", selection: $todo.dueDate,
+                        displayedComponents: [.date]
+                    )
+                } header: {
+                    Text("Due Date")
+                }
+                
+                // Delete Todo
+                Section {
+                    Button(action: {
+                        deleteTodo(todo: todo)
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Delete Todo")
+                            .foregroundColor(.red)
+                    }
+                } header: {
+                    Text("Delete Todo")
+                } footer: {
+                    Text("This action cannot be undone.")
+                }
+            }
+            .scrollContentBackground(.hidden)
         }
+        .background(Color("BackgroundColor"))
+        .onDisappear {
+            /// If todo name is empty, default event name
+            if todo.name == "" {
+                todo.name = "Todo"
+            }
+            /// if todo date changed, make not past due
+            if todo.dueDate < Date.now {
+                todo.isPastDue = true
+            } else {
+                todo.isPastDue = false
+            }
+        }
+    }
+    private func deleteTodo(todo: ToDo) {
+        modelContext.delete(todo)
     }
 }
 // Preview

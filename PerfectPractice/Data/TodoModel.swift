@@ -12,18 +12,15 @@ import SwiftData
 class ToDo {
     // Todo Name
     var name:String = ""
-    // Todo Description
-    var todoDescription:String = ""
     // Due Date
     var dueDate = Date()
     // Completed
     var isCompleted:Bool = false
     // isPastDue
     var isPastDue:Bool = false
-    
-    init(name: String, todoDescription: String, dueDate: Date = Date(), isCompleted: Bool = false, isPastDue: Bool = false) {
+
+    init(name: String, dueDate: Date = Date(), isCompleted: Bool = false, isPastDue: Bool = false) {
         self.name = name
-        self.todoDescription = todoDescription
         self.dueDate = dueDate
         self.isCompleted = isCompleted
         self.isPastDue = isPastDue
