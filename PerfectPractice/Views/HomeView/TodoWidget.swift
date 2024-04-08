@@ -69,7 +69,7 @@ struct TodoWidget: View {
                         }
                     }
                     .strikethrough(todo.isCompleted)
-                    .foregroundStyle(todo.isCompleted ? Color.gray : (todo.isPastDue ? Color.red : .text))
+                    .foregroundStyle(todo.isCompleted ? Color.gray.opacity(0.8) : (todo.isPastDue ? Color.red : .text))
                     .multilineTextAlignment(.leading)
                     .padding(.vertical, gridSpacing)
                     .background(todo.isCompleted ? Color.clear : (todo.isPastDue ? Color.red.opacity(0.25) : Color.clear))

@@ -69,7 +69,7 @@ struct TodoEditView: View {
                 todo.name = "Todo"
             }
             /// if todo date changed, make not past due
-            if todo.dueDate < Date.now {
+            if Calendar.current.startOfDay(for: todo.dueDate) < Calendar.current.startOfDay(for: Date.now) {
                 todo.isPastDue = true
             } else {
                 todo.isPastDue = false

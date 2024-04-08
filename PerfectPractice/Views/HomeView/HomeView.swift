@@ -108,22 +108,11 @@ struct HomeView: View {
                             Spacer()
                             // Add New Todo item
                             Button(action: {
-                                //
+                                let newTodo = ToDo(name: "")
+                                modelContext.insert(newTodo)
+                                isEditingTodo = newTodo
                             }) {
-                                Image(systemName: "pencil")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: titleSize/2, height: titleSize/2)
-                                    .foregroundStyle(Color.blue)
-                            }
-                            .padding(titleSize/2)
-                            .background(Color("BentoColor"))
-                            .clipShape(Circle())
-                            // Todo Listing
-                            Button(action: {
-                                //
-                            }) {
-                                Image(systemName: "chevron.right")
+                                Image(systemName: "plus")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: titleSize/2, height: titleSize/2)

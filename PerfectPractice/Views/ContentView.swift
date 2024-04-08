@@ -19,8 +19,6 @@ enum PrimaryViews {
 // 4) PAST EVENTS SPECIAL TAG OR COLOR???
 // 5) REMOVE GLOBALTIMERMANAGER
 // 6) CONSIDER MOVING ON CHANGE for events and todo TO HOMEVIEW OR PRACTICE VIEW??
-// BUG LIST
-// - ANIMATION ON TODO SHOW COMPLETED BUTTON?
 
 struct ContentView: View {
     @State private var selectedView: PrimaryViews = .home
@@ -59,8 +57,7 @@ struct ContentView: View {
         .onChange(of: todos) {
             /// if todo date has passed, past due
             for todo in todos {
-                if todo.dueDate < Date.now {
-                    print("Todo has passed.")
+                if Calendar.current.startOfDay(for: todo.dueDate) < Calendar.current.startOfDay(for: Date.now) {
                     todo.isPastDue = true
                 } else {
                     todo.isPastDue = false

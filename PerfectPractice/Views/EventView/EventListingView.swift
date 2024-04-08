@@ -67,7 +67,7 @@ struct EventListingView: View {
                         HStack {
                             // Capsule
                             Capsule()
-                                .foregroundStyle(Color(event.tagColor).opacity(0.8))
+                                .foregroundStyle(event.isUpcoming ?  Color(event.tagColor).opacity(0.8) : Color.gray.opacity(0.8))
                                 .frame(width: 4)
                             // Button
                             Button(action: {
@@ -75,15 +75,28 @@ struct EventListingView: View {
                             }) {
                                 HStack {
                                     VStack (alignment:.leading) {
-                                        Text("\(event.name)")
-                                            .font(.system(size: 12))
-                                            .fontWeight(.bold)
+                                        HStack {
+                                            /// name
+                                            Text("\(event.name)")
+                                                .font(.system(size: 12))
+                                                .fontWeight(.bold)
+                                            Spacer()
+                                            /// past
+                                            if !event.isUpcoming {
+                                                Text("Passed")
+                                                    .font(.system(size: 12))
+
+                                            }
+                                        }
+                                        /// date
                                         Text("\(event.date.formatted(date: .omitted, time: .shortened))")
                                             .font(.system(size: 12))
+                                        /// location
                                         if event.location != "" {
                                             Text("\(event.location)")
                                                 .font(.system(size: 12))
                                         }
+                                        /// description
                                         if event.eventDescription != "" {
                                             Text("\(event.eventDescription)")
                                                 .font(.system(size: 12))
@@ -96,8 +109,8 @@ struct EventListingView: View {
                         }
                         .padding(gridSpacing/2)
                         .frame(maxWidth: .infinity)
-                        .background(Color(event.tagColor).opacity(0.25))
-                        .foregroundStyle(Color(event.tagColor))
+                        .background( event.isUpcoming ? Color(event.tagColor).opacity(0.25) : Color.gray.opacity(0.25))
+                        .foregroundStyle(event.isUpcoming ?  Color(event.tagColor) : Color.gray)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }
