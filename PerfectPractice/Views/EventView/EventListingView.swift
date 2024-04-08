@@ -85,7 +85,10 @@ struct EventListingView: View {
                                             if !event.isUpcoming {
                                                 Text("Passed")
                                                     .font(.system(size: 12))
-
+                                            }
+                                            /// favorite
+                                            if event.isFav {
+                                                Image(systemName: "heart.fill")
                                             }
                                         }
                                         /// date
@@ -103,7 +106,6 @@ struct EventListingView: View {
                                         }
                                     }
                                     .multilineTextAlignment(.leading)
-                                    Spacer()
                                 }
                             }
                         }

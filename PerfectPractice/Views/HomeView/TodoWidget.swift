@@ -28,7 +28,7 @@ struct TodoWidget: View {
                         .fontWeight(.semibold)
                         .fixedSize()
                     // Item
-                    Text("Item")
+                    Text("Items")
                         .fontWeight(.semibold)
                     Spacer()
                     // Due Date

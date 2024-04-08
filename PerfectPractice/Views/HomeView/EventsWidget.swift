@@ -87,9 +87,18 @@ struct EventsWidget: View {
                     .foregroundStyle(Color(event.tagColor).opacity(0.8))
                     .frame(width: 4)
                 VStack (alignment: .leading) {
-                    Text("\(event.name)")
-                        .font(.system(size: 12))
-                        .fontWeight(.bold)
+                    HStack {
+                        /// name
+                        Text("\(event.name)")
+                            .font(.system(size: 12))
+                            .fontWeight(.bold)
+                        Spacer()
+                        /// favorite
+                        if event.isFav {
+                            Image(systemName: "heart.fill")
+                                .font(.system(size: 12))
+                        }
+                    }
                     Text("\(event.date.formatted(date: .omitted, time: .shortened))")
                         .font(.system(size: 12))
                     if event.location != "" {
@@ -102,7 +111,6 @@ struct EventsWidget: View {
                     }
                 }
                 .multilineTextAlignment(.leading)
-                Spacer()
             }
             .padding(5)
             .frame(width: cellWidth, height: cellHeight)

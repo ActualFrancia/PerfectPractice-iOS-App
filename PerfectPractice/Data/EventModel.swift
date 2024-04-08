@@ -25,8 +25,10 @@ class Event {
     var eventDescription: String = ""
     // Tag Color
     var tagColor:String = "blue"
+    // Favorited
+    var isFav:Bool = false
     
-    init(name: String, date: Date = (Date.now + 3600), isUpcoming: Bool, isRepeating: Bool, repeatSchedule: String, location: String, eventDescription: String, tagColor: String) {
+    init(name: String, date: Date = (Date.now + 3600), isUpcoming: Bool = true, isRepeating: Bool = false, repeatSchedule: String, location: String, eventDescription: String, tagColor: String, isFav: Bool = false) {
         self.name = name
         self.date = date
         self.isUpcoming = isUpcoming
@@ -35,5 +37,6 @@ class Event {
         self.location = location
         self.eventDescription = eventDescription
         self.tagColor = tagColor
+        self.isFav = isFav
     }
 }

@@ -23,11 +23,25 @@ struct EventEditView: View {
         // Edit Event
         VStack (alignment: .leading, spacing: 0) {
             // Title
-            Text("Event Information")
-                .font(.system(size: titleSize))
-                .fontWeight(.semibold)
-                .padding(.vertical, gridSpacing)
-                .padding(.horizontal, gridSpacing)
+            HStack {
+                Text("Event Information")
+                    .font(.system(size: titleSize))
+                    .fontWeight(.semibold)
+
+                Spacer()
+                /// is fav
+                Button(action: {
+                    event.isFav.toggle()
+                }) {
+                    Image(systemName: event.isFav ? "heart.fill" : "heart")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                }
+            }
+            .padding(.vertical, gridSpacing)
+            .padding(.horizontal, gridSpacing)
+            // Form
             Form {
                 // Name
                 Section {
