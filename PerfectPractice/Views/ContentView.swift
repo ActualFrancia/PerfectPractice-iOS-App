@@ -21,7 +21,7 @@ enum PrimaryViews {
 // 6) CONSIDER MOVING ON CHANGE for events and todo TO HOMEVIEW OR PRACTICE VIEW??
 
 struct ContentView: View {
-    @State private var selectedView: PrimaryViews = .home
+    @State private var selectedView: PrimaryViews = .practice
     @Query(sort: \Event.date, order: .forward) var events:[Event]
     @Query var todos:[ToDo]
 
@@ -32,7 +32,7 @@ struct ContentView: View {
             case .home:
                 HomeView(selectedView: $selectedView)
             case .practice:
-                PracticeView()
+                PracticeView(selectedView: $selectedView)
             }
             // Sidebar
             

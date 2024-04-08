@@ -49,9 +49,7 @@ struct HomeView: View {
                         .frame(height: titleSize)
                         
                         HStack (spacing: gridSpacing) {
-                            Bento {
-                                Text("Starred Event")
-                            }
+                            UpcomingWidget()
                             Bento {
                                 Text("Stats")
                             }
