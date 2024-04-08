@@ -27,6 +27,7 @@
 		916A04392BC0690D0033A4F9 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A04382BC0690D0033A4F9 /* ThemeManager.swift */; };
 		916A043C2BC077320033A4F9 /* PFPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A043B2BC077320033A4F9 /* PFPButton.swift */; };
 		916A043E2BC077440033A4F9 /* SidebarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A043D2BC077440033A4F9 /* SidebarManager.swift */; };
+		916F9E0B2BC392B4008EA890 /* TodoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916F9E0A2BC392B4008EA890 /* TodoEditView.swift */; };
 		9174AEDA2BBA87D700B6BEFB /* PerfectPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */; };
 		9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDB2BBA87D700B6BEFB /* ContentView.swift */; };
 		9174AEE02BBA87D700B6BEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		916A04382BC0690D0033A4F9 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		916A043B2BC077320033A4F9 /* PFPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFPButton.swift; sourceTree = "<group>"; };
 		916A043D2BC077440033A4F9 /* SidebarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarManager.swift; sourceTree = "<group>"; };
+		916F9E0A2BC392B4008EA890 /* TodoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEditView.swift; sourceTree = "<group>"; };
 		9174AED62BBA87D700B6BEFB /* PerfectPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfectPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9174AED92BBA87D700B6BEFB /* PerfectPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectPracticeApp.swift; sourceTree = "<group>"; };
 		9174AEDB2BBA87D700B6BEFB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		91E7C7742BC331E000B558BB /* TodoView */ = {
 			isa = PBXGroup;
 			children = (
+				916F9E0A2BC392B4008EA890 /* TodoEditView.swift */,
 			);
 			path = TodoView;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				910B069E2BBDBBD000313EAD /* DataTransformation.swift in Sources */,
 				916A04392BC0690D0033A4F9 /* ThemeManager.swift in Sources */,
 				910B069C2BBDBA4100313EAD /* PracticeModel.swift in Sources */,
+				916F9E0B2BC392B4008EA890 /* TodoEditView.swift in Sources */,
 				9132957E2BC090A700760FB7 /* TodoWidget.swift in Sources */,
 				916A043E2BC077440033A4F9 /* SidebarManager.swift in Sources */,
 				9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */,

@@ -19,12 +19,13 @@ class ToDo {
     // Completed
     var isCompleted:Bool = false
     // isPastDue
-    //
+    var isPastDue:Bool = false
     
-    init(name: String, todoDescription: String, dueDate: Date = Date(), isCompleted: Bool = false) {
+    init(name: String, todoDescription: String, dueDate: Date = Date(), isCompleted: Bool = false, isPastDue: Bool = false) {
         self.name = name
         self.todoDescription = todoDescription
         self.dueDate = dueDate
         self.isCompleted = isCompleted
+        self.isPastDue = isPastDue
     }
 }

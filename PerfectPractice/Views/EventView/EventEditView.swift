@@ -11,9 +11,9 @@ import SwiftData
 // TODO: ADD TAG COLOR SELECTION AND IF PASSED SYMBOL
 
 struct EventEditView: View {
+    @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var modelContext
     @Bindable var event:Event
-    @Environment(\.presentationMode) var presentationMode
     @Query var users:[User]
     @State private var showingAlert = false
     private let titleSize:CGFloat = 25

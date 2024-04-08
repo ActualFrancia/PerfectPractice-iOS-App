@@ -18,12 +18,14 @@ enum PrimaryViews {
 // 2) ADD SUPPORT FOR STARED EVENTS TO EVENTS & EDIT EVENTS
 // 4) PAST EVENTS SPECIAL TAG OR COLOR???
 // 5) REMOVE GLOBALTIMERMANAGER
+// 6) CONSIDER MOVING ON CHANGE for events and todo TO HOMEVIEW OR PRACTICE VIEW??
 // BUG LIST
 // - ANIMATION ON TODO SHOW COMPLETED BUTTON?
 
 struct ContentView: View {
     @State private var selectedView: PrimaryViews = .home
     @Query(sort: \Event.date, order: .forward) var events:[Event]
+    @Query var todos:[ToDo]
 
     var body: some View {
         ZStack (alignment: .topLeading) {
@@ -43,11 +45,21 @@ struct ContentView: View {
         }
         // onChange of Events
         .onChange(of: events) {
-            /// if eventdate, has passed, archive
+            /// if event date has passed, archive
             for event in events {
                 if event.date < Date.now {
                     print("Event has passed.")
                     event.isUpcoming = false
+                }
+            }
+        }
+        // onChange of Todo
+        .onChange(of: todos) {
+            /// if todo date has passed, past due
+            for todo in todos {
+                if todo.dueDate < Date.now {
+                    print("Todo has passed.")
+                    todo.isPastDue = true
                 }
             }
         }

@@ -8,12 +8,9 @@
 import SwiftUI
 import SwiftData
 
-// TODO: Get ride of animation on the showCompleted button.
-
 struct TodoWidget: View {
     @Environment(\.modelContext) var modelContext
     @Query(sort: \ToDo.dueDate, order:.forward) var todos:[ToDo]
-    @State private var showCompleted:Bool = true
     @State private var completedEvents:Int = 0
     @State private var totalEvents:Int = 0
     private var gridSpacing: CGFloat = 6
@@ -27,6 +24,7 @@ struct TodoWidget: View {
                     // Number
                     Text("\(completedEvents)/\(totalEvents)")
                         .fontWeight(.semibold)
+                        .fixedSize()
                     // Item
                     Text("Item")
                         .fontWeight(.semibold)
@@ -40,18 +38,30 @@ struct TodoWidget: View {
                 // Todo Items
                 ForEach(todos) { todo in
                     Divider()
-                    HStack (spacing: gridSpacing) {
+                    HStack (spacing: textSpacing) {
+                        // Task Complete
                         Button(action: {
                             todo.isCompleted.toggle()
                             updateTodoHeader()
                         }) {
                             Image(systemName: todo.isCompleted ? "checkmark.square" : "square")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15, height: 15, alignment: .center)
                         }
+                        .frame(width: 25)
+                        
+                        // Task Text
                         Text(todo.name)
                         Spacer()
+                        
+                        // Task DueDate
                         Text("\(todo.dueDate.formatted(Date.FormatStyle().month(.abbreviated).day(.twoDigits)))")
                             .frame(width: 65, alignment: .leading)
                     }
+                    .strikethrough(todo.isCompleted)
+                    .foregroundStyle(todo.isPastDue ? Color.red : .text)
+                    .foregroundStyle(todo.isCompleted ? Color.gray : .text)
                     .multilineTextAlignment(.leading)
                     .padding(.vertical, gridSpacing)
                 }
@@ -64,7 +74,7 @@ struct TodoWidget: View {
         // TESTING
         .onAppear {
             let todo1 = ToDo(name: "Record Lipslur 3 @ 130BPM", todoDescription: "Facebook", dueDate: Date.now + 8888888888, isCompleted: true)
-            let todo2 = ToDo(name: "Practice Beathoven 13th thingy", todoDescription: "This is the test of a longer description")
+            let todo2 = ToDo(name: "Practice Beathoven 13th thingy", todoDescription: "This is the test of a longer description", dueDate: Date.now + 5)
             let todo3 = ToDo(name: "I shidded 3333333333333333333333333\n32323232323232", todoDescription: "3333333333333333333333333333334444343434")
             let todo4 = ToDo(name: "meow meow meow", todoDescription: "")
 
@@ -75,7 +85,9 @@ struct TodoWidget: View {
         }
         // -------
         .onChange(of: todos) {
+            /// update headers
             updateTodoHeader()
+            /// check if overdue
         }
     }
     

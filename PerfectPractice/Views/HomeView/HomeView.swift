@@ -19,6 +19,7 @@ struct HomeView: View {
     // Sheets
     @State private var isEditingEvent: Event? = nil
     @State private var isEventListingPresented: Bool = false
+    @State private var isEditingTodo: ToDo? = nil
     
     var body: some View {
         // Home View
@@ -134,7 +135,6 @@ struct HomeView: View {
                         }
                         // Todo Widget
                         TodoWidget()
-                            //.frame(height: 800)
                     }
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
@@ -173,10 +173,10 @@ struct HomeView: View {
         .sheet(isPresented: $isEventListingPresented) {
                 EventListingView()
         }
-        // Add New Event Sheet
-        // ...
-        // Todo Listing
-        // ..
+        // Todo Edit Sheet
+        .sheet(item: $isEditingTodo) { todo in
+            //TodoEditView(to)
+        }
     }
 }
 
