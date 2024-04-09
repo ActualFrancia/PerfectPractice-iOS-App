@@ -16,8 +16,8 @@ struct CircleButton: View {
     private let buttonSize:CGFloat = 36
     private let padding:CGFloat = 11
 
-    private let largeButtonSize:CGFloat = 60
-    private let largePadding:CGFloat = 17
+    private let largeButtonSize:CGFloat = 50
+    private let largePadding:CGFloat = 14
 
     
     var body: some View {

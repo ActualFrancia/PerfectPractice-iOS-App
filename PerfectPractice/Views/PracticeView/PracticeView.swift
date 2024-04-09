@@ -10,6 +10,7 @@ import SwiftData
 
 struct PracticeView: View {
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var practiceManager:PracticeManager
     @Query var users:[User]
     @Binding var selectedView:PrimaryViews
     @State private var isDetailsPresented: Bool = false
@@ -18,80 +19,101 @@ struct PracticeView: View {
     private let titleSize:CGFloat = 25
     
     var body: some View {
-        VStack {
-            HStack {
-                // Home Button
-                CircleButton(systemName: "house", isLarge: false) {
-                    selectedView = .home
-                }
-                
-                // Instrument
-                Menu {
-                    
-                } label: {
-                    Text("Instrument")
-                    Image(systemName: "chevron.down")
-                }
-                
-                Spacer()
-                
-                // Date & Time
-                VStack (alignment: .trailing) {
-                    Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
-                        .font(.system(size: 15))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color.gray)
-                    Text(Date.now.formatted(date: .omitted, time: .shortened))
-                        .font(.system(size: 15))
-                        .fontWeight(.semibold)
-                }
-            }
-            Spacer()
-            // Timer & Controls
+        ZStack {
             VStack {
-                Text("0:00")
                 HStack {
+                    /// pfp button
+                    PFPButton()
                     
+                    /// instrument
+                    Menu {
+                        
+                    } label: {
+                        Text("Instrument")
+                        Image(systemName: "chevron.down")
+                    }
+                    Spacer()
+                    
+                    // Date & Time
+                    VStack (alignment: .trailing) {
+                        Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color.gray)
+                        Text(Date.now.formatted(date: .omitted, time: .shortened))
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                    }
                 }
+                Spacer()
             }
-            Spacer()
-            // Menu Controls
-            HStack {
-                // Metronome
-                CircleButton(systemName: "metronome", isLarge: true) {
-                    //.
-                }
-                
-                // Tuner
-                Button(action: {
-                    //...
-                }) {
-                    Image(systemName: "tuningfork")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: titleSize/2, height: titleSize/2)
-                        .foregroundStyle(Color.blue)
-                }
-                .padding(titleSize/2)
-                .background(Color("BentoColor"))
-                .clipShape(Circle())
-                
-                // Practice Details
-                Button(action: {
-                    isDetailsPresented = true
-                }) {
-                    
-                    Image(systemName: "square.and.pencil")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: titleSize/2, height: titleSize/2)
-                        .foregroundStyle(Color.blue)
-                    Text("Practice Details")
-                }
-                .padding(titleSize/2)
-                .background(Color("BentoColor"))
-                .clipShape(Capsule())
+            // Timer
+            Text("0:00")
+                .font(.system(size: 80))
+                .fontWeight(.semibold)
+            // Timer Controls
+            VStack {
+                Spacer()
+                HStack {
+                    /// start
+                    if (!practiceManager.isPracticing) {
+                        CircleButton(systemName: "play.fill", isLarge: false) {
+                            //...
+                        }
+                    }
+                    /// stop and pause
+                    else if (practiceManager.isPracticing) {
+                        CircleButton(systemName: "play.fill", isLarge: false) {
+                            //...
+                        }
+                    }
 
+                }
+                .padding(.top, 130)
+                Spacer()
+            }
+            // Menu Controls
+            VStack {
+                Spacer()
+                ZStack (alignment: .bottom) {
+                    // Tools
+                    HStack {
+                        Spacer()
+                        VStack {
+                            // Metronome
+                            CircleButton(systemName: "metronome.fill", isLarge: true) {
+                                //...
+                            }
+                            // Tuner
+                            CircleButton(systemName: "tuningfork", isLarge: true) {
+                                //...
+                            }
+                        }
+                    }
+                    HStack {
+                        // Hide
+                        CircleButton(systemName: "eye.slash.fill", isLarge: false) {
+                           //...
+                        }
+                        // Practice Details
+                        Button(action: {
+                            isDetailsPresented = true
+                        }) {
+                            
+                            Image(systemName: "square.and.pencil")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 14)
+                                .foregroundStyle(Color.blue)
+                            Text("Practice Details")
+                                .font(.system(size: 15))
+                                .fontWeight(.medium)
+                        }
+                        .padding(10)
+                        .background(Color("BentoColor"))
+                        .clipShape(Capsule())
+                    }
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
