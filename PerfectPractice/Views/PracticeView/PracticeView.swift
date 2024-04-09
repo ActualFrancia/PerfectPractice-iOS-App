@@ -53,51 +53,55 @@ struct PracticeView: View {
                 Spacer()
             }
             VStack (spacing: 0){
-                // Timer
-                Text("\(isHidingTime ? "**:**" : formattedTime(practice?.timePracticed ?? 0))")
-                    .font(.system(size: 80))
-                    .fontWeight(.semibold)
-                    .padding(.top, toolbarHeight)
-                    .frame(alignment: .center)
-                // Timer Controls
-                HStack {
-                    Spacer()
-                    /// Not Practicing
-                    if (!practiceManager.isPracticing) {
-                        /// start
-                        CircleButton(systemName: "play.fill", isLarge: false) {
-                            practiceManager.startPractice()
-                            modelContext.insert(practice!)
-                        }
-                    }
-                    /// Currently Practicing
-                    else if (practiceManager.isPracticing) {
-                        /// hide all time
-                        CircleButton(systemName: "eye.slash", isLarge: false) {
-                            isHidingTime.toggle()
-                        }
-                        
-                        /// timer running
-                        if (practiceManager.timerState == .running) {
-                            /// pause
-                            CircleButton(systemName: "pause.fill", isLarge: false) {
-                                practiceManager.pausePractice()
-                            }
-                        } 
-                        /// timer paused
-                        else {
-                            /// resume
-                            CircleButton(systemName: "play.fill", isLarge: false) {
-                                practiceManager.resumePractice()
+                VStack (spacing: 0) {
+                    // Timer
+                    Text("\(isHidingTime ? "**:**" : formattedTime(practice?.timePracticed ?? 0))")
+                        .font(.system(size: 80))
+                        .fontWeight(.semibold)
+                        .frame(alignment: .center)
+                    // Timer Controls
+                    HStack {
+                        Spacer()
+                        /// Not Practicing
+                        if (!practiceManager.isPracticing) {
+                            /// start
+                            CapsuleButton(systemName: "play.fill", text: "Start Practicing") {
+                                practiceManager.startPractice()
+                                modelContext.insert(practice!)
                             }
                         }
-                        /// stop
-                        CircleButton(systemName: "stop.fill", isLarge: false) {
-                            practiceManager.stopPractice()
+                        /// Currently Practicing
+                        else if (practiceManager.isPracticing) {
+                            /// hide all time
+                            CircleButton(systemName: "eye.slash", isLarge: false) {
+                                isHidingTime.toggle()
+                            }
+                            
+                            /// timer running
+                            if (practiceManager.timerState == .running) {
+                                /// pause
+                                CircleButton(systemName: "pause.fill", isLarge: false) {
+                                    practiceManager.pausePractice()
+                                }
+                            }
+                            /// timer paused
+                            else {
+                                /// resume
+                                CircleButton(systemName: "play.fill", isLarge: false) {
+                                    practiceManager.resumePractice()
+                                }
+                            }
+                            /// stop
+                            CircleButton(systemName: "stop.fill", isLarge: false) {
+                                practiceManager.stopPractice()
+                            }
                         }
+                        Spacer()
                     }
-                    Spacer()
                 }
+                .padding(.top, toolbarHeight + gridSpacing)
+                .padding(.bottom, gridSpacing)
+                
                 // Schedule & Goals
                 ScrollView {
                     /// Schedule
@@ -147,25 +151,11 @@ struct PracticeView: View {
                     HStack {
                         // Hide
                         CircleButton(systemName: "eye.slash.fill", isLarge: false) {
-                           //...
+                            //...
                         }
-                        // Practice Details
-                        Button(action: {
+                        CapsuleButton(systemName: "square.and.pencil", text: "Practice Details") {
                             isDetailsPresented = true
-                        }) {
-                            
-                            Image(systemName: "square.and.pencil")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 14)
-                                .foregroundStyle(Color.blue)
-                            Text("Practice Details")
-                                .font(.system(size: 15))
-                                .fontWeight(.medium)
                         }
-                        .padding(10)
-                        .background(Color("BentoColor"))
-                        .clipShape(Capsule())
                     }
                 }
             }

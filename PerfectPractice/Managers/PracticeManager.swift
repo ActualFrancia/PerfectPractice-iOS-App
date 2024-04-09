@@ -65,6 +65,7 @@ class PracticeManager: ObservableObject {
         timerState = .stopped
         timer?.invalidate()
         timer = nil
+        /// practice overview presented
         practiceFinished = true
         /// create new var to prevent accidental changes
         self.newPractice()
