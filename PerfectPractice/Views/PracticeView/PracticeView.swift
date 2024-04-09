@@ -13,8 +13,11 @@ struct PracticeView: View {
     @EnvironmentObject var practiceManager:PracticeManager
     @Query var users:[User]
     @Binding var selectedView:PrimaryViews
-    @State private var isDetailsPresented: Bool = false
+    @State private var isDetailsPresented:Bool = false
+    @State private var practice:Practice?
+    @State private var isHidingTime:Bool = false
 
+    private let toolbarHeight:CGFloat = 60
     private let gridSpacing:CGFloat = 16
     private let titleSize:CGFloat = 25
     
@@ -23,7 +26,9 @@ struct PracticeView: View {
             VStack {
                 HStack {
                     /// pfp button
-                    PFPButton()
+                    CircleButton(systemName: "chevron.left", isLarge: false) {
+                        selectedView = .home
+                    }
                     
                     /// instrument
                     Menu {
@@ -40,37 +45,82 @@ struct PracticeView: View {
                             .font(.system(size: 15))
                             .fontWeight(.semibold)
                             .foregroundStyle(Color.gray)
-                        Text(Date.now.formatted(date: .omitted, time: .shortened))
+                        Text(isHidingTime ? "**:** **" : Date.now.formatted(date: .omitted, time: .shortened))
                             .font(.system(size: 15))
                             .fontWeight(.semibold)
                     }
                 }
                 Spacer()
             }
-            // Timer
-            Text("0:00")
-                .font(.system(size: 80))
-                .fontWeight(.semibold)
-            // Timer Controls
-            VStack {
-                Spacer()
+            VStack (spacing: 0){
+                // Timer
+                Text("\(isHidingTime ? "**:**" : formattedTime(practice?.timePracticed ?? 0))")
+                    .font(.system(size: 80))
+                    .fontWeight(.semibold)
+                    .padding(.top, toolbarHeight)
+                    .frame(alignment: .center)
+                // Timer Controls
                 HStack {
-                    /// start
+                    Spacer()
+                    /// Not Practicing
                     if (!practiceManager.isPracticing) {
+                        /// start
                         CircleButton(systemName: "play.fill", isLarge: false) {
-                            //...
+                            practiceManager.startPractice()
+                            modelContext.insert(practice!)
                         }
                     }
-                    /// stop and pause
+                    /// Currently Practicing
                     else if (practiceManager.isPracticing) {
-                        CircleButton(systemName: "play.fill", isLarge: false) {
-                            //...
+                        /// hide all time
+                        CircleButton(systemName: "eye.slash", isLarge: false) {
+                            isHidingTime.toggle()
+                        }
+                        
+                        /// timer running
+                        if (practiceManager.timerState == .running) {
+                            /// pause
+                            CircleButton(systemName: "pause.fill", isLarge: false) {
+                                practiceManager.pausePractice()
+                            }
+                        } 
+                        /// timer paused
+                        else {
+                            /// resume
+                            CircleButton(systemName: "play.fill", isLarge: false) {
+                                practiceManager.resumePractice()
+                            }
+                        }
+                        /// stop
+                        CircleButton(systemName: "stop.fill", isLarge: false) {
+                            practiceManager.stopPractice()
                         }
                     }
-
+                    Spacer()
                 }
-                .padding(.top, 130)
-                Spacer()
+                // Schedule & Goals
+                ScrollView {
+                    /// Schedule
+                    VStack (alignment: .leading, spacing: 0) {
+                        Text("Schedule")
+                            .font(.system(size: titleSize))
+                            .fontWeight(.semibold)
+                        Bento {
+                            Text("HI")
+                        }
+                        .frame(height: 100)
+                    }
+                    /// Goals
+                    VStack (alignment: .leading, spacing: 0) {
+                        Text("Goals")
+                            .font(.system(size: titleSize))
+                            .fontWeight(.semibold)
+                        Bento {
+                            Text("HI")
+                        }
+                        .frame(height: 100)
+                    }
+                }
             }
             // Menu Controls
             VStack {
@@ -80,6 +130,10 @@ struct PracticeView: View {
                     HStack {
                         Spacer()
                         VStack {
+                            // Add Schedule or Goal
+                            CircleButton(systemName: "plus", isLarge: true) {
+                                // Menu...
+                            }
                             // Metronome
                             CircleButton(systemName: "metronome.fill", isLarge: true) {
                                 //...
@@ -119,9 +173,17 @@ struct PracticeView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, gridSpacing)
         .background(Color("BackgroundColor"))
+        /// get practice
+        .onAppear {
+            practice = practiceManager.getPractice()
+        }
+        /// on practice finish, kick out to home screen to present sheet
+        .onChange(of: practiceManager.practiceFinished) {
+            selectedView = .home
+        }
         // Practice Details
         .sheet(isPresented: $isDetailsPresented) {
-            
+            //...
         }
     }
 }

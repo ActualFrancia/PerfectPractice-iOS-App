@@ -34,6 +34,7 @@
 		9174AEE02BBA87D700B6BEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */; };
 		9174AEE32BBA87D700B6BEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */; };
 		91C6F4512BC4C11E003DD1FF /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6F4502BC4C11E003DD1FF /* CircleButton.swift */; };
+		91CE9C032BC5BB4600507F8C /* FormattedTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */; };
 		91E7C7732BC32BD200B558BB /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7C7722BC32BD200B558BB /* Tags.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		9174AEE92BBA87EB00B6BEFB /* PerfectPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PerfectPractice.entitlements; sourceTree = "<group>"; };
 		9174AEEA2BBA87FF00B6BEFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		91C6F4502BC4C11E003DD1FF /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedTimeInterval.swift; sourceTree = "<group>"; };
 		91E7C7722BC32BD200B558BB /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +214,7 @@
 				910B06AB2BBDCE4500313EAD /* Bento.swift */,
 				910B06AD2BBDE97600313EAD /* HelperFunctions.swift */,
 				91C6F4502BC4C11E003DD1FF /* CircleButton.swift */,
+				91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				910B06A92BBDC8FA00313EAD /* HomeView.swift in Sources */,
 				916A043C2BC077320033A4F9 /* PFPButton.swift in Sources */,
 				910DB6C12BBE293D00ABD082 /* EventListingView.swift in Sources */,
+				91CE9C032BC5BB4600507F8C /* FormattedTimeInterval.swift in Sources */,
 				910B069E2BBDBBD000313EAD /* DataTransformation.swift in Sources */,
 				916A04392BC0690D0033A4F9 /* ThemeManager.swift in Sources */,
 				910B069C2BBDBA4100313EAD /* PracticeModel.swift in Sources */,

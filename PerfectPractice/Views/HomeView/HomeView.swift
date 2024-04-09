@@ -10,6 +10,7 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var practiceManager:PracticeManager
     @Binding var selectedView:PrimaryViews
     
     private let toolbarHeight:CGFloat = 60
@@ -136,6 +137,11 @@ struct HomeView: View {
         // Todo Edit Sheet
         .sheet(item: $isEditingTodo) { todo in
             TodoEditView(todo: todo)
+        }
+        // Finished Practice Overview
+        .sheet(isPresented: $practiceManager.practiceFinished) {
+            Text("Finished!")
+            // Get from practice databse.
         }
     }
 }

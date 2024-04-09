@@ -17,12 +17,18 @@ class PracticeManager: ObservableObject {
     // Information
     @Published var practice: Practice = Practice(instrumentPracticed: "", timePracticed: 0, practiceScheduleString: "", practiceGoalsString: "", mood: "", notes: "", tag: "")
     @Published var isPracticing:Bool = false
+    @Published var practiceFinished:Bool = false
     //Timer
     @Published var timerState: TimerState = .stopped
     private var timer: Timer?
     
+    // Returns practice
+    func getPractice() -> Practice {
+        return self.practice
+    }
+    
     // Starts Practice and returns practice for insertion into database.
-    func startPractice() -> Practice {
+    func startPractice() {
         /// practice
         isPracticing = true
         practice.timeStart = Date.now
@@ -32,8 +38,6 @@ class PracticeManager: ObservableObject {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.practice.timePracticed += 1
          }
-        /// return practice
-        return self.practice
     }
     
     // Pause Practice
@@ -61,6 +65,7 @@ class PracticeManager: ObservableObject {
         timerState = .stopped
         timer?.invalidate()
         timer = nil
+        practiceFinished = true
         /// create new var to prevent accidental changes
         self.newPractice()
     }
