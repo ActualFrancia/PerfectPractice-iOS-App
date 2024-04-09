@@ -28,7 +28,7 @@ struct HomeView: View {
             ScrollView (showsIndicators: false) {
                 VStack (alignment: .leading, spacing: gridSpacing) {
                     // Starred Event & Stats
-                    VStack (alignment: .leading, spacing: gridSpacing) {
+                    VStack (alignment: .leading, spacing: gridSpacing / 2) {
                         // Title
                         HStack (alignment: .center) {
                             Text("Home")
@@ -57,68 +57,41 @@ struct HomeView: View {
                         .frame(height: 250)
                     }
                     
-                    // Upcomming Events
-                    VStack (alignment: .leading, spacing: gridSpacing) {
+                    // Events Widget
+                    VStack (alignment: .leading, spacing: gridSpacing / 2) {
                         HStack (alignment: .center) {
                             Text("Events")
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
                             Spacer()
                             // Add New Event
-                            Button(action: {
+                            CircleButton(systemName: "plus", isLarge: false) {
                                 let newEvent = Event(name: "", isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "", eventDescription: "", tagColor: "")
                                 modelContext.insert(newEvent)
                                 isEditingEvent = newEvent
-                            }) {
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: titleSize/2, height: titleSize/2)
-                                    .foregroundStyle(Color.blue)
                             }
-                            .padding(titleSize/2)
-                            .background(Color("BentoColor"))
-                            .clipShape(Circle())
                             // Events Listing
-                            Button(action: {
+                            CircleButton(systemName: "chevron.right", isLarge: false) {
                                 isEventListingPresented = true
-                            }) {
-                                Image(systemName: "chevron.right")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: titleSize/2, height: titleSize/2)
-                                    .foregroundStyle(Color.blue)
                             }
-                            .padding(titleSize/2)
-                            .background(Color("BentoColor"))
-                            .clipShape(Circle())
                         }
-                        /// Upcoming Events
+                        /// events widget
                         EventsWidget(isEditingEvent: $isEditingEvent)
                     }
                     
-                    // Todo List
-                    VStack (alignment: .leading, spacing: gridSpacing) {
-                        HStack {
+                    // Todo List Widget
+                    VStack (alignment: .leading, spacing: gridSpacing/2) {
+                        HStack (alignment: .center) {
                             Text("Todo List")
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
                             Spacer()
                             // Add New Todo item
-                            Button(action: {
+                            CircleButton(systemName: "plus", isLarge: false) {
                                 let newTodo = ToDo(name: "")
                                 modelContext.insert(newTodo)
                                 isEditingTodo = newTodo
-                            }) {
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: titleSize/2, height: titleSize/2)
-                                    .foregroundStyle(Color.blue)
                             }
-                            .padding(titleSize/2)
-                            .background(Color("BentoColor"))
-                            .clipShape(Circle())
                         }
                         // Todo Widget
                         TodoWidget(isEditingTodo: $isEditingTodo)

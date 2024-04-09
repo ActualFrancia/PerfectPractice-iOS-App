@@ -10,7 +10,9 @@ import SwiftData
 
 struct PracticeView: View {
     @Environment(\.modelContext) var modelContext
+    @Query var users:[User]
     @Binding var selectedView:PrimaryViews
+    @State private var isDetailsPresented: Bool = false
 
     private let gridSpacing:CGFloat = 16
     private let titleSize:CGFloat = 25
@@ -19,18 +21,17 @@ struct PracticeView: View {
         VStack {
             HStack {
                 // Home Button
-                Button(action: {
+                CircleButton(systemName: "house", isLarge: false) {
                     selectedView = .home
-                }) {
-                    Image(systemName: "house")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: titleSize/2, height: titleSize/2)
-                        .foregroundStyle(Color.blue)
                 }
-                .padding(titleSize/2)
-                .background(Color("BentoColor"))
-                .clipShape(Circle())
+                
+                // Instrument
+                Menu {
+                    
+                } label: {
+                    Text("Instrument")
+                    Image(systemName: "chevron.down")
+                }
                 
                 Spacer()
                 
@@ -49,23 +50,17 @@ struct PracticeView: View {
             // Timer & Controls
             VStack {
                 Text("0:00")
+                HStack {
+                    
+                }
             }
             Spacer()
             // Menu Controls
             HStack {
                 // Metronome
-                Button(action: {
-                    //...
-                }) {
-                    Image(systemName: "metronome")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: titleSize/2, height: titleSize/2)
-                        .foregroundStyle(Color.blue)
+                CircleButton(systemName: "metronome", isLarge: true) {
+                    //.
                 }
-                .padding(titleSize/2)
-                .background(Color("BentoColor"))
-                .clipShape(Circle())
                 
                 // Tuner
                 Button(action: {
@@ -83,7 +78,7 @@ struct PracticeView: View {
                 
                 // Practice Details
                 Button(action: {
-                    selectedView = .home
+                    isDetailsPresented = true
                 }) {
                     
                     Image(systemName: "square.and.pencil")
@@ -100,7 +95,12 @@ struct PracticeView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, gridSpacing)
         .background(Color("BackgroundColor"))
+        // Practice Details
+        .sheet(isPresented: $isDetailsPresented) {
+            
+        }
     }
 }
 

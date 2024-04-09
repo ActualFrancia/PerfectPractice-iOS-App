@@ -33,6 +33,7 @@
 		9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDB2BBA87D700B6BEFB /* ContentView.swift */; };
 		9174AEE02BBA87D700B6BEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */; };
 		9174AEE32BBA87D700B6BEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */; };
+		91C6F4512BC4C11E003DD1FF /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6F4502BC4C11E003DD1FF /* CircleButton.swift */; };
 		91E7C7732BC32BD200B558BB /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7C7722BC32BD200B558BB /* Tags.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9174AEE92BBA87EB00B6BEFB /* PerfectPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PerfectPractice.entitlements; sourceTree = "<group>"; };
 		9174AEEA2BBA87FF00B6BEFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		91C6F4502BC4C11E003DD1FF /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		91E7C7722BC32BD200B558BB /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,8 +119,8 @@
 			children = (
 				9174AEDB2BBA87D700B6BEFB /* ContentView.swift */,
 				910B06AA2BBDC8FD00313EAD /* HomeView */,
-				91670B7B2BBB261500509C6B /* ProfileView */,
 				91EBB85F2BBC9D9F000DB0B7 /* PracticeView */,
+				91670B7B2BBB261500509C6B /* ProfileView */,
 				9174AEEE2BBA8AFF00B6BEFB /* PracticeHistoryView */,
 				910DB6BF2BBE292B00ABD082 /* EventView */,
 				91E7C7742BC331E000B558BB /* TodoView */,
@@ -209,6 +211,7 @@
 				910B069D2BBDBBD000313EAD /* DataTransformation.swift */,
 				910B06AB2BBDCE4500313EAD /* Bento.swift */,
 				910B06AD2BBDE97600313EAD /* HelperFunctions.swift */,
+				91C6F4502BC4C11E003DD1FF /* CircleButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */,
 				911D30862BC47753008E6921 /* UpcomingWidget.swift in Sources */,
 				91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */,
+				91C6F4512BC4C11E003DD1FF /* CircleButton.swift in Sources */,
 				910B06A02BBDBD1400313EAD /* UserModel.swift in Sources */,
 				910B06AC2BBDCE4500313EAD /* Bento.swift in Sources */,
 				910B06A22BBDBE2500313EAD /* EventModel.swift in Sources */,
