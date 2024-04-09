@@ -13,7 +13,7 @@ struct PracticeView: View {
     @EnvironmentObject var practiceManager:PracticeManager
     @Query var users:[User]
     @Binding var selectedView:PrimaryViews
-    @State private var isDetailsPresented:Bool = false
+    @State private var isNotesPresented:Bool = false
     @State private var practice:Practice?
     @State private var isHidingTime:Bool = false
 
@@ -24,8 +24,8 @@ struct PracticeView: View {
     var body: some View {
         ZStack {
             VStack {
-                HStack {
-                    /// pfp button
+                HStack (spacing: gridSpacing) {
+                    /// back button
                     CircleButton(systemName: "chevron.left", isLarge: false) {
                         selectedView = .home
                     }
@@ -52,14 +52,16 @@ struct PracticeView: View {
                 }
                 Spacer()
             }
+            
+            // Timer & Timer Controls
             VStack (spacing: 0){
                 VStack (spacing: 0) {
-                    // Timer
+                    /// Timer
                     Text("\(isHidingTime ? "**:**" : formattedTime(practice?.timePracticed ?? 0))")
                         .font(.system(size: 80))
                         .fontWeight(.semibold)
                         .frame(alignment: .center)
-                    // Timer Controls
+                    /// Timer Controls
                     HStack {
                         Spacer()
                         /// Not Practicing
@@ -100,29 +102,31 @@ struct PracticeView: View {
                     }
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
-                .padding(.bottom, gridSpacing)
+                .padding(.bottom, toolbarHeight/2 + gridSpacing)
                 
                 // Schedule & Goals
                 ScrollView {
-                    /// Schedule
-                    VStack (alignment: .leading, spacing: 0) {
-                        Text("Schedule")
-                            .font(.system(size: titleSize))
-                            .fontWeight(.semibold)
-                        Bento {
-                            Text("HI")
+                    VStack (spacing: gridSpacing) {
+                        /// Schedule
+                        VStack (alignment: .leading, spacing: gridSpacing/2) {
+                            Text("Schedule")
+                                .font(.system(size: titleSize))
+                                .fontWeight(.semibold)
+                            Bento {
+                                Text("HI")
+                            }
+                            .frame(height: 100)
                         }
-                        .frame(height: 100)
-                    }
-                    /// Goals
-                    VStack (alignment: .leading, spacing: 0) {
-                        Text("Goals")
-                            .font(.system(size: titleSize))
-                            .fontWeight(.semibold)
-                        Bento {
-                            Text("HI")
+                        /// Goals
+                        VStack (alignment: .leading, spacing: gridSpacing/2) {
+                            Text("Goals")
+                                .font(.system(size: titleSize))
+                                .fontWeight(.semibold)
+                            Bento {
+                                Text("HI")
+                            }
+                            .frame(height: 100)
                         }
-                        .frame(height: 100)
                     }
                 }
             }
@@ -149,12 +153,8 @@ struct PracticeView: View {
                         }
                     }
                     HStack {
-                        // Hide
-                        CircleButton(systemName: "eye.slash.fill", isLarge: false) {
-                            //...
-                        }
-                        CapsuleButton(systemName: "square.and.pencil", text: "Practice Details") {
-                            isDetailsPresented = true
+                        CapsuleButton(systemName: "square.and.pencil", text: "Notes") {
+                            isNotesPresented = true
                         }
                     }
                 }
@@ -171,9 +171,11 @@ struct PracticeView: View {
         .onChange(of: practiceManager.practiceFinished) {
             selectedView = .home
         }
-        // Practice Details
-        .sheet(isPresented: $isDetailsPresented) {
-            //...
+        // Practice Notes
+        .sheet(isPresented: $isNotesPresented) {
+            Text("Aura")
+            Text("Notes")
+            Text("Tag Color?")
         }
     }
 }
