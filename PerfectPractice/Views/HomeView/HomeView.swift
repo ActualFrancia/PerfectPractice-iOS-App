@@ -20,7 +20,6 @@ struct HomeView: View {
     // Sheets
     @State private var isEditingEvent: Event? = nil
     @State private var isEventListingPresented: Bool = false
-    @State private var isEditingTodo: ToDo? = nil
     
     var body: some View {
         // Home View
@@ -91,11 +90,10 @@ struct HomeView: View {
                             CircleButton(systemName: "plus", isLarge: false) {
                                 let newTodo = ToDo(name: "")
                                 modelContext.insert(newTodo)
-                                isEditingTodo = newTodo
                             }
                         }
                         // Todo Widget
-                        TodoWidget(isEditingTodo: $isEditingTodo)
+                        TodoWidget()
                     }
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
@@ -133,10 +131,6 @@ struct HomeView: View {
         // Event Listing Sheet
         .sheet(isPresented: $isEventListingPresented) {
                 EventListingView()
-        }
-        // Todo Edit Sheet
-        .sheet(item: $isEditingTodo) { todo in
-            TodoEditView(todo: todo)
         }
         // Finished Practice Overview
         .sheet(isPresented: $practiceManager.practiceFinished) {
