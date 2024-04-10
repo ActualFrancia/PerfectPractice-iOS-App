@@ -39,7 +39,9 @@ struct TodoWidget: View {
             // List
             List {
                 ForEach(todos) { todo in
-                    TodoWidgetListing(todo: todo)
+                    TodoWidgetListing(todo: todo) {
+                        updateTodoHeader()
+                    }
                         .listRowSeparator(.visible)
                 }
                 .onDelete(perform: deleteItem(_:))

@@ -11,6 +11,7 @@ import SwiftData
 struct TodoWidgetListing: View {
     @Bindable var todo:ToDo
     private let textSpacing: CGFloat = 10
+    var updateHeader: () -> Void
     
     var body: some View {
         VStack (spacing: textSpacing) {
@@ -35,6 +36,9 @@ struct TodoWidgetListing: View {
             }
         }
         .listRowInsets(EdgeInsets())
+        .onChange(of: todo.isCompleted) {
+            updateHeader()
+        }
     }
 }
 
