@@ -21,6 +21,7 @@
 		910DB6C32BBE2A1B00ABD082 /* EventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910DB6C22BBE2A1B00ABD082 /* EventsWidget.swift */; };
 		911D30862BC47753008E6921 /* UpcomingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911D30852BC47753008E6921 /* UpcomingWidget.swift */; };
 		9132957E2BC090A700760FB7 /* TodoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132957D2BC090A700760FB7 /* TodoWidget.swift */; };
+		9138A4FA2BC70C0B00A6E0A5 /* ScheduleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */; };
 		91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91622B462BBE0E6400A8DB7B /* PracticeView.swift */; };
 		91660EA52BBF514200DA9DC8 /* GlobalTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA42BBF514200DA9DC8 /* GlobalTimerManager.swift */; };
 		91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA62BBF756500DA9DC8 /* EventEditView.swift */; };
@@ -54,6 +55,7 @@
 		910DB6C22BBE2A1B00ABD082 /* EventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidget.swift; sourceTree = "<group>"; };
 		911D30852BC47753008E6921 /* UpcomingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingWidget.swift; sourceTree = "<group>"; };
 		9132957D2BC090A700760FB7 /* TodoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoWidget.swift; sourceTree = "<group>"; };
+		9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWidget.swift; sourceTree = "<group>"; };
 		91622B462BBE0E6400A8DB7B /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		91660EA42BBF514200DA9DC8 /* GlobalTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTimerManager.swift; sourceTree = "<group>"; };
 		91660EA62BBF756500DA9DC8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				91622B462BBE0E6400A8DB7B /* PracticeView.swift */,
+				9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */,
 			);
 			path = PracticeView;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				91CE9C052BC5C00300507F8C /* CapsuleButton.swift in Sources */,
 				91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */,
 				91E7C7732BC32BD200B558BB /* Tags.swift in Sources */,
+				9138A4FA2BC70C0B00A6E0A5 /* ScheduleWidget.swift in Sources */,
 				910B06A92BBDC8FA00313EAD /* HomeView.swift in Sources */,
 				916A043C2BC077320033A4F9 /* PFPButton.swift in Sources */,
 				910DB6C12BBE293D00ABD082 /* EventListingView.swift in Sources */,

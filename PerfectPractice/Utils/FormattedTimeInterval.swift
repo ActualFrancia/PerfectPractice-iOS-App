@@ -8,7 +8,7 @@
 import Foundation
 
 // Formatted Time
-func formattedTime(_ time: TimeInterval) -> String {
+func formattedTimer(_ time: TimeInterval) -> String {
     let hours = Int(time) / 3600
     let minutes = Int(time) / 60 % 60
     let seconds = Int(time) % 60
@@ -18,5 +18,4 @@ func formattedTime(_ time: TimeInterval) -> String {
     } else {
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
-    
 }

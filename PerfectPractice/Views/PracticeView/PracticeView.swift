@@ -45,7 +45,7 @@ struct PracticeView: View {
                             .font(.system(size: 15))
                             .fontWeight(.semibold)
                             .foregroundStyle(Color.gray)
-                        Text(isHidingTime ? "**:** **" : Date.now.formatted(date: .omitted, time: .shortened))
+                        Text(isHidingTime ? "••:•• ••" : Date.now.formatted(date: .omitted, time: .shortened))
                             .font(.system(size: 15))
                             .fontWeight(.semibold)
                     }
@@ -57,10 +57,10 @@ struct PracticeView: View {
             VStack (spacing: 0){
                 VStack (spacing: 0) {
                     /// Timer
-                    Text("\(isHidingTime ? "**:**" : formattedTime(practice?.timePracticed ?? 0))")
-                        .font(.system(size: 80))
+                    Text("\(isHidingTime ? "••:••" : formattedTimer(practice?.timePracticed ?? 0))")
+                        .font(.system(size: 80).monospacedDigit())
                         .fontWeight(.semibold)
-                        .frame(alignment: .center)
+                        .frame(height: 80, alignment: .center)
                     /// Timer Controls
                     HStack {
                         Spacer()
@@ -75,7 +75,7 @@ struct PracticeView: View {
                         /// Currently Practicing
                         else if (practiceManager.isPracticing) {
                             /// hide all time
-                            CircleButton(systemName: "eye.slash", isLarge: false) {
+                            CircleButton(systemName: "eye.slash.fill", isLarge: false) {
                                 isHidingTime.toggle()
                             }
                             
@@ -112,10 +112,7 @@ struct PracticeView: View {
                             Text("Schedule")
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
-                            Bento {
-                                Text("HI")
-                            }
-                            .frame(height: 100)
+                            ScheduleWidget()
                         }
                         /// Goals
                         VStack (alignment: .leading, spacing: gridSpacing/2) {
@@ -184,7 +181,7 @@ struct PracticeView: View {
 /// ------------------------------------------------------------------------
 #Preview {
     // Testing Container
-    var testingModelContainer: ModelContainer = {
+    let testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
             User.self,

@@ -150,7 +150,7 @@ struct HomeView: View {
 /// ------------------------------------------------------------------------
 #Preview {
     // Testing Container
-    var testingModelContainer: ModelContainer = {
+    let testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
             User.self,

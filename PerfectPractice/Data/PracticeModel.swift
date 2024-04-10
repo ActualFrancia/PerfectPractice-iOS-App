@@ -8,6 +8,12 @@
 import Foundation
 import SwiftData
 
+struct practiceStep: Hashable {
+    var isCompleted:Bool
+    var stepDescription:String
+    var time:TimeInterval
+}
+
 @Model
 class Practice {
     // Instrument
@@ -17,8 +23,8 @@ class Practice {
     var timePracticed:TimeInterval = TimeInterval()
     // Schedule
     var practiceScheduleString:String = ""
-    var practiceScheduleArray:[(String, TimeInterval)] {
-        return []
+    var practiceScheduleArray:[practiceStep] {
+        return stringToPracticeSteps(string: practiceScheduleString)
     }
     // Goals
     var practiceGoalsString:String = ""
