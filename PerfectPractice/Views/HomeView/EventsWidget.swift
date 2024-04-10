@@ -10,15 +10,12 @@ import SwiftData
 
 struct EventsWidget: View {
     @Environment(\.modelContext) var modelContext
-    @EnvironmentObject var globalTimerManager: GlobalTimerManager
     @Query(filter: #Predicate {$0.isUpcoming == true},sort: \Event.date, order: .forward) var events:[Event]
     @Binding var isEditingEvent: Event?
     private let cellWidth:CGFloat = 150
     private let cellHeight:CGFloat = 70
     private let dateTitleHeight:CGFloat = 14
     private let spacerPadding:CGFloat = 6
-    
-    @State private var currentTime = Date()
     
     var body: some View {
         ScrollView (.horizontal, showsIndicators: false) {
@@ -59,8 +56,6 @@ struct EventsWidget: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("BentoColor"))
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
-        .onReceive(globalTimerManager.timer) { time in
-            currentTime = time}
         // TESTING DATA -----
         .onAppear {
             let event1 = Event(name: "Event 1", date: .now - 100 , isUpcoming: true, isRepeating: false, repeatSchedule: "", location: "Adams Room 202", eventDescription: "", tagColor: "blue" )
@@ -134,12 +129,11 @@ struct EventsWidget: View {
 /// ------------------------------------------------------------------------
 #Preview {
     // Testing Container
-    var testingModelContainer: ModelContainer = {
+    let testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
             User.self,
             Event.self,
-            ToDo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
@@ -153,7 +147,7 @@ struct EventsWidget: View {
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
-        .environmentObject(GlobalTimerManager())
         .environmentObject(ThemeManager())
         .environmentObject(SidebarManager())
+        .environmentObject(UserManager())
 }

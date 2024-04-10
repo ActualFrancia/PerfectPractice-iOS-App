@@ -186,7 +186,6 @@ struct PracticeView: View {
             Practice.self,
             User.self,
             Event.self,
-            ToDo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
@@ -200,7 +199,7 @@ struct PracticeView: View {
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
-        .environmentObject(GlobalTimerManager())
         .environmentObject(ThemeManager())
         .environmentObject(SidebarManager())
+        .environmentObject(UserManager())
 }

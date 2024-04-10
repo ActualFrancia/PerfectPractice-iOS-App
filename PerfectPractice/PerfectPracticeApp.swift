@@ -15,7 +15,6 @@ struct PerfectPracticeApp: App {
             Practice.self,
             User.self,
             Event.self,
-            ToDo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -32,8 +31,8 @@ struct PerfectPracticeApp: App {
         }
         .modelContainer(sharedModelContainer)
         .environmentObject(PracticeManager())
-        .environmentObject(GlobalTimerManager())
         .environmentObject(ThemeManager())
         .environmentObject(SidebarManager())
+        .environmentObject(UserManager())
     }
 }

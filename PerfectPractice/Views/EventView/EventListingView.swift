@@ -141,15 +141,14 @@ struct EventListingView: View {
 }
 
 // Preview
-/// -------------------------------------------------------------------------------
+/// ------------------------------------------------------------------------
 #Preview {
     // Testing Container
-    var testingModelContainer: ModelContainer = {
+    let testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
             User.self,
             Event.self,
-            ToDo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
@@ -159,11 +158,11 @@ struct EventListingView: View {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-        
+    
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
-        .environmentObject(GlobalTimerManager())
+        .environmentObject(ThemeManager())
+        .environmentObject(SidebarManager())
+        .environmentObject(UserManager())
 }
-
-

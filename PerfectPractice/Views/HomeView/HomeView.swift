@@ -11,6 +11,7 @@ import SwiftData
 struct HomeView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var practiceManager:PracticeManager
+    @EnvironmentObject var userManager:UserManager
     @Binding var selectedView:PrimaryViews
     
     private let toolbarHeight:CGFloat = 60
@@ -88,8 +89,7 @@ struct HomeView: View {
                             Spacer()
                             // Add New Todo item
                             CircleButton(systemName: "plus", isLarge: false) {
-                                let newTodo = ToDo(name: "")
-                                modelContext.insert(newTodo)
+                                userManager.addNewTodo()
                             }
                         }
                         // Todo Widget
@@ -149,7 +149,6 @@ struct HomeView: View {
             Practice.self,
             User.self,
             Event.self,
-            ToDo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
@@ -163,7 +162,7 @@ struct HomeView: View {
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
-        .environmentObject(GlobalTimerManager())
         .environmentObject(ThemeManager())
         .environmentObject(SidebarManager())
+        .environmentObject(UserManager())
 }

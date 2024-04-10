@@ -11,7 +11,7 @@ import SwiftData
 
 struct TodoWidget: View {
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \ToDo.dueDate, order:.forward) var todos:[ToDo]
+    @EnvironmentObject var userManager:UserManager
     @State private var completedEvents:Int = 0
     @State private var totalEvents:Int = 0
     private let gridSpacing: CGFloat = 6
@@ -23,66 +23,43 @@ struct TodoWidget: View {
             HStack (spacing: textSpacing) {
                 // Number
                 Text("\(completedEvents)/\(totalEvents)")
+                    .font(.system(size: 16.5).monospacedDigit())
                     .fontWeight(.semibold)
                     .fixedSize()
                 // Item
                 Text("Items")
+                    .font(.system(size: 16.5))
                     .fontWeight(.semibold)
                 Spacer()
-                // Due Date
-                Text("Due")
-                    .fontWeight(.semibold)
-                    .frame(width: 65, alignment: .leading)
             }
             .foregroundStyle(Color("TextColor"))
             
             // List
-            List {
-                ForEach(todos) { todo in
-                    TodoWidgetListing(todo: todo) {
-                        updateTodoHeader()
+            NavigationStack {
+                List {
+                    ForEach(userManager.todoList.indices, id:\.self) { index in
+                        HStack {
+                            // IsCompleted
+                            Toggle(isOn: $userManager.todoList[index].isCompleted) {
+                                Image(systemName: userManager.todoList[index].isCompleted ? "checkmark.square" : "square")
+                            }
+                            .toggleStyle(.button)
+                            
+                            // Name
+                            TextField("Todo Item", text: $userManager.todoList[index].name)
+                        }
                     }
-                        .listRowSeparator(.visible)
+                    //.onDelete(perform:)
+                    //.onMove(perform: )
                 }
-                .onDelete(perform: deleteItem(_:))
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
             .frame(height: 500)
         }
         .padding(10)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("BentoColor"))
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
-        // TESTING
-        .onAppear {
-            let todo1 = ToDo(name: "Record Lipslur 3 @ 130BPM", dueDate: Date.now + 8888888888, isCompleted: true)
-            let todo2 = ToDo(name: "Practice Beathoven 13th thingy", dueDate: Date.now + 5)
-            let todo3 = ToDo(name: "I shidded 3333333333333333333333333\n32323232323232")
-            let todo4 = ToDo(name: "meow meow meow")
-            
-            modelContext.insert(todo1)
-            modelContext.insert(todo2)
-            modelContext.insert(todo3)
-            modelContext.insert(todo4)
-        }
-        // -------
-        .onChange(of: todos) {
-            /// update headers
-            updateTodoHeader()
-            /// check if overdue
-        }
-    }
-    
-    private func updateTodoHeader() {
-        totalEvents = todos.count
-        completedEvents = todos.filter{ $0.isCompleted == true }.count
-    }
-    
-    private func deleteItem(_ indexSet: IndexSet) {
-        for i in indexSet {
-            let todo = todos[i]
-            modelContext.delete(todo)
-        }
     }
 }
 
@@ -95,7 +72,6 @@ struct TodoWidget: View {
             Practice.self,
             User.self,
             Event.self,
-            ToDo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
@@ -109,7 +85,7 @@ struct TodoWidget: View {
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
-        .environmentObject(GlobalTimerManager())
         .environmentObject(ThemeManager())
         .environmentObject(SidebarManager())
+        .environmentObject(UserManager())
 }

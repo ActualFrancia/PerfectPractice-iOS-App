@@ -36,12 +36,11 @@ struct CapsuleButton: View {
 /// ------------------------------------------------------------------------
 #Preview {
     // Testing Container
-    var testingModelContainer: ModelContainer = {
+    let testingModelContainer: ModelContainer = {
         let schema = Schema([
             Practice.self,
             User.self,
             Event.self,
-            ToDo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
@@ -55,7 +54,7 @@ struct CapsuleButton: View {
     return ContentView()
         .modelContainer(testingModelContainer)
         .environmentObject(PracticeManager())
-        .environmentObject(GlobalTimerManager())
         .environmentObject(ThemeManager())
         .environmentObject(SidebarManager())
+        .environmentObject(UserManager())
 }
