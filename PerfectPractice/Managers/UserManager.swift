@@ -19,8 +19,12 @@ class UserManager: ObservableObject {
     @Published var todoList:[todoItem] = [] {
         didSet {
             user.todoList = userTodoListString(todoList)
+            todoItemCount = todoList.count
+            completedTodoItemCount = todoList.filter { $0.isCompleted == true }.count
         }
     }
+    @Published var todoItemCount = 0
+    @Published var completedTodoItemCount = 0
     
     func setUser(_ user: User) {
         self.user = user

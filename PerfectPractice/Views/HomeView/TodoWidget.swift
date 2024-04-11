@@ -12,8 +12,6 @@ import SwiftData
 struct TodoWidget: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var userManager:UserManager
-    @State private var completedEvents:Int = 0
-    @State private var totalEvents:Int = 0
     private let gridSpacing: CGFloat = 6
     private let textSpacing: CGFloat = 10
     private let titleSize:CGFloat = 25
@@ -50,14 +48,12 @@ struct TodoWidget: View {
                     .listStyle(.plain)
                     .listRowBackground(Color.clear)
                     .background(Color("BentoColor"))
-                    .onTapGesture {
-                        hideKeyboard()
-                    }
+                    .scrollDismissesKeyboard(.interactively)
                     .toolbar {
                         /// header
                         ToolbarItem(placement: .topBarLeading) {
                             HStack {
-                                Text("\(completedEvents)/\(totalEvents)")
+                                Text("\(userManager.completedTodoItemCount)/\(userManager.todoItemCount)")
                                     .font(.system(size: 16.5).monospacedDigit())
                                     .fontWeight(.semibold)
                                     .fixedSize()
@@ -80,11 +76,11 @@ struct TodoWidget: View {
         }
     }
     
-    func deleteTodo(_ indexSet: IndexSet) {
+    private func deleteTodo(_ indexSet: IndexSet) {
         userManager.todoList.remove(atOffsets: indexSet)
     }
     
-    func moveTodo(from source: IndexSet, to destination: Int) {
+    private func moveTodo(from source: IndexSet, to destination: Int) {
         userManager.todoList.move(fromOffsets: source, toOffset: destination)
     }
 }

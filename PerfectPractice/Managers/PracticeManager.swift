@@ -80,4 +80,9 @@ class PracticeManager: ObservableObject {
     func setIntrumentPracticed(instrument:String) {
         practice.instrumentPracticed = instrument
     }
+    
+    // SCHEDULE & GOALS 
+    // ----------------
+    
+    
 }

@@ -14,11 +14,11 @@ enum PrimaryViews {
 }
 
 // TODO: LIST
-// 0) TODO WIDGET LIST ONDELTE AND ONMOVE
-// --------------------------------------
-// 1) HAPTICS.
-// 2) GRADIENT COLORS ON WIDGETS?
-// 5) REMOVE GLOBALTIMERMANAGER.
+// 1) Haptics.
+// 3) Focus on TextFields.
+// 4) Keyboard hide on scroll.
+// 2) Gradient Color?
+// 5) Fix Completed events counter on todo widget
 // 6) CONSIDER MOVING ON CHANGE for events and todo TO HOMEVIEW OR PRACTICE VIEW??
 
 struct ContentView: View {
