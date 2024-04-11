@@ -87,6 +87,7 @@ struct HomeView: View {
                 .padding(.bottom, (70 + 1) + gridSpacing)
                 .padding(.horizontal, gridSpacing)
             }
+
             // Toolbar
             VStack (alignment: .center) {
                 ZStack (alignment: .center) {

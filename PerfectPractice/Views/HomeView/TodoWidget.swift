@@ -50,6 +50,9 @@ struct TodoWidget: View {
                     .listStyle(.plain)
                     .listRowBackground(Color.clear)
                     .background(Color("BentoColor"))
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
                     .toolbar {
                         /// header
                         ToolbarItem(placement: .topBarLeading) {

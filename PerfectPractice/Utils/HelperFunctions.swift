@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 // Image extension for Data
 extension Image {
     init?(data: Data) {
@@ -34,4 +35,12 @@ func pfpCircle(pfpData: Data?) -> some View {
         .scaledToFill()
         .frame(width: 50, height: 50)
         .clipShape(Circle())
+}
+
+// Dismiss Keyboard
+extension View {
+    func hideKeyboard() {
+        let resign = #selector(UIResponder.resignFirstResponder)
+        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+    }
 }
