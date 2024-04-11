@@ -24,7 +24,7 @@ enum PrimaryViews {
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var userManager:UserManager
-    @State private var selectedView: PrimaryViews = .home
+    @State private var selectedView: PrimaryViews = .practice
     @Query(sort: \Event.date, order: .forward) var events:[Event]
     @Query(sort: \User.dateCreated, order: .forward) var users:[User]
 

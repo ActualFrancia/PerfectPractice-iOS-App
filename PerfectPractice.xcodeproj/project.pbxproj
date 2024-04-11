@@ -23,6 +23,7 @@
 		9138A4FA2BC70C0B00A6E0A5 /* ScheduleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */; };
 		9138A5012BC7313F00A6E0A5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9138A5002BC7313F00A6E0A5 /* UserManager.swift */; };
 		91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91622B462BBE0E6400A8DB7B /* PracticeView.swift */; };
+		916598162BC85DB600CCA81C /* ScheduleWidgetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916598152BC85DB600CCA81C /* ScheduleWidgetListing.swift */; };
 		91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA62BBF756500DA9DC8 /* EventEditView.swift */; };
 		91670B822BBB8B0D00509C6B /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 91670B812BBB8B0D00509C6B /* Collections */; };
 		916A04392BC0690D0033A4F9 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A04382BC0690D0033A4F9 /* ThemeManager.swift */; };
@@ -56,6 +57,7 @@
 		9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWidget.swift; sourceTree = "<group>"; };
 		9138A5002BC7313F00A6E0A5 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		91622B462BBE0E6400A8DB7B /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		916598152BC85DB600CCA81C /* ScheduleWidgetListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWidgetListing.swift; sourceTree = "<group>"; };
 		91660EA62BBF756500DA9DC8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
 		916A04382BC0690D0033A4F9 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		916A043B2BC077320033A4F9 /* PFPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFPButton.swift; sourceTree = "<group>"; };
@@ -103,8 +105,7 @@
 				910B06A82BBDC8FA00313EAD /* HomeView.swift */,
 				911D30852BC47753008E6921 /* UpcomingWidget.swift */,
 				910DB6C22BBE2A1B00ABD082 /* EventsWidget.swift */,
-				9132957D2BC090A700760FB7 /* TodoWidget.swift */,
-				91E7A5332BC7716400EF72B4 /* TodoWidgetListing.swift */,
+				916598132BC85DA300CCA81C /* TodoWidget */,
 				910B06B22BBDFFBE00313EAD /* PracticeButton.swift */,
 			);
 			path = HomeView;
@@ -131,6 +132,24 @@
 				916A043A2BC076D40033A4F9 /* SidebarView */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		916598132BC85DA300CCA81C /* TodoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				9132957D2BC090A700760FB7 /* TodoWidget.swift */,
+				91E7A5332BC7716400EF72B4 /* TodoWidgetListing.swift */,
+			);
+			path = TodoWidget;
+			sourceTree = "<group>";
+		};
+		916598142BC85DA900CCA81C /* ScheduleWidget */ = {
+			isa = PBXGroup;
+			children = (
+				9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */,
+				916598152BC85DB600CCA81C /* ScheduleWidgetListing.swift */,
+			);
+			path = ScheduleWidget;
 			sourceTree = "<group>";
 		};
 		91670B7B2BBB261500509C6B /* ProfileView */ = {
@@ -225,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				91622B462BBE0E6400A8DB7B /* PracticeView.swift */,
-				9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */,
+				916598142BC85DA900CCA81C /* ScheduleWidget */,
 			);
 			path = PracticeView;
 			sourceTree = "<group>";
@@ -323,6 +342,7 @@
 				9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */,
 				911D30862BC47753008E6921 /* UpcomingWidget.swift in Sources */,
 				91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */,
+				916598162BC85DB600CCA81C /* ScheduleWidgetListing.swift in Sources */,
 				91C6F4512BC4C11E003DD1FF /* CircleButton.swift in Sources */,
 				910B06A02BBDBD1400313EAD /* UserModel.swift in Sources */,
 				910B06AC2BBDCE4500313EAD /* Bento.swift in Sources */,

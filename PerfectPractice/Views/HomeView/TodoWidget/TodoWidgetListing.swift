@@ -22,6 +22,10 @@ struct TodoWidgetListing: View {
             // Todo Text
             TextField("Todo Item", text: $todo.name, axis: .vertical)
                 .multilineTextAlignment(.leading)
+            
+            Spacer()
+            Image(systemName: "line.horizontal.3")
+                .foregroundStyle(.gray.opacity(0.5))
         }
     }
 }

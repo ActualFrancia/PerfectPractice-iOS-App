@@ -23,6 +23,7 @@ struct PracticeView: View {
     
     var body: some View {
         ZStack {
+            // Toolbar
             VStack {
                 HStack (spacing: gridSpacing) {
                     /// back button
@@ -103,6 +104,7 @@ struct PracticeView: View {
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
                 .padding(.bottom, toolbarHeight/2 + gridSpacing)
+                .frame(maxWidth: .infinity)
                 
                 // Schedule & Goals
                 ScrollView {
@@ -136,9 +138,18 @@ struct PracticeView: View {
                         Spacer()
                         VStack {
                             // Add Schedule or Goal
-                            CircleButton(systemName: "plus", isLarge: true) {
-                                // Menu...
+                            Menu {
+                                Button(action: {
+                                    practiceManager.addNewPracticeStep()
+                                }) {
+                                    Text("New Schedule Item")
+                                }
+                            } label: {
+                                CircleButton(systemName: "plus", isLarge: true) {
+                                    //
+                                }
                             }
+                            
                             // Metronome
                             CircleButton(systemName: "metronome.fill", isLarge: true) {
                                 //...
