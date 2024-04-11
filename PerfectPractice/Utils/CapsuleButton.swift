@@ -25,10 +25,12 @@ struct CapsuleButton: View {
             Text(text)
                 .fontWeight(.medium)
         }
-        .padding(padding)
+        .padding(.vertical, padding)
+        .padding(.horizontal, padding + 10)
         .frame(height: buttonSize)
-        .background(Color("BentoColor"))
+        .background(.bar)
         .clipShape(Capsule())
+        .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
     }
 }
 

@@ -27,6 +27,7 @@ struct TodoWidget: View {
                 Text("Todo List")
                     .font(.system(size: titleSize))
                     .fontWeight(.semibold)
+                    .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                 Spacer()
                 // Add New Todo item
                 CircleButton(systemName: "plus", isLarge: false) {

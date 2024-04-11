@@ -14,6 +14,7 @@ enum PrimaryViews {
 }
 
 // TODO: LIST
+// 0) Drop Shadows on All Widgets.
 // 1) Haptics.
 // 2) Hide list buttons on Practice schedules and goals.
 // 3) Focus on TextFields.

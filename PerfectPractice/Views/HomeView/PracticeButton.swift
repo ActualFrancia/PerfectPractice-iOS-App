@@ -28,7 +28,7 @@ struct PracticeButton: View {
             .frame(width: circleSize, height: circleSize)
             .background(.bar)
             .clipShape(Circle())
-            .shadow(radius: 10)
+            .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
         }
         .frame(maxWidth: .infinity)
     }

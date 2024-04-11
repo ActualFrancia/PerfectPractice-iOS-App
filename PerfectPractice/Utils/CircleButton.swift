@@ -21,17 +21,34 @@ struct CircleButton: View {
 
     
     var body: some View {
-        Button(action: {
-            action()
-        }) {
-            Image(systemName: systemName)
-                .resizable()
-                .scaledToFit()
+        if isLarge {
+            Button(action: {
+                action()
+            }) {
+                Image(systemName: systemName)
+                    .resizable()
+                    .scaledToFit()
+            }
+            .padding(largePadding)
+            .frame(width: largeButtonSize, height:largeButtonSize)
+            .background(.bar)
+            .clipShape(Circle())
+            .shadow(color: .black.opacity(0.1), radius: 5)
         }
-        .padding(isLarge ? largePadding : padding)
-        .frame(width: isLarge ? largeButtonSize : buttonSize, height: isLarge ? largeButtonSize : buttonSize)
-        .background(Color("BentoColor"))
-        .clipShape(Circle())
+        else {
+            Button(action: {
+                action()
+            }) {
+                Image(systemName: systemName)
+                    .resizable()
+                    .scaledToFit()
+            }
+            .padding(padding)
+            .frame(width: buttonSize, height: buttonSize)
+            .background(Color("BentoColor"))
+            .clipShape(Circle())
+            .shadow(color: .black.opacity(0.1), radius: 5)
+        }
     }
 }
 

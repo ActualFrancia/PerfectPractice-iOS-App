@@ -62,6 +62,7 @@ struct PracticeView: View {
                         .font(.system(size: 80).monospacedDigit())
                         .fontWeight(.semibold)
                         .frame(height: 80, alignment: .center)
+                        .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                     /// Timer Controls
                     HStack {
                         Spacer()
@@ -114,14 +115,18 @@ struct PracticeView: View {
                             Text("Schedule")
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
+                                .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                             ScheduleWidget()
+                                .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
                         }
                         /// Goals
                         VStack (alignment: .leading, spacing: gridSpacing/2) {
                             Text("Goals")
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
+                                .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                             GoalWidget()
+                                .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
                         }
                     }
                 }
