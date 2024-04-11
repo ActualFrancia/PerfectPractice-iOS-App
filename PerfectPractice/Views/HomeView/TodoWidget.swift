@@ -16,50 +16,73 @@ struct TodoWidget: View {
     @State private var totalEvents:Int = 0
     private let gridSpacing: CGFloat = 6
     private let textSpacing: CGFloat = 10
+    private let titleSize:CGFloat = 25
+    
+    @Query var users:[User]
     
     var body: some View {
-        VStack (spacing: gridSpacing) {
-            // Header
-            HStack (spacing: textSpacing) {
-                // Number
-                Text("\(completedEvents)/\(totalEvents)")
-                    .font(.system(size: 16.5).monospacedDigit())
-                    .fontWeight(.semibold)
-                    .fixedSize()
-                // Item
-                Text("Items")
-                    .font(.system(size: 16.5))
+        VStack (alignment: .leading, spacing: gridSpacing/2) {
+            // Title
+            HStack (alignment: .center) {
+                Text("Todo List")
+                    .font(.system(size: titleSize))
                     .fontWeight(.semibold)
                 Spacer()
+                // Add New Todo item
+                CircleButton(systemName: "plus", isLarge: false) {
+                    userManager.addNewTodo()
+                }
             }
-            .foregroundStyle(Color("TextColor"))
             
-            // List
-            NavigationStack {
-                List {
-                    ForEach(userManager.todoList.indices, id:\.self) { index in
-                        HStack {
-                            // IsCompleted
-                            Toggle(isOn: $userManager.todoList[index].isCompleted) {
-                                Image(systemName: userManager.todoList[index].isCompleted ? "checkmark.square" : "square")
+            // Widget
+            VStack (spacing: gridSpacing) {
+                // List
+                NavigationStack {
+                    List {
+                        ForEach($userManager.todoList, id:\.id) { todo in
+                            TodoWidgetListing(todo: todo)
+                                .listRowInsets(EdgeInsets())
+                        }
+                        .onDelete(perform: deleteTodo(_:))
+                        .onMove(perform: moveTodo(from:to:))
+                        .listRowBackground(Color.clear)
+                    }
+                    .listStyle(.plain)
+                    .listRowBackground(Color.clear)
+                    .background(Color("BentoColor"))
+                    .toolbar {
+                        /// header
+                        ToolbarItem(placement: .topBarLeading) {
+                            HStack {
+                                Text("\(completedEvents)/\(totalEvents)")
+                                    .font(.system(size: 16.5).monospacedDigit())
+                                    .fontWeight(.semibold)
+                                    .fixedSize()
+                                // Item
+                                Text("Items")
+                                    .font(.system(size: 16.5))
+                                    .fontWeight(.semibold)
                             }
-                            .toggleStyle(.button)
-                            
-                            // Name
-                            TextField("Todo Item", text: $userManager.todoList[index].name)
+                        }
+                        /// edit button
+                        ToolbarItem(placement: .topBarTrailing)  {
+                            EditButton()
                         }
                     }
-                    //.onDelete(perform:)
-                    //.onMove(perform: )
                 }
-                .listStyle(.plain)
+                .frame(height: 500)
             }
-            .frame(height: 500)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .clipShape(RoundedRectangle(cornerRadius: 25.0))
         }
-        .padding(10)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("BentoColor"))
-        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+    }
+    
+    func deleteTodo(_ indexSet: IndexSet) {
+        userManager.todoList.remove(atOffsets: indexSet)
+    }
+    
+    func moveTodo(from source: IndexSet, to destination: Int) {
+        userManager.todoList.move(fromOffsets: source, toOffset: destination)
     }
 }
 

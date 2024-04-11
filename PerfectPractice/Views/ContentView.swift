@@ -26,7 +26,7 @@ struct ContentView: View {
     @EnvironmentObject var userManager:UserManager
     @State private var selectedView: PrimaryViews = .home
     @Query(sort: \Event.date, order: .forward) var events:[Event]
-    @Query var users:[User]
+    @Query(sort: \User.dateCreated, order: .forward) var users:[User]
 
     var body: some View {
         ZStack (alignment: .topLeading) {
@@ -60,7 +60,7 @@ struct ContentView: View {
             // TODO: REMOVE AFTER
             let user1 = User(name: "Gino", defaultInstrument: "", defaultTag: "")
             modelContext.insert(user1)
-            /// setup UserManger
+            /// setup UserManger with oldest user.
             userManager.setUser(users.first!)
             /// cleanup extra users if any
             if users.count > 1 {

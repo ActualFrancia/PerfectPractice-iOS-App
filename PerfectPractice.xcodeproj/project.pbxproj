@@ -35,6 +35,7 @@
 		91C6F4512BC4C11E003DD1FF /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6F4502BC4C11E003DD1FF /* CircleButton.swift */; };
 		91CE9C032BC5BB4600507F8C /* FormattedTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */; };
 		91CE9C052BC5C00300507F8C /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CE9C042BC5C00300507F8C /* CapsuleButton.swift */; };
+		91E7A5342BC7716400EF72B4 /* TodoWidgetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7A5332BC7716400EF72B4 /* TodoWidgetListing.swift */; };
 		91E7C7732BC32BD200B558BB /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7C7722BC32BD200B558BB /* Tags.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		91C6F4502BC4C11E003DD1FF /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedTimeInterval.swift; sourceTree = "<group>"; };
 		91CE9C042BC5C00300507F8C /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
+		91E7A5332BC7716400EF72B4 /* TodoWidgetListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoWidgetListing.swift; sourceTree = "<group>"; };
 		91E7C7722BC32BD200B558BB /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				911D30852BC47753008E6921 /* UpcomingWidget.swift */,
 				910DB6C22BBE2A1B00ABD082 /* EventsWidget.swift */,
 				9132957D2BC090A700760FB7 /* TodoWidget.swift */,
+				91E7A5332BC7716400EF72B4 /* TodoWidgetListing.swift */,
 				910B06B22BBDFFBE00313EAD /* PracticeButton.swift */,
 			);
 			path = HomeView;
@@ -327,6 +330,7 @@
 				910DB6C32BBE2A1B00ABD082 /* EventsWidget.swift in Sources */,
 				910B06A72BBDC31100313EAD /* PracticeManager.swift in Sources */,
 				910B06B32BBDFFBE00313EAD /* PracticeButton.swift in Sources */,
+				91E7A5342BC7716400EF72B4 /* TodoWidgetListing.swift in Sources */,
 				910B06AE2BBDE97600313EAD /* HelperFunctions.swift in Sources */,
 				9174AEDA2BBA87D700B6BEFB /* PerfectPracticeApp.swift in Sources */,
 			);

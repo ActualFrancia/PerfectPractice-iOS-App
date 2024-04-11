@@ -18,8 +18,10 @@ class User {
     // Defaults
     var defaultInstrument:String = ""
     var defaultTag:String = ""
-    /// Todo
+    // Todo
     var todoList:[String]? = [String]()
+    // Date Created
+    var dateCreated:Date = Date()
     
     init(name: String, pfpData: Data? = nil, instrumentsPlayed: [String]? = nil, defaultInstrument: String, defaultTag: String, todoList: [String]? = nil) {
         self.name = name

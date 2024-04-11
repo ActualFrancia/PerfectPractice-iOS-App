@@ -80,21 +80,8 @@ struct HomeView: View {
                         EventsWidget(isEditingEvent: $isEditingEvent)
                     }
                     
-                    // Todo List Widget
-                    VStack (alignment: .leading, spacing: gridSpacing/2) {
-                        HStack (alignment: .center) {
-                            Text("Todo List")
-                                .font(.system(size: titleSize))
-                                .fontWeight(.semibold)
-                            Spacer()
-                            // Add New Todo item
-                            CircleButton(systemName: "plus", isLarge: false) {
-                                userManager.addNewTodo()
-                            }
-                        }
-                        // Todo Widget
-                        TodoWidget()
-                    }
+                    // Todo Widget
+                    TodoWidget()
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
                 .padding(.bottom, (70 + 1) + gridSpacing)

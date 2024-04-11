@@ -7,13 +7,15 @@
 
 import Foundation
 
-struct todoItem: Hashable {
+struct todoItem: Identifiable  {
+    var id = UUID()
     var name:String
     var isCompleted:Bool
 }
 
 class UserManager: ObservableObject {
-    var user = User(name: "", defaultInstrument: "", defaultTag: "")
+    @Published var user = User(name: "", defaultInstrument: "", defaultTag: "")
+    
     @Published var todoList:[todoItem] = [] {
         didSet {
             user.todoList = userTodoListString(todoList)
