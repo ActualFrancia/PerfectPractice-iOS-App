@@ -15,6 +15,7 @@ enum PrimaryViews {
 
 // TODO: LIST
 // 1) Haptics.
+// 2) Hide list buttons on Practice schedules and goals.
 // 3) Focus on TextFields.
 // 4) Keyboard hide on scroll.
 // 2) Gradient Color?

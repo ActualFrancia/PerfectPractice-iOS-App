@@ -19,7 +19,7 @@ struct ScheduleWidgetListing: View {
             .toggleStyle(.button)
             
             // Todo Text
-            TextField("Schedule Item", text: $step.stepDescription)
+            TextField("Step", text: $step.stepDescription)
             
             Spacer()
             Image(systemName: "line.horizontal.3")

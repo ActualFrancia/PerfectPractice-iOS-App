@@ -121,10 +121,7 @@ struct PracticeView: View {
                             Text("Goals")
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
-                            Bento {
-                                Text("HI")
-                            }
-                            .frame(height: 100)
+                            GoalWidget()
                         }
                     }
                 }
@@ -137,12 +134,21 @@ struct PracticeView: View {
                     HStack {
                         Spacer()
                         VStack {
-                            // Add Schedule or Goal
+                            // Menu
                             Menu {
+                                /// Add Goal
+                                Button(action: {
+                                    practiceManager.addNewPracticeGoal()
+                                }) {
+                                    Text("New Goal")
+                                    Image(systemName: "plus")
+                                }
+                                /// Add Schedule Item
                                 Button(action: {
                                     practiceManager.addNewPracticeStep()
                                 }) {
-                                    Text("New Schedule Item")
+                                    Text("New Step")
+                                    Image(systemName: "plus")
                                 }
                             } label: {
                                 CircleButton(systemName: "plus", isLarge: true) {

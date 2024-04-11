@@ -1,14 +1,14 @@
 //
-//  ScheduleWidget.swift
+//  GoalWidget.swift
 //  PerfectPractice
 //
-//  Created by Kali Francia on 4/10/24.
+//  Created by Kali Francia on 4/11/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct ScheduleWidget: View {
+struct GoalWidget: View {
     @EnvironmentObject var practiceManager:PracticeManager
     private let gridSpacing:CGFloat = 16
     private let textSpacing: CGFloat = 10
@@ -18,12 +18,12 @@ struct ScheduleWidget: View {
     var body: some View {
         VStack {
             List {
-                ForEach($practiceManager.practiceSchedule, id:\.id) {step in
-                    ScheduleWidgetListing(step: step)
+                ForEach($practiceManager.practiceGoals, id:\.id) {goal in
+                    GoalWidgetListing(goal: goal)
                         .listRowInsets(EdgeInsets())
                 }
-                .onDelete(perform: deleteStep(_:))
-                .onMove(perform: moveStep(from:to:))
+                .onDelete(perform: deleteGoal(_:))
+                .onMove(perform: moveGoal(from:to:))
                 .listRowBackground(Color.clear)
             }
             .listStyle(.plain)
@@ -34,12 +34,12 @@ struct ScheduleWidget: View {
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
     }
     
-    private func deleteStep(_ indexSet: IndexSet) {
-        practiceManager.practiceSchedule.remove(atOffsets: indexSet)
+    private func deleteGoal(_ indexSet: IndexSet) {
+        practiceManager.practiceGoals.remove(atOffsets: indexSet)
     }
     
-    private func moveStep(from source: IndexSet, to destination: Int) {
-        practiceManager.practiceSchedule.move(fromOffsets: source, toOffset: destination)
+    private func moveGoal(from source: IndexSet, to destination: Int) {
+        practiceManager.practiceGoals.move(fromOffsets: source, toOffset: destination)
     }
 }
 

@@ -19,12 +19,21 @@ struct practiceStep: Identifiable {
     var stepDescription:String
 }
 
+struct practiceGoal: Identifiable {
+    var id = UUID()
+    var isCompleted:Bool
+    var goalDescription:String
+}
+
 
 class PracticeManager: ObservableObject {
     // Information
     @Published var practice: Practice = Practice(instrumentPracticed: "", timePracticed: 0, practiceScheduleString: "", practiceGoalsString: "", mood: "", notes: "", tag: "") {
         didSet {
+            /// schedule
             self.practiceSchedule = stringToPracticeSteps(string: practice.practiceScheduleString)
+            /// goal
+            self.practiceGoals = stringToPracticeGoals(string: practice.practiceGoalsString)
         }
     }
     
@@ -38,6 +47,12 @@ class PracticeManager: ObservableObject {
     @Published var practiceSchedule:[practiceStep] = [] {
         didSet {
             practice.practiceScheduleString = practiceStepArrayToString(stepArray: practiceSchedule)
+        }
+    }
+    // Goal
+    @Published var practiceGoals:[practiceGoal] = [] {
+        didSet {
+            practice.practiceGoalsString = practiceGoalsToString(goalArray: practiceGoals)
         }
     }
     
@@ -152,5 +167,55 @@ class PracticeManager: ObservableObject {
         return result
     }
 
+    // GOAL FUNCTIONS
+    // -----------------------------------------------------------------------------------
+    func addNewPracticeGoal() {
+        let newGoal = practiceGoal(isCompleted: false, goalDescription: "")
+        practiceGoals.append(newGoal)
+    }
     
+    /// String -> [practiceGoal]
+    func stringToPracticeGoals(string: String) -> [practiceGoal] {
+        var result:[practiceGoal] = []
+        
+        /// seperate by delmiiter
+        let seperatedArray = string.components(separatedBy: unitDelimiter)
+        
+        for item in seperatedArray {
+            /// convert to practiceStep
+            let components = item.components(separatedBy: recordDelimiter)
+            /// filter out empty components
+            let filteredComponents = components.filter { !$0.isEmpty }
+            
+            if filteredComponents.count == 2 {
+                let isCompleted = filteredComponents[0] == "true"
+                let stepDescription = filteredComponents[1]
+                
+                let goal:practiceGoal = practiceGoal(isCompleted: isCompleted, goalDescription: stepDescription)
+                
+                result.append(goal)
+            }
+        }
+        return result
+    }
+
+    /// [practiceGoal] -> String
+    func practiceGoalsToString(goalArray: [practiceGoal]) -> String {
+        var result = ""
+        
+        for goal in goalArray {
+            result.append(practiceGoalToString(goal: goal))
+        }
+        
+        return result
+    }
+
+    /// practiceGoal -> String
+    func practiceGoalToString(goal: practiceGoal) -> String {
+        var result = ""
+        
+        result = "\(unitDelimiter)\(goal.isCompleted)\(recordDelimiter)\(goal.goalDescription)"
+        
+        return result
+    }
 }

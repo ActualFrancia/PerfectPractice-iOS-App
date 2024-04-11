@@ -24,6 +24,7 @@
 		9138A5012BC7313F00A6E0A5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9138A5002BC7313F00A6E0A5 /* UserManager.swift */; };
 		91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91622B462BBE0E6400A8DB7B /* PracticeView.swift */; };
 		916598162BC85DB600CCA81C /* ScheduleWidgetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916598152BC85DB600CCA81C /* ScheduleWidgetListing.swift */; };
+		916598192BC8646800CCA81C /* GoalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916598182BC8646800CCA81C /* GoalWidget.swift */; };
 		91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA62BBF756500DA9DC8 /* EventEditView.swift */; };
 		91670B822BBB8B0D00509C6B /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 91670B812BBB8B0D00509C6B /* Collections */; };
 		916A04392BC0690D0033A4F9 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A04382BC0690D0033A4F9 /* ThemeManager.swift */; };
@@ -36,6 +37,7 @@
 		91C6F4512BC4C11E003DD1FF /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6F4502BC4C11E003DD1FF /* CircleButton.swift */; };
 		91CE9C032BC5BB4600507F8C /* FormattedTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */; };
 		91CE9C052BC5C00300507F8C /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CE9C042BC5C00300507F8C /* CapsuleButton.swift */; };
+		91D759462BC8743100754CC9 /* GoalWidgetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D759452BC8743100754CC9 /* GoalWidgetListing.swift */; };
 		91E7A5342BC7716400EF72B4 /* TodoWidgetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7A5332BC7716400EF72B4 /* TodoWidgetListing.swift */; };
 		91E7C7732BC32BD200B558BB /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7C7722BC32BD200B558BB /* Tags.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,7 @@
 		9138A5002BC7313F00A6E0A5 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		91622B462BBE0E6400A8DB7B /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
 		916598152BC85DB600CCA81C /* ScheduleWidgetListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWidgetListing.swift; sourceTree = "<group>"; };
+		916598182BC8646800CCA81C /* GoalWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalWidget.swift; sourceTree = "<group>"; };
 		91660EA62BBF756500DA9DC8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
 		916A04382BC0690D0033A4F9 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		916A043B2BC077320033A4F9 /* PFPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFPButton.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		91C6F4502BC4C11E003DD1FF /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedTimeInterval.swift; sourceTree = "<group>"; };
 		91CE9C042BC5C00300507F8C /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
+		91D759452BC8743100754CC9 /* GoalWidgetListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalWidgetListing.swift; sourceTree = "<group>"; };
 		91E7A5332BC7716400EF72B4 /* TodoWidgetListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoWidgetListing.swift; sourceTree = "<group>"; };
 		91E7C7722BC32BD200B558BB /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +154,15 @@
 				916598152BC85DB600CCA81C /* ScheduleWidgetListing.swift */,
 			);
 			path = ScheduleWidget;
+			sourceTree = "<group>";
+		};
+		916598172BC8644E00CCA81C /* GoalWidget */ = {
+			isa = PBXGroup;
+			children = (
+				916598182BC8646800CCA81C /* GoalWidget.swift */,
+				91D759452BC8743100754CC9 /* GoalWidgetListing.swift */,
+			);
+			path = GoalWidget;
 			sourceTree = "<group>";
 		};
 		91670B7B2BBB261500509C6B /* ProfileView */ = {
@@ -245,6 +258,7 @@
 			children = (
 				91622B462BBE0E6400A8DB7B /* PracticeView.swift */,
 				916598142BC85DA900CCA81C /* ScheduleWidget */,
+				916598172BC8644E00CCA81C /* GoalWidget */,
 			);
 			path = PracticeView;
 			sourceTree = "<group>";
@@ -325,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				916598192BC8646800CCA81C /* GoalWidget.swift in Sources */,
 				91CE9C052BC5C00300507F8C /* CapsuleButton.swift in Sources */,
 				91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */,
 				91E7C7732BC32BD200B558BB /* Tags.swift in Sources */,
@@ -333,6 +348,7 @@
 				916A043C2BC077320033A4F9 /* PFPButton.swift in Sources */,
 				9138A5012BC7313F00A6E0A5 /* UserManager.swift in Sources */,
 				910DB6C12BBE293D00ABD082 /* EventListingView.swift in Sources */,
+				91D759462BC8743100754CC9 /* GoalWidgetListing.swift in Sources */,
 				91CE9C032BC5BB4600507F8C /* FormattedTimeInterval.swift in Sources */,
 				910B069E2BBDBBD000313EAD /* DataTransformation.swift in Sources */,
 				916A04392BC0690D0033A4F9 /* ThemeManager.swift in Sources */,
