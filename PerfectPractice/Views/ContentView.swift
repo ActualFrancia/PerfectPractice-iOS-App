@@ -14,14 +14,12 @@ enum PrimaryViews {
 }
 
 // TODO: LIST
-// 0) Drop Shadows on All Widgets.
+// 0) PracticeView instrument select.
 // 1) Haptics.
-// 2) Hide list buttons on Practice schedules and goals.
 // 3) Focus on TextFields.
 // 4) Keyboard hide on scroll.
-// 2) Gradient Color?
+// 2) Themeing w/ gradient colors
 // 5) Fix Completed events counter on todo widget
-// 6) CONSIDER MOVING ON CHANGE for events and todo TO HOMEVIEW OR PRACTICE VIEW??
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
