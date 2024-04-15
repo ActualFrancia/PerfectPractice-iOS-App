@@ -116,8 +116,16 @@ struct PracticeView: View {
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
                                 .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
-                            ScheduleWidget()
-                                .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                            if practiceManager.practiceSchedule.count == 0 {
+                                HStack {
+                                    Text("Create a schedule to help guide your practice!")
+                                        .foregroundStyle(Color.gray)
+                                    Spacer()
+                                }
+                            } else {
+                                ScheduleWidget()
+                                    .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                            }
                         }
                         /// Goals
                         VStack (alignment: .leading, spacing: gridSpacing/2) {
@@ -125,8 +133,16 @@ struct PracticeView: View {
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
                                 .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
-                            GoalWidget()
-                                .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                            if practiceManager.practiceGoals.count == 0 {
+                                HStack {
+                                    Text("Add some goals for your practice!")
+                                        .foregroundStyle(Color.gray)
+                                    Spacer()
+                                }
+                            } else {
+                                GoalWidget()
+                                    .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                            }
                         }
                     }
                     .padding(.top, gridSpacing)

@@ -24,6 +24,7 @@ struct ScheduleWidgetListing: View {
             Spacer()
             Image(systemName: "line.horizontal.3")
                 .foregroundStyle(.gray.opacity(0.5))
+                .padding(.trailing, 10)
         }
     }
 }

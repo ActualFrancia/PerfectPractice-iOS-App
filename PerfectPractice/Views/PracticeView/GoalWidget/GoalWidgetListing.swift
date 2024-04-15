@@ -25,6 +25,7 @@ struct GoalWidgetListing: View {
             Spacer()
             Image(systemName: "line.horizontal.3")
                 .foregroundStyle(.gray.opacity(0.5))
+                .padding(.trailing, 10)
         }
         .frame(height: 35)
     }
