@@ -31,7 +31,7 @@ struct GoalWidget: View {
             .listRowBackground(Color.clear)
             .background(Color("BentoColor"))
         }
-        .frame(height: CGFloat(practiceManager.practiceGoals.count) * rowHeight)
+        .frame(height: (CGFloat(practiceManager.practiceGoals.count) * rowHeight) - 1)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
     }
     

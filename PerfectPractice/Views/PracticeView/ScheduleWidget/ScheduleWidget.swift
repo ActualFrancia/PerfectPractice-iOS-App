@@ -32,7 +32,7 @@ struct ScheduleWidget: View {
             .listRowBackground(Color.clear)
             .background(Color("BentoColor"))
         }
-        .frame(height: CGFloat(practiceManager.practiceSchedule.count) * rowHeight)
+        .frame(height: (CGFloat(practiceManager.practiceSchedule.count) * rowHeight) - 1)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
     }
     
