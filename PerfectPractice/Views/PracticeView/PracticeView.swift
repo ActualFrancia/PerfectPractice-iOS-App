@@ -17,46 +17,42 @@ struct PracticeView: View {
     @State private var practice:Practice?
     @State private var isHidingTime:Bool = false
 
-    private let toolbarHeight:CGFloat = 60
+    private let timerHeight:CGFloat = 220
     private let gridSpacing:CGFloat = 16
     private let titleSize:CGFloat = 25
     
     var body: some View {
         ZStack {
-            // Toolbar
-            VStack {
-                HStack (spacing: gridSpacing) {
-                    /// back button
-                    CircleButton(systemName: "chevron.left", isLarge: false) {
-                        selectedView = .home
-                    }
-                    
-                    /// instrument
-                    Menu {
-                        
-                    } label: {
-                        Text("Instrument")
-                        Image(systemName: "chevron.down")
-                    }
-                    Spacer()
-                    
-                    // Date & Time
-                    VStack (alignment: .trailing) {
-                        Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
-                            .font(.system(size: 15))
+            // Schedule & Goals
+            ScrollView (showsIndicators: false) {
+                VStack (spacing: gridSpacing) {
+                    /// Schedule
+                    VStack (alignment: .leading, spacing: gridSpacing/2) {
+                        Text("Schedule")
+                            .font(.system(size: titleSize))
                             .fontWeight(.semibold)
-                            .foregroundStyle(Color.gray)
-                        Text(isHidingTime ? "••:•• ••" : Date.now.formatted(date: .omitted, time: .shortened))
-                            .font(.system(size: 15))
+                            .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
+                        ScheduleWidget()
+                            .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                    }
+                    /// Goals
+                    VStack (alignment: .leading, spacing: gridSpacing/2) {
+                        Text("Goals")
+                            .font(.system(size: titleSize))
                             .fontWeight(.semibold)
+                            .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
+                        GoalWidget()
+                            .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
                     }
                 }
-                Spacer()
+                .padding(.top, timerHeight + gridSpacing)
+                .padding(.bottom, 36 + gridSpacing)
+                .padding(.horizontal, gridSpacing)
             }
             
             // Timer & Timer Controls
             VStack (spacing: 0){
-                VStack (spacing: 0) {
+                VStack (spacing: gridSpacing) {
                     /// Timer
                     Text("\(isHidingTime ? "••:••" : formattedTimer(practice?.timePracticed ?? 0))")
                         .font(.system(size: 80).monospacedDigit())
@@ -103,34 +99,48 @@ struct PracticeView: View {
                         Spacer()
                     }
                 }
-                .padding(.top, toolbarHeight + gridSpacing)
-                .padding(.bottom, toolbarHeight/2 + gridSpacing)
-                .frame(maxWidth: .infinity)
+                .padding(.horizontal, gridSpacing)
+                .padding(.top, gridSpacing)
+                .frame(maxWidth: .infinity, maxHeight: timerHeight)
+                .background(.regularMaterial)
                 
-                // Schedule & Goals
-                ScrollView {
-                    VStack (spacing: gridSpacing) {
-                        /// Schedule
-                        VStack (alignment: .leading, spacing: gridSpacing/2) {
-                            Text("Schedule")
-                                .font(.system(size: titleSize))
-                                .fontWeight(.semibold)
-                                .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
-                            ScheduleWidget()
-                                .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
-                        }
-                        /// Goals
-                        VStack (alignment: .leading, spacing: gridSpacing/2) {
-                            Text("Goals")
-                                .font(.system(size: titleSize))
-                                .fontWeight(.semibold)
-                                .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
-                            GoalWidget()
-                                .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
-                        }
+                Spacer()
+            }
+            
+            // Toolbar
+            VStack (spacing: 0) {
+                HStack (spacing: gridSpacing) {
+                    /// back button
+                    CircleButton(systemName: "chevron.left", isLarge: false) {
+                        selectedView = .home
+                    }
+                    
+                    /// instrument
+                    Menu {
+                        
+                    } label: {
+                        Text("Instrument")
+                        Image(systemName: "chevron.down")
+                    }
+                    Spacer()
+                    
+                    // Date & Time
+                    VStack (alignment: .trailing) {
+                        Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color.gray)
+                        Text(isHidingTime ? "••:•• ••" : Date.now.formatted(date: .omitted, time: .shortened))
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
                     }
                 }
+                .padding(.horizontal, gridSpacing)
+                Spacer()
             }
+            
+
+
             // Menu Controls
             VStack {
                 Spacer()
@@ -178,9 +188,9 @@ struct PracticeView: View {
                     }
                 }
             }
+            .padding(.horizontal, gridSpacing)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, gridSpacing)
         .background(Color("BackgroundColor"))
         /// get practice
         .onAppear {

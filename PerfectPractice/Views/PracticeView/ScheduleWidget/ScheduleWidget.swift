@@ -12,25 +12,27 @@ struct ScheduleWidget: View {
     @EnvironmentObject var practiceManager:PracticeManager
     private let gridSpacing:CGFloat = 16
     private let textSpacing: CGFloat = 10
+    private let rowHeight: CGFloat = 50
     
-    private let itemHeight: CGFloat = 0
+    @State private var totalRowHeight:CGFloat = 0
     
     var body: some View {
         VStack {
             List {
                 ForEach($practiceManager.practiceSchedule, id:\.id) {step in
-                    ScheduleWidgetListing(step: step)
-                        .listRowInsets(EdgeInsets())
+                        ScheduleWidgetListing(step: step)
+                            .listRowInsets(EdgeInsets())
                 }
                 .onDelete(perform: deleteStep(_:))
                 .onMove(perform: moveStep(from:to:))
                 .listRowBackground(Color.clear)
+                .frame(height: rowHeight)
             }
             .listStyle(.plain)
             .listRowBackground(Color.clear)
             .background(Color("BentoColor"))
         }
-        .frame(height: 300)
+        .frame(height: CGFloat(practiceManager.practiceSchedule.count) * rowHeight)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
     }
     
@@ -40,6 +42,10 @@ struct ScheduleWidget: View {
     
     private func moveStep(from source: IndexSet, to destination: Int) {
         practiceManager.practiceSchedule.move(fromOffsets: source, toOffset: destination)
+    }
+    
+    private func rowHeightCalculator(rowHeight: CGFloat) {
+        totalRowHeight += rowHeight
     }
 }
 

@@ -26,6 +26,7 @@ struct GoalWidgetListing: View {
             Image(systemName: "line.horizontal.3")
                 .foregroundStyle(.gray.opacity(0.5))
         }
+        .frame(height: 35)
     }
 }
 

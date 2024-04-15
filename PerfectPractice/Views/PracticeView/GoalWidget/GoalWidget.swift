@@ -12,8 +12,8 @@ struct GoalWidget: View {
     @EnvironmentObject var practiceManager:PracticeManager
     private let gridSpacing:CGFloat = 16
     private let textSpacing: CGFloat = 10
-    
-    private let itemHeight: CGFloat = 0
+    private let rowHeight: CGFloat = 50
+
     
     var body: some View {
         VStack {
@@ -25,12 +25,13 @@ struct GoalWidget: View {
                 .onDelete(perform: deleteGoal(_:))
                 .onMove(perform: moveGoal(from:to:))
                 .listRowBackground(Color.clear)
+                .frame(height: rowHeight)
             }
             .listStyle(.plain)
             .listRowBackground(Color.clear)
             .background(Color("BentoColor"))
         }
-        .frame(height: 300)
+        .frame(height: CGFloat(practiceManager.practiceGoals.count) * rowHeight)
         .clipShape(RoundedRectangle(cornerRadius: 25.0))
     }
     
