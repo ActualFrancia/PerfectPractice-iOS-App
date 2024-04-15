@@ -21,57 +21,42 @@ struct TodoWidget: View {
     @Query var users:[User]
     
     var body: some View {
-        VStack (alignment: .leading, spacing: gridSpacing/2) {
-            // Title
-            HStack (alignment: .center) {
-                Text("Todo List")
-                    .font(.system(size: titleSize))
-                    .fontWeight(.semibold)
-                    .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
-                Spacer()
-                // Add New Todo item
-                CircleButton(systemName: "plus", isLarge: false) {
-                    userManager.addNewTodo()
+        // List
+        NavigationStack {
+            List {
+                ForEach($userManager.todoList, id:\.id) { todo in
+                    TodoWidgetListing(todo: todo)
+                        .listRowInsets(EdgeInsets())
                 }
-            }
-            
-            // List
-            NavigationStack {
-                List {
-                    ForEach($userManager.todoList, id:\.id) { todo in
-                        TodoWidgetListing(todo: todo)
-                            .listRowInsets(EdgeInsets())
-                    }
-                    .onDelete(perform: deleteTodo(_:))
-                    .onMove(perform: moveTodo(from:to:))
-                    .listRowBackground(Color.clear)
-                }
-                .listStyle(.plain)
+                .onDelete(perform: deleteTodo(_:))
+                .onMove(perform: moveTodo(from:to:))
                 .listRowBackground(Color.clear)
-                .background(Color("BentoColor"))
-                .toolbar {
-                    /// header
-                    ToolbarItem(placement: .topBarLeading) {
-                        HStack {
-                            Text("\(userManager.completedTodoItemCount)/\(userManager.todoItemCount)")
-                                .font(.system(size: 16.5).monospacedDigit())
-                                .fontWeight(.semibold)
-                                .fixedSize()
-                            // Item
-                            Text("Items")
-                                .font(.system(size: 16.5))
-                                .fontWeight(.semibold)
-                        }
-                    }
-                    /// edit button
-                    ToolbarItem(placement: .topBarTrailing)  {
-                        //EditButton()
+            }
+            .listStyle(.plain)
+            .listRowBackground(Color.clear)
+            .background(Color("BentoColor"))
+            .toolbar {
+                /// header
+                ToolbarItem(placement: .topBarLeading) {
+                    HStack {
+                        Text("\(userManager.completedTodoItemCount)/\(userManager.todoItemCount)")
+                            .font(.system(size: 16.5).monospacedDigit())
+                            .fontWeight(.semibold)
+                            .fixedSize()
+                        // Item
+                        Text("Items")
+                            .font(.system(size: 16.5))
+                            .fontWeight(.semibold)
                     }
                 }
+                /// edit button
+                ToolbarItem(placement: .topBarTrailing)  {
+                    //EditButton()
+                }
             }
-            .frame(height: 300)
-            .clipShape(RoundedRectangle(cornerRadius: 25.0))
         }
+        .frame(height: 300)
+        .clipShape(RoundedRectangle(cornerRadius: 25.0))
     }
     
     private func deleteTodo(_ indexSet: IndexSet) {

@@ -17,42 +17,14 @@ struct PracticeView: View {
     @State private var practice:Practice?
     @State private var isHidingTime:Bool = false
 
-    private let timerHeight:CGFloat = 220
+    private let timerHeight:CGFloat = 300
     private let gridSpacing:CGFloat = 16
     private let titleSize:CGFloat = 25
     
     var body: some View {
         ZStack {
-            VStack (spacing: 0){
-                // Toolbar
-                HStack (spacing: gridSpacing) {
-                    /// back button
-                    CircleButton(systemName: "chevron.left", isLarge: false) {
-                        selectedView = .home
-                    }
-                    
-                    /// instrument
-                    Menu {
-                        
-                    } label: {
-                        Text("Instrument")
-                        Image(systemName: "chevron.down")
-                    }
-                    Spacer()
-                    
-                    // Date & Time
-                    VStack (alignment: .trailing) {
-                        Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
-                            .font(.system(size: 15))
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.gray)
-                        Text(isHidingTime ? "••:•• ••" : Date.now.formatted(date: .omitted, time: .shortened))
-                            .font(.system(size: 15))
-                            .fontWeight(.semibold)
-                    }
-                }
-                .padding(.horizontal, gridSpacing)
-                
+            VStack (spacing: 0) {
+                Spacer()
                 // Timer & Timer Controls
                 VStack (spacing: gridSpacing) {
                     /// Timer
@@ -60,7 +32,6 @@ struct PracticeView: View {
                         .font(.system(size: 80).monospacedDigit())
                         .fontWeight(.semibold)
                         .frame(height: 80, alignment: .center)
-                        .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                     /// Timer Controls
                     HStack {
                         Spacer()
@@ -102,97 +73,90 @@ struct PracticeView: View {
                     }
                 }
                 .padding(.horizontal, gridSpacing)
-                .padding(.vertical, gridSpacing * 4)
+                .padding(.top, (practiceManager.practiceSchedule.count != 0) || (practiceManager.practiceGoals.count != 0) ? gridSpacing * 4 : gridSpacing)
+                .padding(.bottom, gridSpacing)
                 .frame(maxWidth: .infinity)
                 
-                Divider()
-                
                 // Schedule & Goals
-                ScrollView (showsIndicators: false) {
-                    VStack (spacing: gridSpacing) {
-                        /// Schedule
-                        VStack (alignment: .leading, spacing: gridSpacing/2) {
-                            Text("Schedule")
-                                .font(.system(size: titleSize))
-                                .fontWeight(.semibold)
-                                .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
-                            if practiceManager.practiceSchedule.count == 0 {
-                                HStack {
-                                    Text("Create a schedule to help guide your practice!")
-                                        .foregroundStyle(Color.gray)
-                                    Spacer()
+                if (practiceManager.practiceSchedule.count != 0) || (practiceManager.practiceGoals.count != 0) {
+                    ScrollView(.vertical) {
+                        VStack (spacing: gridSpacing) {
+                            /// Schedule
+                            if (practiceManager.practiceSchedule.count != 0) {
+                                VStack (alignment: .leading, spacing: gridSpacing/2) {
+                                    Text("Schedule")
+                                        .font(.system(size: titleSize))
+                                        .fontWeight(.semibold)
+                                    ScheduleWidget()
+                                        .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
                                 }
-                            } else {
-                                ScheduleWidget()
-                                    .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                            }
+                            /// Goals
+                            if (practiceManager.practiceGoals.count != 0) {
+                                VStack (alignment: .leading, spacing: gridSpacing/2) {
+                                    Text("Goals")
+                                        .font(.system(size: titleSize))
+                                        .fontWeight(.semibold)
+                                    GoalWidget()
+                                        .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                                }
                             }
                         }
-                        /// Goals
-                        VStack (alignment: .leading, spacing: gridSpacing/2) {
-                            Text("Goals")
-                                .font(.system(size: titleSize))
-                                .fontWeight(.semibold)
-                                .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
-                            if practiceManager.practiceGoals.count == 0 {
-                                HStack {
-                                    Text("Add some goals for your practice!")
-                                        .foregroundStyle(Color.gray)
-                                    Spacer()
-                                }
-                            } else {
-                                GoalWidget()
-                                    .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
-                            }
-                        }
+                        .padding(.top, gridSpacing)
+                        .padding(.bottom, 36 + gridSpacing)
+                        .padding(.horizontal, gridSpacing)
                     }
-                    .padding(.top, gridSpacing)
-                    .padding(.bottom, 36 + gridSpacing)
-                    .padding(.horizontal, gridSpacing)
+                } else {
+                    Spacer()
                 }
             }
-
-            // Menu Controls
+            
+            
+            
+            // Controls Overlay
             VStack {
-                Spacer()
-                ZStack (alignment: .bottom) {
-                    // Tools
-                    HStack {
-                        Spacer()
-                        VStack {
-                            // Menu
-                            Menu {
-                                /// Add Goal
-                                Button(action: {
-                                    practiceManager.addNewPracticeGoal()
-                                }) {
-                                    Text("New Goal")
-                                    Image(systemName: "plus")
-                                }
-                                /// Add Schedule Item
-                                Button(action: {
-                                    practiceManager.addNewPracticeStep()
-                                }) {
-                                    Text("New Step")
-                                    Image(systemName: "plus")
-                                }
-                            } label: {
-                                CircleButton(systemName: "plus", isLarge: true) {
-                                    //
-                                }
-                            }
-                            
-                            // Metronome
-                            CircleButton(systemName: "metronome.fill", isLarge: true) {
-                                //...
-                            }
-                            // Tuner
-                            CircleButton(systemName: "tuningfork", isLarge: true) {
-                                //...
-                            }
-                        }
+                // Toolbar
+                HStack (spacing: gridSpacing) {
+                    /// back button
+                    CircleButton(systemName: "chevron.left", isLarge: false) {
+                        selectedView = .home
                     }
-                    HStack {
-                        CapsuleButton(systemName: "square.and.pencil", text: "Notes") {
+                    
+                    /// instrument
+                    Menu {
+                        
+                    } label: {
+                        Text("Instrument")
+                        Image(systemName: "chevron.down")
+                    }
+                    Spacer()
+                    
+                    // Date & Time
+                    VStack (alignment: .trailing) {
+                        Text("\(Date.now.formatted(Date.FormatStyle().weekday(.wide))), \(Date.now.formatted(Date.FormatStyle().month().day()))")
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color.gray)
+                        Text(isHidingTime ? "••:•• ••" : Date.now.formatted(date: .omitted, time: .shortened))
+                            .font(.system(size: 15))
+                            .fontWeight(.semibold)
+                    }
+                }
+                Spacer()
+                // Tools
+                HStack {
+                    Spacer()
+                    VStack {
+                        // Metronome
+                        CircleButton(systemName: "metronome.fill", isLarge: true) {
+                            //...
+                        }
+                        // Tuner
+                        CircleButton(systemName: "tuningfork", isLarge: true) {
+                            //...
+                        }
+                        // Notes
+                        CircleButton(systemName: "square.and.pencil", isLarge: true) {
                             isNotesPresented = true
                         }
                     }
@@ -212,9 +176,7 @@ struct PracticeView: View {
         }
         // Practice Notes
         .sheet(isPresented: $isNotesPresented) {
-            Text("Aura")
-            Text("Notes")
-            Text("Tag Color?")
+            PracticeNotesView()
         }
     }
 }

@@ -29,6 +29,7 @@ struct GoalWidget: View {
             }
             .listStyle(.plain)
             .listRowBackground(Color.clear)
+            .scrollIndicators(.hidden)
             .background(Color("BentoColor"))
         }
         .frame(height: (CGFloat(practiceManager.practiceGoals.count) * rowHeight) - 1)

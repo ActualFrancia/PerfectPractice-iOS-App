@@ -34,6 +34,8 @@ class PracticeManager: ObservableObject {
             self.practiceSchedule = stringToPracticeSteps(string: practice.practiceScheduleString)
             /// goal
             self.practiceGoals = stringToPracticeGoals(string: practice.practiceGoalsString)
+            /// notes
+            self.practiceNotes = practice.notes
         }
     }
     
@@ -43,6 +45,7 @@ class PracticeManager: ObservableObject {
     //Timer
     @Published var timerState: TimerState = .stopped
     private var timer: Timer?
+    
     // Schedule
     @Published var practiceSchedule:[practiceStep] = [] {
         didSet {
@@ -53,6 +56,12 @@ class PracticeManager: ObservableObject {
     @Published var practiceGoals:[practiceGoal] = [] {
         didSet {
             practice.practiceGoalsString = practiceGoalsToString(goalArray: practiceGoals)
+        }
+    }
+    // Notes
+    @Published var practiceNotes:String = "" {
+        didSet {
+            practice.notes = practiceNotes
         }
     }
     

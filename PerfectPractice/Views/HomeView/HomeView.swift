@@ -35,7 +35,6 @@ struct HomeView: View {
                             Text("Home")
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
-                                .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                             Spacer()
                             // Date & Daily Quote
                             VStack (alignment: .trailing) {
@@ -43,11 +42,9 @@ struct HomeView: View {
                                     .font(.system(size: 15))
                                     .fontWeight(.semibold)
                                     .foregroundStyle(Color.gray)
-                                    .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                                 Text("Don't forget to hydrate!")
                                     .font(.system(size: 15))
                                     .fontWeight(.semibold)
-                                    .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                             }
                         }
                         .frame(height: titleSize)
@@ -63,11 +60,11 @@ struct HomeView: View {
                     
                     // Events Widget
                     VStack (alignment: .leading, spacing: gridSpacing / 2) {
+                        // Title
                         HStack (alignment: .center) {
                             Text("Events")
                                 .font(.system(size: titleSize))
                                 .fontWeight(.semibold)
-                                .shadow(color: .black.opacity(0.1), radius: 5, y: 1)
                             Spacer()
                             // Add New Event
                             CircleButton(systemName: "plus", isLarge: false) {
@@ -86,8 +83,21 @@ struct HomeView: View {
                     }
                     
                     // Todo Widget
-                    TodoWidget()
-                        .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                    VStack (alignment: .leading, spacing: gridSpacing / 2) {
+                        // Title
+                        HStack (alignment: .center) {
+                            Text("Todo List")
+                                .font(.system(size: titleSize))
+                                .fontWeight(.semibold)
+                            Spacer()
+                            // Add New Todo item
+                            CircleButton(systemName: "plus", isLarge: false) {
+                                userManager.addNewTodo()
+                            }
+                        }
+                        TodoWidget()
+                            .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
+                    }
                 }
                 .padding(.top, toolbarHeight + gridSpacing)
                 .padding(.bottom, (70 + 1) + gridSpacing)

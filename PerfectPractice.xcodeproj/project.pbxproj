@@ -23,6 +23,7 @@
 		9138A4FA2BC70C0B00A6E0A5 /* ScheduleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */; };
 		9138A5012BC7313F00A6E0A5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9138A5002BC7313F00A6E0A5 /* UserManager.swift */; };
 		91622B472BBE0E6400A8DB7B /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91622B462BBE0E6400A8DB7B /* PracticeView.swift */; };
+		916350052BCDD9DB000C9C16 /* PracticeNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916350042BCDD9DB000C9C16 /* PracticeNotesView.swift */; };
 		916598162BC85DB600CCA81C /* ScheduleWidgetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916598152BC85DB600CCA81C /* ScheduleWidgetListing.swift */; };
 		916598192BC8646800CCA81C /* GoalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916598182BC8646800CCA81C /* GoalWidget.swift */; };
 		91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91660EA62BBF756500DA9DC8 /* EventEditView.swift */; };
@@ -59,6 +60,7 @@
 		9138A4F92BC70C0B00A6E0A5 /* ScheduleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWidget.swift; sourceTree = "<group>"; };
 		9138A5002BC7313F00A6E0A5 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		91622B462BBE0E6400A8DB7B /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		916350042BCDD9DB000C9C16 /* PracticeNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeNotesView.swift; sourceTree = "<group>"; };
 		916598152BC85DB600CCA81C /* ScheduleWidgetListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWidgetListing.swift; sourceTree = "<group>"; };
 		916598182BC8646800CCA81C /* GoalWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalWidget.swift; sourceTree = "<group>"; };
 		91660EA62BBF756500DA9DC8 /* EventEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				91622B462BBE0E6400A8DB7B /* PracticeView.swift */,
+				916350042BCDD9DB000C9C16 /* PracticeNotesView.swift */,
 				916598142BC85DA900CCA81C /* ScheduleWidget */,
 				916598172BC8644E00CCA81C /* GoalWidget */,
 			);
@@ -353,6 +356,7 @@
 				910B069E2BBDBBD000313EAD /* DataTransformation.swift in Sources */,
 				916A04392BC0690D0033A4F9 /* ThemeManager.swift in Sources */,
 				910B069C2BBDBA4100313EAD /* PracticeModel.swift in Sources */,
+				916350052BCDD9DB000C9C16 /* PracticeNotesView.swift in Sources */,
 				9132957E2BC090A700760FB7 /* TodoWidget.swift in Sources */,
 				916A043E2BC077440033A4F9 /* SidebarManager.swift in Sources */,
 				9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */,

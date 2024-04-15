@@ -30,6 +30,7 @@ struct ScheduleWidget: View {
             }
             .listStyle(.plain)
             .listRowBackground(Color.clear)
+            .scrollIndicators(.hidden)
             .background(Color("BentoColor"))
         }
         .frame(height: (CGFloat(practiceManager.practiceSchedule.count) * rowHeight) - 1)
