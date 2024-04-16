@@ -11,6 +11,10 @@ import SwiftData
 enum PrimaryViews {
     case home
     case practice
+    case history
+    case profile
+    case settings
+    case customize
 }
 
 // TODO: LIST
@@ -21,11 +25,13 @@ enum PrimaryViews {
 // 4) Keyboard hide on scroll.
 // 2) Themeing w/ gradient colors
 // 5) Fix Completed events counter on todo widget
+// 6) Date.now not updating in PracticeView
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var userManager:UserManager
-    @State private var selectedView: PrimaryViews = .practice
+    @EnvironmentObject var sidebarManager:SidebarManager
+    @State private var selectedView: PrimaryViews = .home
     @Query(sort: \Event.date, order: .forward) var events:[Event]
     @Query(sort: \User.dateCreated, order: .forward) var users:[User]
 
@@ -37,12 +43,22 @@ struct ContentView: View {
                 HomeView(selectedView: $selectedView)
             case .practice:
                 PracticeView(selectedView: $selectedView)
+            case .history:
+                HomeView(selectedView: $selectedView)
+            case .profile:
+                HomeView(selectedView: $selectedView)
+            case .settings:
+                HomeView(selectedView: $selectedView)
+            case .customize:
+                HomeView(selectedView: $selectedView)
             }
-            // Sidebar
-            
-            /// Tap to Practice
+            /// Tap to Practice Button
             if selectedView == .home {
                 PracticeButton(selectedView: $selectedView)
+            }
+            
+            if sidebarManager.isShowing {
+                SidebarView(selectedView: $selectedView)
             }
         }
         // onChange of Events

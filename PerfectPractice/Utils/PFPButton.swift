@@ -10,10 +10,11 @@ import SwiftData
 
 struct PFPButton: View {
     @EnvironmentObject var sidebarManager:SidebarManager
+    var action: () -> Void
     
     var body: some View {
         Button(action: {
-            sidebarManager.showSidebar()
+            action()
         }) {
             pfpCircle(pfpData: nil)
         }

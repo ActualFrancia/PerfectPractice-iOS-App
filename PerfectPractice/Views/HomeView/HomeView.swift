@@ -12,6 +12,7 @@ struct HomeView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var practiceManager:PracticeManager
     @EnvironmentObject var userManager:UserManager
+    @EnvironmentObject var sidebarManager:SidebarManager
     @Binding var selectedView:PrimaryViews
     
     private let toolbarHeight:CGFloat = 60
@@ -108,7 +109,9 @@ struct HomeView: View {
             VStack (alignment: .center) {
                 ZStack (alignment: .center) {
                     HStack (alignment: .center, spacing: gridSpacing) {
-                        PFPButton()
+                        PFPButton() {
+                            sidebarManager.showSidebar()
+                        }
                         Spacer()
                     }
                     VStack (alignment: .center, spacing: 0) {

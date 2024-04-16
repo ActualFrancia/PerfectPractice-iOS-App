@@ -16,6 +16,7 @@ struct todoItem: Identifiable  {
 class UserManager: ObservableObject {
     @Published var user = User(name: "", defaultInstrument: "", defaultTag: "")
     
+    // Todo
     @Published var todoList:[todoItem] = [] {
         didSet {
             user.todoList = userTodoListString(todoList)

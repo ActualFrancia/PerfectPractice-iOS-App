@@ -35,6 +35,7 @@
 		9174AEDC2BBA87D700B6BEFB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9174AEDB2BBA87D700B6BEFB /* ContentView.swift */; };
 		9174AEE02BBA87D700B6BEFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEDF2BBA87D700B6BEFB /* Assets.xcassets */; };
 		9174AEE32BBA87D700B6BEFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */; };
+		91BD6D6F2BCEFE6F00C73BE4 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BD6D6E2BCEFE6F00C73BE4 /* SidebarView.swift */; };
 		91C6F4512BC4C11E003DD1FF /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6F4502BC4C11E003DD1FF /* CircleButton.swift */; };
 		91CE9C032BC5BB4600507F8C /* FormattedTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */; };
 		91CE9C052BC5C00300507F8C /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CE9C042BC5C00300507F8C /* CapsuleButton.swift */; };
@@ -74,6 +75,7 @@
 		9174AEE22BBA87D700B6BEFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9174AEE92BBA87EB00B6BEFB /* PerfectPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PerfectPractice.entitlements; sourceTree = "<group>"; };
 		9174AEEA2BBA87FF00B6BEFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		91BD6D6E2BCEFE6F00C73BE4 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		91C6F4502BC4C11E003DD1FF /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedTimeInterval.swift; sourceTree = "<group>"; };
 		91CE9C042BC5C00300507F8C /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
@@ -178,7 +180,7 @@
 		916A043A2BC076D40033A4F9 /* SidebarView */ = {
 			isa = PBXGroup;
 			children = (
-				916A043B2BC077320033A4F9 /* PFPButton.swift */,
+				91BD6D6E2BCEFE6F00C73BE4 /* SidebarView.swift */,
 			);
 			path = SidebarView;
 			sourceTree = "<group>";
@@ -248,6 +250,7 @@
 				910B069D2BBDBBD000313EAD /* DataTransformation.swift */,
 				910B06AB2BBDCE4500313EAD /* Bento.swift */,
 				910B06AD2BBDE97600313EAD /* HelperFunctions.swift */,
+				916A043B2BC077320033A4F9 /* PFPButton.swift */,
 				91C6F4502BC4C11E003DD1FF /* CircleButton.swift */,
 				91CE9C042BC5C00300507F8C /* CapsuleButton.swift */,
 				91CE9C022BC5BB4600507F8C /* FormattedTimeInterval.swift */,
@@ -343,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				916598192BC8646800CCA81C /* GoalWidget.swift in Sources */,
+				91BD6D6F2BCEFE6F00C73BE4 /* SidebarView.swift in Sources */,
 				91CE9C052BC5C00300507F8C /* CapsuleButton.swift in Sources */,
 				91660EA72BBF756500DA9DC8 /* EventEditView.swift in Sources */,
 				91E7C7732BC32BD200B558BB /* Tags.swift in Sources */,
