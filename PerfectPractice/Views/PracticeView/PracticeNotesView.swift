@@ -16,7 +16,7 @@ struct PracticeNotesView: View {
     
     var body: some View {
         ScrollView {
-            VStack (alignment: .leading, spacing: gridSpacing * 2) {
+            VStack (alignment: .leading, spacing: gridSpacing * 3) {
                 // Schedule
                 VStack (alignment: .leading) {
                     HStack (alignment: .bottom) {
@@ -71,7 +71,7 @@ struct PracticeNotesView: View {
                     TextField("Notes", text: $practiceManager.practiceNotes, axis: .vertical)
                         .frame(minHeight: 100, alignment: .topLeading)
                         .padding(gridSpacing)
-                        .background(.white)
+                        .background(Color("BentoColor"))
                         .clipShape(RoundedRectangle(cornerRadius: 25))
                         .shadow(color: .black.opacity(0.1), radius: 10, y: 1)
                 }

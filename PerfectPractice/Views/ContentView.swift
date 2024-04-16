@@ -16,6 +16,7 @@ enum PrimaryViews {
 // TODO: LIST
 // 0) PracticeView instrument select.
 // 1) Haptics.
+// 2) Fix Event Listings Date ordering. Make new past events section.
 // 3) Focus on TextFields.
 // 4) Keyboard hide on scroll.
 // 2) Themeing w/ gradient colors

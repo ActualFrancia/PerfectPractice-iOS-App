@@ -30,7 +30,7 @@ struct CircleButton: View {
                     .scaledToFit()
             }
             .padding(largePadding)
-            .frame(width: largeButtonSize, height:largeButtonSize)
+            .frame(width: largeButtonSize, height:largeButtonSize, alignment: .center)
             .background(.bar)
             .clipShape(Circle())
             .shadow(color: .black.opacity(0.1), radius: 5)
